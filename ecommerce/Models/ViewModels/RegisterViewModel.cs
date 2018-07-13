@@ -22,7 +22,6 @@ namespace ecommerce.Models.ViewModels
 
         [Required]
         [DataType(DataType.Password)]
-
         public string Password { get; set; }
 
         [Required]
@@ -30,7 +29,8 @@ namespace ecommerce.Models.ViewModels
         [Display(Name = "Confirm password")]
         public string ConfirmPassword { get; set; }
 
-
+        [Required]
+        [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
 
         public string FavoriteAnimal { get; set; }
