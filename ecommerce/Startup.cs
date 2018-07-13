@@ -44,6 +44,9 @@ namespace ecommerce
             services.AddDbContext<EcomDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
+
             //services.AddDbContext<EcomDbContext>(options =>
             //    options.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
         }

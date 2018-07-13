@@ -27,10 +27,64 @@ namespace ecommerce.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Register(RegisterViewModel rvm)
-        //{
 
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel rvm)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = rvm.Email,
+                    Email = rvm.Email,
+                    FirstName = rvm.FirstName,
+                    LastName = rvm.LastName,
+                    Birthday = rvm.Birthday,
+                    FavoriteAnimal = rvm.FavoriteAnimal
+                };
+                var result = await _userManager.CreateAsync(user, rvm.Password);
+
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, false);
+                    return RedirectToAction("Index", "Home");
+                }
+
+
+            }
+            return View(rvm);
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel lvm)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Either your email or password was incorrect");
+                }
+            }
+            return View(lvm);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            TempData["LoggedOut"] = "User Logged Out";
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
