@@ -1,0 +1,20 @@
+﻿@model ecommerce.Models.ViewModels.LoginViewModel
+
+@{ViewData["Title"] = "Register";}
+
+<h2>Login</h2>
+
+<form method="post" asp-controller="Account" form-action="Login">
+    <div>
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Password">Password</label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <button type="submit">Login</button>
+</form>
