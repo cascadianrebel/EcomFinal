@@ -13,4 +13,5 @@ namespace ecommerce.Models
         public DateTime Birthday { get; set; }
         public string FavoriteAnimal { get; set; }
     }
+
 }

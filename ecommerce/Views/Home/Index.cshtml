@@ -1,4 +1,21 @@
-﻿Index Action on Home controller
+﻿@using Microsoft.AspNetCore.Identity
+@using ecommerce.Models
+@using System.Security.Claims;
+
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
 
 
 <h1>Home</h1>
+
+@if (SignInManager.IsSignedIn(User))
+{
+<h2>Hello @User.Claims.First(c  => c.Type == "FullName").Value</h2>
+
+    
+}
+else
+{
+    <h3>Hello Anonymous Squirrel</h3>
+
+}

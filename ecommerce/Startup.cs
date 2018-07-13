@@ -59,10 +59,10 @@ namespace ecommerce
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvcWithDefaultRoute();
-
             app.UseAuthentication();
 
+            app.UseMvcWithDefaultRoute();
+            
             app.UseStaticFiles();
 
             app.Run(async (context) =>
