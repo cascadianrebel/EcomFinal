@@ -13,4 +13,11 @@ namespace ecommerce.Models
         public DateTime Birthday { get; set; }
         public string FavoriteAnimal { get; set; }
     }
+
+    public static class ApplicationRoles
+    {
+        public const string Member = "Member";
+        public const string Admin = "Admin";
+        public const string NutLover = "NutLover";
+    }
 }

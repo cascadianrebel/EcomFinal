@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using ecommerce.Models;
 using ecommerce.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ecommerce.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -21,13 +23,14 @@ namespace ecommerce.Controllers
             _signInManager = signInManager;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
-
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
@@ -47,6 +50,14 @@ namespace ecommerce.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false);
+
+                    if (user.Email == "admin@agmn.org")
+                    {
+                        await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
+                        return RedirectToAction("Index", "Admin");
+                    }
+
+                    await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
                     return RedirectToAction("Index", "Home");
                 }
 
@@ -55,12 +66,14 @@ namespace ecommerce.Controllers
             return View(rvm);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {
@@ -69,6 +82,11 @@ namespace ecommerce.Controllers
                 var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
                 if (result.Succeeded)
                 {
+                    var user = await _userManager.FindByEmailAsync(lvm.Email);
+                    if (await _userManager.IsInRoleAsync(user, ApplicationRoles.Admin))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -78,7 +96,7 @@ namespace ecommerce.Controllers
             }
             return View(lvm);
         }
-
+     
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
