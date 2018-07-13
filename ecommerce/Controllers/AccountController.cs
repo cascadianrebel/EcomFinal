@@ -27,10 +27,31 @@ namespace ecommerce.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Register(RegisterViewModel rvm)
-        //{
 
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel rvm)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = rvm.Email,
+                    Email = rvm.Email,
+                    FirstName = rvm.FirstName,
+                    LastName = rvm.LastName,
+                    Birthday = rvm.Birthday,
+                    FavoriteAnimal = rvm.FavoriteAnimal
+                };
+                var result = await _userManager.CreateAsync(user, rvm.Password);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+
+            }
+            return View(rvm);
+        }
     }
 }
