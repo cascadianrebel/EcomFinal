@@ -11,11 +11,8 @@
 @if (SignInManager.IsSignedIn(User))
 {
 <h2>Hello @User.Claims.First(c  => c.Type == "FullName").Value</h2>
-
-    
 }
 else
 {
     <h3>Hello Anonymous Squirrel</h3>
-
 }

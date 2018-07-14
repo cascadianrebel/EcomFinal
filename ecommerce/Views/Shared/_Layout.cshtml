@@ -1,13 +1,29 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using ecommerce.Models
+@using System.Security.Claims;
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-</head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta name="viewport" content="width=device-width" />
+    </head>
+
+    <body>
+        @RenderSection("_Header")
+        <div>
+            @RenderBody()
+        </div>
+        @RenderSection("_Footer")
+    </body>
 </html>
+
+
+
+
+
+
+
