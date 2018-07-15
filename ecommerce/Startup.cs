@@ -37,6 +37,12 @@ namespace ecommerce
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireRole(ApplicationRoles.Admin));
+                options.AddPolicy("HasFavAnimal", policy => policy.RequireClaim("FavAnimal"));
+            });
+
             //Everytime you see IInventory create an instance of DevECOMRepo
             //Registering our Dependency Injection
             services.AddScoped<IInventory, DevInventory>();

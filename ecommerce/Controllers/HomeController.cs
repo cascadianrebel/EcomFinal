@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ecommerce.Models.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace ecommerce.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
 
@@ -22,7 +24,7 @@ namespace ecommerce.Controllers
 
         }
 
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();

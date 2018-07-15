@@ -1,6 +1,6 @@
 ﻿@model List<ecommerce.Models.Product>
 
-<p><a asp-controller="Admin" asp-action="AddProduct">Add Product</a></p>
+<p><a asp-controller="Product" asp-action="AddProduct">Add Product</a></p>
 
 @foreach (var item in Model)
 {
@@ -10,6 +10,6 @@
     <p>@item.Description</p>
     <p>$@item.Price</p>
     <p>SKU: @item.Sku</p>
-    <p><a asp-controller="Admin" asp-action="Detail" asp-route-id="@item.ID">View Detail</a></p>
+    <p><a asp-controller="Product" asp-action="Detail" asp-route-id="@item.ID">View Detail</a></p>
 </div>
 }

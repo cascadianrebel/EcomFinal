@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace ecommerce.Controllers
 {
-    [Authorize]
+    [Authorize(Policy = "AdminOnly")]
     public class AdminController : Controller
     {
         private IInventory _context;
@@ -23,79 +23,12 @@ namespace ecommerce.Controllers
         {
             _context = context;
             Configuration = configuration;
-
         }
 
         // GET: /<controller>/
         public IActionResult Index()
         {
             return View();
-        }
-
-        public IActionResult Inventory()
-        {
-            var products = _context.GetProduct();
-            return View(products);
-        }
-
-        public IActionResult Detail(int? id)
-        {
-            if (id.HasValue)
-            {
-                if (id == 0)
-                {
-                    return NotFound();
-                }
-                Product product = _context.GetProductByID(id.Value).Result;
-                if (product != null)
-                {
-                    return View(product);
-                }
-                return NotFound();
-            }
-            return NotFound();
-        }
-
-        [HttpGet]
-        public IActionResult Update(int? id)
-        {
-            if (id.HasValue && id != 0)
-            {
-                Product product = _context.GetProductByID(id.Value).Result;
-                return View(product);
-            }
-            return NotFound();
-        }
-
-        [HttpPost]
-        public IActionResult Update(Product product)
-        {
-            _context.UpdateProduct(product);
-            //return RedirectToAction("Detail", "Admin", (int?)product.ID);
-            return RedirectToAction("Inventory", "Admin");
-        }
-
-        public IActionResult Delete(int? id)
-        {
-            if (id.HasValue && id != 0)
-            {
-                _context.Delete(id.Value);
-                return RedirectToAction("Inventory", "Admin");
-            }
-            return NotFound();
-        }
-
-        [HttpGet]
-        public IActionResult AddProduct()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult AddProduct(Product product)
-        {
-            _context.CreateProduct(product);
-            return RedirectToAction("Inventory", "Admin");
         }
     }
 }
