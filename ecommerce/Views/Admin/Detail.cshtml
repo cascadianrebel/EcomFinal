@@ -1,0 +1,10 @@
+﻿@model ecommerce.Models.Product
+
+<h2>@Model.Name</h2>
+<img src="@Model.Image" />
+<p>@Model.Description</p>
+<p>$@Model.Price</p>
+<p>SKU: @Model.Sku</p>
+<p><a asp-controller="Admin" asp-action="Update" asp-route-id="@Model.ID">Update</a></p>
+<p><a asp-controller="Admin" asp-action="Delete" asp-route-id="@Model.ID">Delete</a></p>
+

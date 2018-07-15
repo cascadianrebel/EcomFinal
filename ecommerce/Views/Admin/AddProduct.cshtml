@@ -1,0 +1,28 @@
+﻿@model ecommerce.Models.Product
+
+<h1>Add a new product</h1>
+
+<form method="post" asp-controller="Admin" form-action="AddProduct">
+    <div>
+        <label asp-for="Name">Product Name</label>
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Sku">SKU</label>
+        <input asp-for="Sku" />
+    </div>
+    <div>
+        <label asp-for="Price">Price</label>
+        <input asp-for="Price" />
+    </div>
+    <div>
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" />
+    </div>
+    <div>
+        <label asp-for="Image">Image</label>
+        <input asp-for="Image" />
+    </div>
+
+    <button type="submit">Add Product</button>
+</form>
