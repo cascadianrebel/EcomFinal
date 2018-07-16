@@ -47,14 +47,17 @@ namespace ecommerce
             //Registering our Dependency Injection
             services.AddScoped<IInventory, DevInventory>();
 
-            //services.AddDbContext<EcomDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<EcomDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
+               options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
 
-            services.AddDbContext<EcomDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("SquirrelConnection")));
+
+            //services.AddDbContext<EcomDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

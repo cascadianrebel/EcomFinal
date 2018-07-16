@@ -3,27 +3,11 @@
 @using ecommerce.Models
 @using System.Security.Claims;
 
-@inject UserManager<ApplicationUser> UserManager
-@inject SignInManager<ApplicationUser> SignInManager
-<nav>
-    <ul>
-        <li>
-            <a asp-controller="Shop" asp-action="Inventory">View Products</a>
-        </li>
-        <li>
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <a asp-controller="Account" asp-action="Logout">Log Out</a>
-            }
-            else
-            {
-                <a asp-controller="Account" asp-action="Login">Log In</a>
 
-            }
-        </li>
+@{
+    Layout = "_Layout";
+}
 
-    </ul>
-</nav>
 
 @foreach (var item in Model)
 {
