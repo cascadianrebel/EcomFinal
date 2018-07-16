@@ -51,7 +51,7 @@ namespace ecommerce
             //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("SquirrelConnection")));
 
             services.AddDbContext<EcomDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
