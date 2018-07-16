@@ -23,6 +23,7 @@ namespace ecommerce.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
         /// <summary>
         /// receives the information from the Register View
         /// </summary>
@@ -34,13 +35,12 @@ namespace ecommerce.Controllers
             return View();
         }
 
-
-        [AllowAnonymous]
         /// <summary>
         /// adds new user to user database and creates claims with the respective information
         /// </summary>
         /// <param name="rvm"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
@@ -68,11 +68,13 @@ namespace ecommerce.Controllers
                     // create new claims
                     Claim nameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+                    Claim animalClaim = new Claim("FavAnimal", $"{user.FavoriteAnimal}");
 
 
                     //add claims to claims list
                     claims.Add(nameClaim);
                     claims.Add(emailClaim);
+                    claims.Add(animalClaim);
 
                     await _userManager.AddClaimsAsync(user, claims);
 

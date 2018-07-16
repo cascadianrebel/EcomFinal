@@ -1,17 +1,10 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@model ecommerce.Models.Product
+@using Microsoft.AspNetCore.Identity
 @using ecommerce.Models
 @using System.Security.Claims;
 
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
-
-<head>
-    <link type="text/css" href="~/styles/index.css" rel="stylesheet" />
-    <link type="text/css" href="~/normalize.css" rel="stylsheet"/>
-
-</head>
-
-<h1>Home</h1>
 <nav>
     <ul>
         <li>
@@ -32,13 +25,9 @@
     </ul>
 </nav>
 
-@if (SignInManager.IsSignedIn(User))
-{
-<h2>Hello @User.Claims.First(c  => c.Type == "FullName").Value</h2>
-    
-}
-else
-{
-    <h3>Hello Anonymous Squirrel</h3>
+<h2>@Model.Name</h2>
+<img src="@Model.Image" />
+<p>@Model.Description</p>
+<p>$@Model.Price</p>
 
-}
+

@@ -13,7 +13,7 @@ namespace ecommerce.Data
         {
 
         }
-        DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,7 +27,7 @@ namespace ecommerce.Data
                 new Product { ID = 7, Sku = "MNAG0007", Name = "Underpants Squirrel-nament", Price = 6.99M, Description = "Every tree needs a squirrel in underpants. In fact, we think you'd be nuts not to have one! Made of glass, it's 4\" tall and includes string or can stand on its own", Image = "https://cdn.shopify.com/s/files/1/1365/2497/products/handisquirrel-Box_1600x.jpg?v=1520533725" },
                 new Product { ID = 8, Sku = "MNAG0008", Name = "Happy Birthday, Squirrel Friend - Card", Price = 2.99M, Description = "It's a 5\" x 7\" card, with envelope, that expresses your honest emotions in a weird and measured way", Image = "https://cdn.shopify.com/s/files/1/1365/2497/products/Squirrel_Birthday_Card_1600x.jpg?v=1520535512" },
                 new Product { ID = 9, Sku = "MNAG0009", Name = "Squirrel Shakers", Price = 5.99M, Description = "These ceramic Squirrel Salt and Pepper Shakers will amuse anyone who has ever fantasized about seasoning food with the disembodied heads of tree rats. ", Image = "https://cdn.shopify.com/s/files/1/1365/2497/products/squirrel_salt_and_pepper_shakers_1600x.jpg?v=1520534553" },
-                new Product { ID = 4, Sku = "MNAG00010", Name = "Squirrel Mask", Price = 6.99M, Description = "Full-sized, adult latex Squirrel Mask. Perfect for all occasions (except dog sitting).", Image = "https://cdn.shopify.com/s/files/1/1365/2497/products/12293-SquirrelMask-Trees03-1_1600x.jpg?v=1520534463" }
+                new Product { ID = 10, Sku = "MNAG00010", Name = "Squirrel Mask", Price = 6.99M, Description = "Full-sized, adult latex Squirrel Mask. Perfect for all occasions (except dog sitting).", Image = "https://cdn.shopify.com/s/files/1/1365/2497/products/12293-SquirrelMask-Trees03-1_1600x.jpg?v=1520534463" }
 
                 );
         }

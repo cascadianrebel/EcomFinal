@@ -1,10 +1,20 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using ecommerce.Models
+@using System.Security.Claims;
+
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+
+<!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+
+    <link type="text/css" href="~/styles/normalize.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
+
 <body>
     <div>
         @RenderBody()
