@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using ecommerce.Models;
 using ecommerce.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ecommerce.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -20,7 +23,11 @@ namespace ecommerce.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
+        /// <summary>
+        /// receives the information from the Register View
+        /// </summary>
+        /// <returns>The Register view </returns>
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Register()
         {
@@ -28,9 +35,16 @@ namespace ecommerce.Controllers
         }
 
 
+        [AllowAnonymous]
+        /// <summary>
+        /// adds new user to user database and creates claims with the respective information
+        /// </summary>
+        /// <param name="rvm"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
+            //if (the forms are filled correctly)
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
@@ -42,11 +56,36 @@ namespace ecommerce.Controllers
                     Birthday = rvm.Birthday,
                     FavoriteAnimal = rvm.FavoriteAnimal
                 };
+                //inserts user data into userdb
                 var result = await _userManager.CreateAsync(user, rvm.Password);
 
+                //create a list of claims called claims
+                List<Claim> claims = new List<Claim>();
+
+                //after user data successfully placed in db
                 if (result.Succeeded)
                 {
+                    // create new claims
+                    Claim nameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
+                    Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
+
+                    //add claims to claims list
+                    claims.Add(nameClaim);
+                    claims.Add(emailClaim);
+
+                    await _userManager.AddClaimsAsync(user, claims);
+
+
                     await _signInManager.SignInAsync(user, false);
+
+                    if (user.Email == "admin@agmn.org")
+                    {
+                        await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
+                        return RedirectToAction("Index", "Admin");
+                    }
+
+                    await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
                     return RedirectToAction("Index", "Home");
                 }
 
@@ -55,12 +94,14 @@ namespace ecommerce.Controllers
             return View(rvm);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {
@@ -69,6 +110,11 @@ namespace ecommerce.Controllers
                 var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
                 if (result.Succeeded)
                 {
+                    var user = await _userManager.FindByEmailAsync(lvm.Email);
+                    if (await _userManager.IsInRoleAsync(user, ApplicationRoles.Admin))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -78,7 +124,7 @@ namespace ecommerce.Controllers
             }
             return View(lvm);
         }
-
+     
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
