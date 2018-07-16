@@ -5,42 +5,15 @@
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
 
-@*@{
+@{
     Layout = "_Layout";
-}*@
+}
 
-<head>
-    <link type="text/css" href="~/styles/index.css" rel="stylesheet" />
-    <link type="text/css" href="~/normalize.css" rel="stylsheet" />
 
-</head>
-
-<div class="jumbotron">
-<h2>Squirrels With Ties</h2>
-</div>
-<nav>
-    <ul>
-        <li>
-            <a asp-controller="Shop" asp-action="Inventory">View Products</a>
-        </li>
-        <li>
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <a asp-controller="Account" asp-action="Logout">Log Out</a>
-            }
-            else
-            {
-                <a asp-controller="Account" asp-action="Login">Log In</a>
-
-            }
-        </li>
-
-    </ul>
-</nav>
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <h2>Hello @User.Claims.First(c => c.Type == "FullName").Value</h2>
+    <h2>Welcome Back, @User.Claims.First(c => c.Type == "FullName").Value</h2>
 
 }
 else
@@ -48,14 +21,3 @@ else
     <h3>Hello Anonymous Squirrel</h3>
 
 }
-
-<div class="row">
-    <div class="col-md-4">
-        <p>This is body.</p>
-    </div>
-    @section footer{
-        <p class="lead">
-            Created by: Mario Nishio &
-        </p>
-    }
-</div>
