@@ -5,11 +5,13 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using ecommerce.Models;
 using ecommerce.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ecommerce.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -21,10 +23,12 @@ namespace ecommerce.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
         /// <summary>
         /// receives the information from the Register View
         /// </summary>
         /// <returns>The Register view </returns>
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Register()
         {
@@ -36,6 +40,7 @@ namespace ecommerce.Controllers
         /// </summary>
         /// <param name="rvm"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
@@ -63,31 +68,42 @@ namespace ecommerce.Controllers
                     // create new claims
                     Claim nameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+                    Claim animalClaim = new Claim("FavAnimal", $"{user.FavoriteAnimal}");
 
 
                     //add claims to claims list
                     claims.Add(nameClaim);
                     claims.Add(emailClaim);
+                    claims.Add(animalClaim);
 
                     await _userManager.AddClaimsAsync(user, claims);
 
 
                     await _signInManager.SignInAsync(user, false);
+
+                    if (user.Email == "admin@agmn.org")
+                    {
+                        await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
+                        return RedirectToAction("Index", "Admin");
+                    }
+
+                    await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
                     return RedirectToAction("Index", "Home");
                 }
 
-                
 
             }
             return View(rvm);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {
@@ -96,6 +112,11 @@ namespace ecommerce.Controllers
                 var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
                 if (result.Succeeded)
                 {
+                    var user = await _userManager.FindByEmailAsync(lvm.Email);
+                    if (await _userManager.IsInRoleAsync(user, ApplicationRoles.Admin))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -105,7 +126,7 @@ namespace ecommerce.Controllers
             }
             return View(lvm);
         }
-
+     
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
