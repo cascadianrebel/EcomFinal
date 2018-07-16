@@ -25,12 +25,13 @@ namespace ecommerce.Controllers
             Configuration = configuration;
         }
 
+        [AllowAnonymous]
         public IActionResult Inventory()
         {
             var products = _context.GetProduct();
             return View(products);
         }
-
+        [AllowAnonymous]
         public IActionResult Detail(int? id)
         {
             if (id.HasValue)
