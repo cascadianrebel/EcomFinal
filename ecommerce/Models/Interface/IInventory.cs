@@ -9,10 +9,10 @@ namespace ecommerce.Models.Interface
 {
     public interface IInventory
     {
-        Task<IActionResult> CreateProduct(Product product);
-        Task<IActionResult> GetProductByID(int id);
-        Task<IActionResult> GetProduct();
-        Task<IActionResult> UpdateProduct(int id, Product product);
-        Task<IActionResult> Delete(int id);
+        void CreateProduct(Product product);
+        Task<Product> GetProductByID(int id);
+        IEnumerable<Product> GetProduct();
+        void UpdateProduct(Product product);
+        void Delete(int id);
     }
 }
