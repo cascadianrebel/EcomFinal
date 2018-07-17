@@ -15,6 +15,10 @@ namespace ecommerce.Data
         }
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<BasketItem> BasketItemTable { get; set; }
+
+        public DbSet<Basket> BasketTable { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().HasData(
