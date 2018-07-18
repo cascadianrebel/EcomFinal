@@ -9,7 +9,7 @@ namespace ecommerce.Models.Interface
     {
         void AddToBasket(BasketItem bi, string id);
         Task<BasketItem> GetOneBasketItem(int id);
-        IEnumerable<BasketItem> GetAllBasketItem();
+        Task<List<BasketItem>> GetAllBasketItem(string id);
         void UpdateBasketItem(BasketItem basketItem);
         void RemoveBasketItem(int id);
         void AddBasket(Basket basket);

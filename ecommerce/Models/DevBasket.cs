@@ -1,5 +1,6 @@
 ﻿using ecommerce.Data;
 using ecommerce.Models.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +27,19 @@ namespace ecommerce.Models
         {
             var basket = _context.BasketTable.FirstOrDefault(b => b.UserID == id && b.IsComplete == false);
             bi.BasketID = basket.ID;
-            await _context.BasketItemTable.AddAsync(bi);
-            await _context.SaveChangesAsync();
+            BasketItem basketItem = _context.BasketItemTable.FirstOrDefault(b =>
+                b.ProductID == bi.ProductID && b.BasketID == bi.BasketID);
+            if (basketItem != null)
+            {
+                basketItem.Quantity += bi.Quantity;
+                _context.BasketItemTable.Update(basketItem);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                _context.BasketItemTable.Add(bi);
+                _context.SaveChanges();
+            }
         }
 
         public Task<BasketItem> GetOneBasketItem(int id)
@@ -37,7 +49,9 @@ namespace ecommerce.Models
 
         public void RemoveBasketItem(int id)
         {
-            throw new NotImplementedException();
+            BasketItem basketItem = _context.BasketItemTable.Find(id);
+            _context.BasketItemTable.Remove(basketItem);
+            _context.SaveChanges();
         }
 
         public void UpdateBasketItem(BasketItem basketItem)
@@ -45,9 +59,15 @@ namespace ecommerce.Models
             throw new NotImplementedException();
         }
 
-        IEnumerable<BasketItem> IBasket.GetAllBasketItem()
+        public async Task<List<BasketItem>> GetAllBasketItem(string id)
         {
-            throw new NotImplementedException();
+            Basket basket = _context.BasketTable.FirstOrDefault(b => b.UserID == id && b.IsComplete == false);
+            var basketItems = await _context.BasketItemTable.Where(bi => bi.BasketID == basket.ID).ToListAsync();
+            foreach (BasketItem item in basketItems)
+            {
+                item.Product = await _context.Products.FirstOrDefaultAsync(p => p.ID == item.ProductID);
+            }
+            return basketItems;
         }
     }
 }
