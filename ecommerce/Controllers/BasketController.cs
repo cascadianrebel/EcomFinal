@@ -50,5 +50,15 @@ namespace ecommerce.Controllers
         {
             return await _userManager.FindByEmailAsync(User.Identity.Name);
         }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id.HasValue && id != 0)
+            {
+                _context.RemoveBasketItem(id.Value);
+                return RedirectToAction("Index");
+            }
+            return NotFound();
+        }
     }
 }

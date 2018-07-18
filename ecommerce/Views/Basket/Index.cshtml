@@ -1,7 +1,66 @@
 ﻿@model List<ecommerce.Models.BasketItem>
 
-<h2>My Basket</h2>
-@foreach (var item in Model)
-{
-
+@{
+    var count = 1;
+    decimal total = 0;
 }
+
+<h2>My Basket</h2>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <td>Product Name</td>
+            <td>Price</td>
+            <td>Qty</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@count</th>
+                <td><span><img src="@item.Product.Image" /> @item.Product.Name</span></td>
+                <td>@item.Product.Price</td>
+                <td>@item.Quantity</td>
+                
+                <td><a asp-controller="Basket" asp-action="Delete" asp-route-id="@item.ID">Delete</a></td>
+                @{ 
+                    count++;
+                    total += (item.Product.Price * item.Quantity);
+                }
+            </tr>
+                    }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Total:</th>
+            <td>@total</td>
+        </tr>
+    </tfoot>
+</table>
+
+
+<ol>
+    @foreach (var item in Model)
+    {
+    <li>
+        <p><span><img src="@item.Product.Image" /> @item.Product.Name</span></p>
+        <p>@item.Product.Price</p>
+        <form method="post" asp-controller="Basket" asp-action="UpdateQuantity">
+            <input asp-for="@item.Quantity" placeholder="@item.Quantity">
+            <input asp-for="@item.ProductID" type="hidden">
+            <input asp-for="@item.ID" type="hidden">
+            <input asp-for="@item.BasketID" type="hidden">
+            <button type="submit">Update</button>
+        </form>
+        <p><a asp-controller="Basket" asp-action="Delete" asp-route-id="@item.ID">Delete</a></p>
+        @{
+            total += (item.Product.Price * item.Quantity);
+        }
+    </li>
+            }
+    <h3>Total: @total</h3>
+</ol>
