@@ -28,9 +28,11 @@ namespace ecommerce.Controllers
         }
 
         // GET: /<controller>/
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var user = await CurrentUserAsync();
+            List<BasketItem> basketItems = _context.GetAllBasketItem(user.Id).Result;
+            return View(basketItems);
         }
 
         [HttpPost]
@@ -38,10 +40,15 @@ namespace ecommerce.Controllers
         {
             if (bi != null)
             {
-                var user = await _userManager.FindByEmailAsync(User.Identity.Name);
+                var user = await CurrentUserAsync();
                 _context.AddToBasket(bi, user.Id);
             }
             return RedirectToAction("Inventory", "Shop");
+        }
+
+        public async Task<ApplicationUser> CurrentUserAsync()
+        {
+            return await _userManager.FindByEmailAsync(User.Identity.Name);
         }
     }
 }

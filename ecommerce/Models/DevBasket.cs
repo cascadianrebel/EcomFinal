@@ -1,5 +1,6 @@
 ﻿using ecommerce.Data;
 using ecommerce.Models.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,9 +46,10 @@ namespace ecommerce.Models
             throw new NotImplementedException();
         }
 
-        IEnumerable<BasketItem> IBasket.GetAllBasketItem()
+        public async Task<List<BasketItem>> GetAllBasketItem(string id)
         {
-            throw new NotImplementedException();
+            Basket basket = _context.BasketTable.FirstOrDefault(b => b.UserID == id && b.IsComplete == false);
+            return await _context.BasketItemTable.Where(bi => bi.BasketID == basket.ID).ToListAsync();
         }
     }
 }
