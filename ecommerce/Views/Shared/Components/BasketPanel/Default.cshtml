@@ -1,0 +1,19 @@
+﻿@model List<BasketItem>
+
+@using Microsoft.AspNetCore.Identity
+@using ecommerce.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+
+
+<h2>Basket</h2>
+
+    @foreach (var item in Model)
+    {
+        <p><img src="@item.Product.Image" alt="@item.Product.Name" /> <strong> @item.Product.Name</strong>  QTY: @item.Quantity</p>
+       
+        <hr />
+    }
+
+    
+
