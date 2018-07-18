@@ -2,6 +2,7 @@
 using ecommerce.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,13 @@ namespace ecommerce.Components
         {
             var user = await _userManager.FindByEmailAsync(User.Identity.Name);
             var basket = _context.BasketTable.FirstOrDefault(b => b.UserID == user.Id);
-            return View(basket);
+            var basketItems = await _context.BasketItemTable.Where(x => x.BasketID == basket.ID).ToListAsync();
+            foreach (var item in basketItems)
+            {
+                item.Product = await _context.Products.FirstOrDefaultAsync(a => a.ID == item.ProductID);
+            }
+
+            return View(basketItems);
         }
     }
 }
