@@ -14,44 +14,50 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/CSS/StyleSheet.css" />
 
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div class="jumbotron">
+    <div class="jumbotron" id="Header">
         <h2>Squirrels With Ties</h2>
-    </div>
-    <nav class="navbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="Shop" asp-action="Inventory">View Products</a>
-            </li>
-            <li class="nav-item">
-                @if (SignInManager.IsSignedIn(User))
-                {
-                    <p>@User.Claims.First(c => c.Type == "FullName").Value:<a class="nav-link" asp-controller="Account" asp-action="Logout">Log Out</a></p>
-                }
-                else
-                {
-                    <a asp-controller="Account" asp-action="Login">Log In</a>
+        <div>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <p>@User.Claims.First(c => c.Type == "FullName").Value:<a class="nav-link" asp-controller="Account" asp-action="Logout">Log Out</a></p>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Login">Log In</a>
 
-                }
-            </li>
+            }
 
-        </ul>
-    </nav>
-    <div class="center-block text-center">
-        @RenderBody()
+        </div>
     </div>
-    <div>
-        @if (SignInManager.IsSignedIn(User))
-        {
-            @await Component.InvokeAsync("BasketPanel")
-        }
-        else
-        {
-            <p>Please Sign in to view your basket</p>
-        }
+    <div id="Main">
+        <nav class="navbar" id="Navigation">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Shop" asp-action="Inventory">View Products</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="center-block text-center" id="MainBody">
+            @RenderBody()
+        </div>
+        
+        <div id="BasketPanel">
+             @if (SignInManager.IsSignedIn(User))
+            {
+                @await Component.InvokeAsync("BasketPanel")
+            }
+            else
+            {
+                <p>Please Sign in to view your basket</p>
+            }
+        </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

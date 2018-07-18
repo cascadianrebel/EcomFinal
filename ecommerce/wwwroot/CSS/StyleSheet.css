@@ -1,0 +1,55 @@
+﻿#Header {
+    border: 1px solid black;
+    display: inline-flex;
+    margin: auto;
+    padding-left: 5em;
+    width: 100%;
+}
+
+#Header h2 {
+    display: inline-block;
+    width: 75%;
+}
+
+#Header div {
+    display: block;
+    margin: auto;
+    text-align: center;
+    width: 25%;
+}
+
+#Main {
+    display: inline-flex;
+    margin: auto;
+    overflow: hidden;
+    width: 100%;
+}
+
+#Navigation {
+    display: inline-block;
+    margin-left: 2em;
+    padding: .5em 2em 0 0;
+    max-width: 20%;
+}
+
+#MainBody {
+    display: inline-block;
+    margin: auto;
+    padding: 1em;
+    max-width: 60%;
+}
+#MainBody img{
+    max-width: 45%;
+}
+
+#BasketPanel {
+    border: 2px solid black;
+    display: inline-block;
+    margin-right: 2em;
+    overflow: scroll;
+    padding: 1em;
+    max-width: 35%;
+}
+#BasketPanel img{
+    max-width: 25%;
+}
