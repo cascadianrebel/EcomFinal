@@ -43,6 +43,7 @@ namespace ecommerce.Controllers
                 }
                 BasketItem bi = new BasketItem();
                 bi.Product = _context.GetProductByID(id.Value).Result;
+                bi.ProductID = bi.Product.ID;
                 if (bi.Product != null)
                 {
                     return View(bi);
