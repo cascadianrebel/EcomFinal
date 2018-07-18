@@ -1,4 +1,4 @@
-﻿@model ecommerce.Models.Product
+﻿@model ecommerce.Models.BasketItem
 @using Microsoft.AspNetCore.Identity
 @using ecommerce.Models
 @using System.Security.Claims;
@@ -11,9 +11,17 @@
 }
 
 
-<h2>@Model.Name</h2>
-<img src="@Model.Image" />
-<p>@Model.Description</p>
-<p>$@Model.Price</p>
+<h2>@Model.Product.Name</h2>
+<img src="@Model.Product.Image" />
+<p>@Model.Product.Description</p>
+<p>$@Model.Product.Price</p>
+
+<form method="post" asp-controller="Basket" form-action="AddBasketItem">
+    <div>
+        <label asp-for="@Model.Quantity">Qty:</label>
+        <input asp-for="@Model.Quantity" min="1">
+    </div>
+    <button type="submit">Add to Basket</button>
+</form>
 
 

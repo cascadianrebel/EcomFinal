@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ecommerce.Models;
 using ecommerce.Models.Interface;
+using ecommerce.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -40,10 +41,11 @@ namespace ecommerce.Controllers
                 {
                     return NotFound();
                 }
-                Product product = _context.GetProductByID(id.Value).Result;
-                if (product != null)
+                BasketItem bi = new BasketItem();
+                bi.Product = _context.GetProductByID(id.Value).Result;
+                if (bi.Product != null)
                 {
-                    return View(product);
+                    return View(bi);
                 }
                 return NotFound();
             }
