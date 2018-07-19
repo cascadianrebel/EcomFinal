@@ -43,6 +43,12 @@ namespace ecommerce
                 options.AddPolicy("HasFavAnimal", policy => policy.RequireClaim("FavAnimal"));
             });
 
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            });
+
             //Everytime you see IInventory create an instance of DevECOMRepo
             //Registering our Dependency Injection
             services.AddScoped<IInventory, DevInventory>();
