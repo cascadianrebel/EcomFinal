@@ -8,63 +8,37 @@
 @{ 
     Layout = "_Layout";
 }
+<head>
+    <link href="~/CSS/Basket.css" rel="stylesheet" />
+</head>
 
-<h2>My Basket</h2>
-<table>
-    <thead>
-        <tr>
-            <th>#</th>
-            <td>Product Name</td>
-            <td>Price</td>
-            <td>Qty</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <th>@count</th>
-                <td><span><img src="@item.Product.Image" /> @item.Product.Name</span></td>
-                <td>@item.Product.Price</td>
-                <td>@item.Quantity</td>
-                
-                <td><a asp-controller="Basket" asp-action="Delete" asp-route-id="@item.ID">Delete</a></td>
-                @{ 
-                    count++;
-                    total += (item.Product.Price * item.Quantity);
-                }
-            </tr>
-                    }
-    </tbody>
-    <tfoot>
-        <tr>
-            <th>Total:</th>
-            <td>@total</td>
-        </tr>
-    </tfoot>
-</table>
+<h2><span>My Basket</span></h2>
 
-
-<ol>
+<div>
     @foreach (var item in Model)
     {
-    <li>
-        <p><span><img src="@item.Product.Image" /> @item.Product.Name</span></p>
-        <p>@item.Product.Price</p>
+    <div class="card">
+        <hr />
+        <div id="BasketItem">
+            <img src="@item.Product.Image" />
+            <p><strong>@item.Product.Name</strong> </p>
+            <p>$@item.Product.Price</p>
+        </div>
+        <div class="crud">
         <form method="post" asp-controller="Basket" asp-action="UpdateQuantity">
             <input asp-for="@item.Quantity" placeholder="@item.Quantity">
             <input asp-for="@item.ProductID" type="hidden">
             <input asp-for="@item.ID" type="hidden">
             <input asp-for="@item.BasketID" type="hidden">
-            <button type="submit">Update</button>
+            <button type="submit">Update Quantity</button>
         </form>
-        <p><a asp-controller="Basket" asp-action="Delete" asp-route-id="@item.ID">Delete</a></p>
+        <p><a asp-controller="Basket" asp-action="Delete" asp-route-id="@item.ID">Remove From Basket</a></p>
         @{
             total += (item.Product.Price * item.Quantity);
         }
-    </li>
-            }
-    <h3>Total: @total</h3>
-</ol>
+            </div>
+    </div>
+    <hr/>
+     }
+    <p><strong>Total:</strong> $@total</p>
+</div>

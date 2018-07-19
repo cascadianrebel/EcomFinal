@@ -6,11 +6,14 @@
 @inject SignInManager<ApplicationUser> SignInManager
 
 
-<h2><a asp-controller="Basket" asp-action="Index">Basket</a></h2>
+<h2><a asp-controller="Basket" asp-action="Index">View Basket</a></h2>
+
+<hr />
 
     @foreach (var item in Model)
     {
-        <p><img src="@item.Product.Image" alt="@item.Product.Name" /> <strong> @item.Product.Name</strong>  QTY: @item.Quantity</p>
+        <p><img src="@item.Product.Image" alt="@item.Product.Name" /> <strong> @item.Product.Name</strong></p>
+        <p id="quantity"><strong>Price:</strong> $@item.Product.Price <strong>QTY:</strong> @item.Quantity</p>
        
         <hr />
     }
