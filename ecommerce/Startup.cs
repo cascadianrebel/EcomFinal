@@ -52,6 +52,7 @@ namespace ecommerce
             //Everytime you see IInventory create an instance of DevECOMRepo
             //Registering our Dependency Injection
             services.AddScoped<IInventory, DevInventory>();
+            services.AddScoped<IBasket, DevBasket>();
 
             services.AddDbContext<EcomDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

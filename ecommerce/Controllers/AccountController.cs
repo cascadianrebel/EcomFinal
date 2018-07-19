@@ -4,10 +4,12 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using ecommerce.Models;
+using ecommerce.Models.Interface;
 using ecommerce.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace ecommerce.Controllers
 {
@@ -16,12 +18,16 @@ namespace ecommerce.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private IBasket _context;
+        private readonly IConfiguration Configuration;
 
         public AccountController(UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager, IBasket context, IConfiguration configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
+            Configuration = configuration;
         }
 
         /// <summary>
@@ -59,12 +65,13 @@ namespace ecommerce.Controllers
                 //inserts user data into userdb
                 var result = await _userManager.CreateAsync(user, rvm.Password);
 
-                //create a list of claims called claims
-                List<Claim> claims = new List<Claim>();
-
                 //after user data successfully placed in db
                 if (result.Succeeded)
                 {
+                    //create a list of claims called claims
+                    List<Claim> claims = new List<Claim>();
+
+
                     // create new claims
                     Claim nameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
@@ -78,6 +85,14 @@ namespace ecommerce.Controllers
 
                     await _userManager.AddClaimsAsync(user, claims);
 
+                    // Instantiates a new basket
+                    Basket basket = new Basket();
+                    //Sets basket's userID as id of user
+                    basket.UserID = user.Id;
+                    //Dependency Injection to IBasket 
+                    //There we will add the basket to the BasketTable
+                    //AddToBasket and AddBasket are different
+                    _context.AddBasket(basket);
 
                     await _signInManager.SignInAsync(user, false);
 

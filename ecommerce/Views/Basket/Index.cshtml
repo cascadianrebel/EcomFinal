@@ -1,0 +1,44 @@
+﻿@model List<ecommerce.Models.BasketItem>
+
+
+@{
+    var count = 1;
+    decimal total = 0;
+}
+@{ 
+    Layout = "_Layout";
+}
+<head>
+    <link href="~/CSS/Basket.css" rel="stylesheet" />
+</head>
+
+<h2><span>My Basket</span></h2>
+
+<div>
+    @foreach (var item in Model)
+    {
+    <div class="card">
+        <hr />
+        <div id="BasketItem">
+            <img src="@item.Product.Image" />
+            <p><strong>@item.Product.Name</strong> </p>
+            <p>$@item.Product.Price</p>
+        </div>
+        <div class="crud">
+        <form method="post" asp-controller="Basket" asp-action="UpdateQuantity">
+            <input asp-for="@item.Quantity" placeholder="@item.Quantity">
+            <input asp-for="@item.ProductID" type="hidden">
+            <input asp-for="@item.ID" type="hidden">
+            <input asp-for="@item.BasketID" type="hidden">
+            <button type="submit">Update Quantity</button>
+        </form>
+        <p><a asp-controller="Basket" asp-action="Delete" asp-route-id="@item.ID">Remove From Basket</a></p>
+        @{
+            total += (item.Product.Price * item.Quantity);
+        }
+            </div>
+    </div>
+    <hr/>
+     }
+    <p><strong>Total:</strong> $@total</p>
+</div>
