@@ -50,6 +50,15 @@
     padding: 1em;
     max-width: 35%;
 }
+#BasketPanel h2 {
+    text-align: center;
+}
 #BasketPanel img{
     max-width: 25%;
 }
+
+#quantity{
+    text-align: right;
+}
+
+
