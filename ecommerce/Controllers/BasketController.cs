@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using ecommerce.Models;
 using ecommerce.Models.Interface;
+using ecommerce.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace ecommerce.Controllers
 {
+    [Authorize]
     public class BasketController : Controller
     {
         private IBasket _context;
@@ -31,8 +34,10 @@ namespace ecommerce.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await CurrentUserAsync();
-            List<BasketItem> basketItems = _context.GetAllBasketItem(user.Id).Result;
-            return View(basketItems);
+            //List<BasketItem> basketItems = _context.GetAllBasketItem(user.Id).Result;
+            UpdateQuantityViewModel ivc = new UpdateQuantityViewModel();
+            ivc.basketItems = _context.GetAllBasketItem(user.Id).Result;
+            return View(ivc);
         }
 
         [HttpPost]
@@ -56,6 +61,22 @@ namespace ecommerce.Controllers
             if (id.HasValue && id != 0)
             {
                 _context.RemoveBasketItem(id.Value);
+                return RedirectToAction("Index");
+            }
+            return NotFound();
+        }
+
+        [HttpPost]
+        public IActionResult UpdateQuantity(UpdateQuantityViewModel ivc)
+        {
+            if (ModelState.IsValid)
+            {
+                BasketItem basketItem = new BasketItem();
+                basketItem.ID = ivc.ID;
+                basketItem.ProductID = ivc.ProductID;
+                basketItem.Quantity = ivc.Quantity;
+                basketItem.BasketID = ivc.BasketID;
+                _context.UpdateBasketItem(basketItem);
                 return RedirectToAction("Index");
             }
             return NotFound();
