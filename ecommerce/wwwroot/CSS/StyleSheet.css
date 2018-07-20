@@ -1,4 +1,4 @@
-﻿#Header {
+﻿header {
     border: 1px solid black;
     display: inline-flex;
     margin: auto;
@@ -6,26 +6,26 @@
     width: 100%;
 }
 
-#Header h2 {
+header h2 {
     display: inline-block;
     width: 75%;
 }
 
-#Header div {
+header div {
     display: block;
     margin: auto;
     text-align: center;
     width: 25%;
 }
 
-#Main {
+main {
     display: inline-flex;
     margin: auto;
     overflow: hidden;
     width: 100%;
 }
 
-#Navigation {
+nav {
     display: inline-block;
     margin-left: 2em;
     padding: .5em 2em 0 0;
