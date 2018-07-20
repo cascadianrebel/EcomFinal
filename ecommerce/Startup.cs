@@ -37,6 +37,18 @@ namespace ecommerce
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddAuthentication()
+                .AddMicrosoftAccount(microsoftOptions =>
+                {
+                    microsoftOptions.ClientId = Configuration["OAUTHSecrets:Authentication:Microsoft:ApplicationId"];
+                    microsoftOptions.ClientSecret = Configuration["OAUTHSecrets:Authentication:Microsoft:Password"];
+                });
+                //.AddGoogle(googleOptions =>
+                //{
+                //    googleOptions.ClientId = Configuration["Authentication:Google:ApplicationId"];
+                //    googleOptions.ClientSecret = Configuration["Authentication:Google:Password"];
+                //});
+
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy => policy.RequireRole(ApplicationRoles.Admin));
