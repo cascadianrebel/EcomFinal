@@ -1,8 +1,8 @@
-﻿@model List<ecommerce.Models.BasketItem>
+﻿@*@model List<ecommerce.Models.BasketItem>*@
+@model ecommerce.Models.ViewModels.UpdateQuantityViewModel
 
 
 @{
-    var count = 1;
     decimal total = 0;
 }
 @{ 
@@ -15,7 +15,7 @@
 <h2><span>My Basket</span></h2>
 
 <div>
-    @foreach (var item in Model)
+    @foreach (var item in Model.basketItems)
     {
     <div class="card">
         <hr />
@@ -26,10 +26,10 @@
         </div>
         <div class="crud">
         <form method="post" asp-controller="Basket" asp-action="UpdateQuantity">
-            <input asp-for="@item.Quantity" placeholder="@item.Quantity">
-            <input asp-for="@item.ProductID" type="hidden">
-            <input asp-for="@item.ID" type="hidden">
-            <input asp-for="@item.BasketID" type="hidden">
+            <input asp-for="ID" type="hidden" value="@item.ID">
+            <input asp-for="ProductID" type="hidden" value="@item.ProductID">
+            <input asp-for="Quantity" value="@item.Quantity">
+            <input asp-for="BasketID" type="hidden" value="@item.BasketID">
             <button type="submit">Update Quantity</button>
         </form>
         <p><a asp-controller="Basket" asp-action="Delete" asp-route-id="@item.ID">Remove From Basket</a></p>

@@ -141,13 +141,78 @@ namespace ecommerce.Controllers
             }
             return View(lvm);
         }
-     
+
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             TempData["LoggedOut"] = "User Logged Out";
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [AllowAnonymous]
+        public IActionResult ExternalLogin(string provider)
+        {
+            var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account");
+            var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+            return Challenge(properties, provider);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ExternalLoginCallback(string remoteError = null)
+        {
+            if (remoteError != null)
+            {
+                TempData["ErrorMessage"] = "Error from Provider";
+                return RedirectToAction(nameof(Login));
+            }
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+
+            if (info == null)
+            {
+                return RedirectToAction(nameof(Login));
+            }
+
+            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            return View("ExternalLogin", new ExternalLoginViewModel { Email = email });
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel elvm)
+        {
+            if (ModelState.IsValid)
+            {
+                var info = await _signInManager.GetExternalLoginInfoAsync();
+                if (info == null)
+                {
+                    TempData["Error"] = "Error loading information";
+                }
+
+                var user = new ApplicationUser { UserName = elvm.Email, Email = elvm.Email };
+                var result = await _userManager.CreateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    result = await _userManager.AddLoginAsync(user, info);
+
+                    if (result.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+            }
+            return View(elvm);
         }
     }
 }

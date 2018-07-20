@@ -1,5 +1,6 @@
 ﻿using ecommerce.Data;
 using ecommerce.Models.Interface;
+using ecommerce.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -54,9 +55,10 @@ namespace ecommerce.Models
             _context.SaveChanges();
         }
 
-        public void UpdateBasketItem(BasketItem basketItem)
+        public void UpdateBasketItem(BasketItem bi)
         {
-            throw new NotImplementedException();
+            _context.BasketItemTable.Update(bi);
+            _context.SaveChanges();
         }
 
         public async Task<List<BasketItem>> GetAllBasketItem(string id)

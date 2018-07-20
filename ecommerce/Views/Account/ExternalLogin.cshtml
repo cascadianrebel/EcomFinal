@@ -1,0 +1,9 @@
+﻿@model ecommerce.Models.ViewModels.ExternalLoginViewModel
+
+<h2>External Login</h2>
+
+<form method="post" asp-action="ExternalLoginConfirmation">
+    <label asp-for="Email">Email</label>
+    <input asp-for="Email" />
+    <button type="submit">Register</button>
+</form>
