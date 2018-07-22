@@ -8,6 +8,7 @@ using ecommerce.Models.Interface;
 using ecommerce.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -20,15 +21,19 @@ namespace ecommerce.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private IBasket _context;
         private readonly IConfiguration Configuration;
+        private IEmailSender _emailSender;
 
         public AccountController(UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager, IBasket context, IConfiguration configuration)
+            SignInManager<ApplicationUser> signInManager, IBasket context, IConfiguration configuration, EmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _emailSender = emailSender;
             Configuration = configuration;
         }
+
+        
 
         /// <summary>
         /// receives the information from the Register View
@@ -96,12 +101,14 @@ namespace ecommerce.Controllers
 
                     await _signInManager.SignInAsync(user, false);
 
+
                     if (user.Email == "admin@agmn.org")
                     {
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
                         return RedirectToAction("Index", "Admin");
                     }
 
+                    await _emailSender.SendEmailAsync(user.Email, "Welcome", "<p> You have successfully registered </p>");
                     await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
                     return RedirectToAction("Index", "Home");
                 }
