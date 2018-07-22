@@ -1,0 +1,32 @@
+﻿@model ecommerce.Models.ViewModels.CheckoutViewModel
+
+@{
+    decimal total = 0;
+    decimal subTotal = 0;
+}
+
+<h2>Order Summary</h2>
+
+@foreach (var item in Model.BasketItems)
+{
+    subTotal = 0;
+    subTotal = item.Quantity * item.Product.Price;
+    total += subTotal;
+    <h3>@item.Product.Name</h3>
+    <p>$@item.Product.Price</p>
+    <p>Qty: @item.Quantity</p>
+    <p>$@subTotal</p>
+}
+
+<p>Total: $@total</p>
+
+<hr />
+
+<h3>Shipping To</h3>
+<p>@Model.FirstName @Model.LastName</p>
+<p>@Model.Address1</p>
+<p>@Model.Address2</p>
+<p>@Model.City, @Model.State @Model.ZipCode</p>
+
+<h3>Payment</h3>
+<p>Insert here later</p>

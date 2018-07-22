@@ -1,0 +1,74 @@
+﻿@model ecommerce.Models.ViewModels.CheckoutViewModel
+
+@{
+    decimal total = 0;
+    decimal subTotal = 0;
+}
+
+<h2>Checkout</h2>
+
+<a asp-controller="Basket" asp-action="Index">Return To Basket</a>
+
+@foreach (var item in Model.BasketItems)
+{
+    subTotal = 0;
+    subTotal = item.Quantity * item.Product.Price;
+    total += subTotal;
+    <h3>@item.Product.Name</h3>
+    <p>$@item.Product.Price</p>
+    <p>Qty: @item.Quantity</p>
+    <p>$@subTotal</p>
+}
+
+<p>Total: $@total</p>
+
+<hr />
+
+<h3>Shipping To</h3>
+<p>@Model.FirstName @Model.LastName</p>
+<p>@Model.Address1</p>
+<p>@Model.Address2</p>
+<p>@Model.City, @Model.State @Model.ZipCode</p>
+
+<h3>Payment</h3>
+<p>Insert here later</p>
+
+<form method="post" asp-controller="Checkout" asp-action="Summary">
+    <input asp-for="@Model.FirstName" type="hidden" />
+
+    <input asp-for="@Model.LastName" type="hidden" />
+
+    <input asp-for="@Model.Address1" type="hidden" />
+
+    <input asp-for="@Model.Address2" type="hidden" />
+
+    <input asp-for="@Model.City" type="hidden" />
+
+    <input asp-for="@Model.State" type="hidden" />
+
+    <input asp-for="@Model.ZipCode" type="hidden" />
+
+    <input asp-for="@Model.CreditCard" type="hidden" />
+
+    <button type="submit">Confirm</button>
+</form>
+
+<form method="post" asp-controller="Checkout" asp-action="Update">
+    <input asp-for="@Model.FirstName" type="hidden" />
+
+    <input asp-for="@Model.LastName" type="hidden" />
+
+    <input asp-for="@Model.Address1" type="hidden" />
+
+    <input asp-for="@Model.Address2" type="hidden" />
+
+    <input asp-for="@Model.City" type="hidden" />
+
+    <input asp-for="@Model.State" type="hidden" />
+
+    <input asp-for="@Model.ZipCode" type="hidden" />
+
+    <input asp-for="@Model.CreditCard" type="hidden" />
+
+    <button type="submit">Go Back</button>
+</form>
