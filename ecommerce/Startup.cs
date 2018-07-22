@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,8 +41,13 @@ namespace ecommerce
             services.AddAuthentication()
                 .AddMicrosoftAccount(microsoftOptions =>
                 {
-                    microsoftOptions.ClientId = Configuration["OAUTHSecrets:Authentication:Microsoft:ApplicationId"];
-                    microsoftOptions.ClientSecret = Configuration["OAUTHSecrets:Authentication:Microsoft:Password"];
+                    microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
+                    microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
+                });
+                services.AddAuthentication().AddGoogle(googleOptions =>
+                {
+                    googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                    googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
                 });
                 //.AddGoogle(googleOptions =>
                 //{
@@ -55,16 +61,12 @@ namespace ecommerce
                 options.AddPolicy("HasFavAnimal", policy => policy.RequireClaim("FavAnimal"));
             });
 
-            services.AddAuthentication().AddGoogle(googleOptions =>
-            {
-                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
-                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-            });
 
             //Everytime you see IInventory create an instance of DevECOMRepo
             //Registering our Dependency Injection
             services.AddScoped<IInventory, DevInventory>();
             services.AddScoped<IBasket, DevBasket>();
+            services.AddScoped<IEmailSender, EmailSender>();
 
             services.AddDbContext<EcomDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
