@@ -65,7 +65,17 @@ namespace ecommerce
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<IOrder, DevOrder>();
 
+            services.AddDbContext<EcomDbContext>(options =>
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlServer(Configuration["ConnectionStrings: UserConnection"]));
+
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("SquirrelConnection")));
+
             //services.AddDbContext<EcomDbContext>(options =>
+
             //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             //services.AddDbContext<ApplicationDbContext>(options =>
