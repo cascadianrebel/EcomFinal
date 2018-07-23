@@ -8,5 +8,10 @@ namespace ecommerce.Models.Interface
     public interface IOrder
     {
         Task<List<BasketItem>> GetAllBasketItem(string id);
+        int GetBasketID(string id);
+        void SaveOrder(Order order);
+        Task<Basket> GetCurrentBasket(string id);
+        void UpdateBasket(Basket basket);
+        void AddBasket(Basket basket);
     }
 }

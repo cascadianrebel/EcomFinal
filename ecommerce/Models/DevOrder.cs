@@ -27,5 +27,35 @@ namespace ecommerce.Models
             }
             return basketItems;
         }
+
+        public int GetBasketID(string id)
+        {
+            Basket basket = _context.BasketTable.FirstOrDefault(b => b.UserID == id && b.IsComplete == false);
+            return basket.ID;
+        }
+
+        public async void SaveOrder(Order order)
+        {
+            _context.OrderTable.Add(order);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<Basket> GetCurrentBasket(string id)
+        {
+            Basket basket = await _context.BasketTable.FirstOrDefaultAsync(b => b.UserID == id && b.IsComplete == false);
+            return basket;
+        }
+
+        public async void UpdateBasket(Basket basket)
+        {
+            _context.BasketTable.Update(basket);
+            await _context.SaveChangesAsync();
+        }
+
+        public async void AddBasket(Basket basket)
+        {
+            _context.BasketTable.Add(basket);
+            await _context.SaveChangesAsync();
+        }
     }
 }

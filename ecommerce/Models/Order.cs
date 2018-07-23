@@ -10,6 +10,12 @@ namespace ecommerce.Models
         public int ID { get; set; }
         public string UserID { get; set; }
         public int BasketID { get; set; }
+        public DateTime OrderDate { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string ZipCode { get; set; }
         public List<BasketItem> BasketItems { get; set; }
     }
 }
