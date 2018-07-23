@@ -19,6 +19,10 @@ is admin. There, admins are currently able to create, update, get, delete any of
 FavoriteAnimal for the user. If there the user has a favorite animal they have access to the feedback controller where we hope to include a feedback
 form in the future where user can vote/comment on future profucts.
 
+## Database Schema
+![DB_Schema](ecommerce/wwwroot/Assets/DB_Schema.PNG)
+
+
 ## Getting Started
 Go to the Website
 
