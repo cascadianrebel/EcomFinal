@@ -21,7 +21,7 @@ namespace ecommerce.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private IBasket _context;
         private readonly IConfiguration Configuration;
-        private IEmailSender _emailSender;
+        private readonly IEmailSender _emailSender;
 
         public AccountController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager, IBasket context, IConfiguration configuration, EmailSender emailSender)

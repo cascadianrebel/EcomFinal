@@ -1,4 +1,8 @@
-﻿header {
+﻿html{
+    min-height: 100%;
+}
+
+header {
     border: 1px solid black;
     display: inline-flex;
     margin: auto;
@@ -39,6 +43,7 @@ nav {
     max-width: 60%;
 }
 #MainBody img{
+    border-radius: 5px;
     max-width: 45%;
 }
 

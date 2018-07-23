@@ -22,10 +22,10 @@ namespace ecommerce
 
         public Startup(IConfiguration configuration)
         {
-            //var builder = new ConfigurationBuilder().AddEnvironmentVariables();
-            //builder.AddUserSecrets<Startup>();
-            //Configuration = builder.Build();
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder().AddEnvironmentVariables();
+            builder.AddUserSecrets<Startup>();
+            Configuration = builder.Build();
+            //Configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -49,11 +49,7 @@ namespace ecommerce
                     googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
                     googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
                 });
-                //.AddGoogle(googleOptions =>
-                //{
-                //    googleOptions.ClientId = Configuration["Authentication:Google:ApplicationId"];
-                //    googleOptions.ClientSecret = Configuration["Authentication:Google:Password"];
-                //});
+
 
             services.AddAuthorization(options =>
             {
@@ -68,17 +64,17 @@ namespace ecommerce
             services.AddScoped<IBasket, DevBasket>();
             services.AddScoped<IEmailSender, EmailSender>();
 
-            services.AddDbContext<EcomDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
+            //services.AddDbContext<EcomDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("SquirrelConnection")));
+            //   options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
 
-            //services.AddDbContext<EcomDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("SquirrelConnection")));
+
+            services.AddDbContext<EcomDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
