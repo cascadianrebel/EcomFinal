@@ -63,6 +63,7 @@ namespace ecommerce
             services.AddScoped<IInventory, DevInventory>();
             services.AddScoped<IBasket, DevBasket>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IOrder, DevOrder>();
 
             //services.AddDbContext<EcomDbContext>(options =>
             //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

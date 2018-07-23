@@ -105,6 +105,7 @@ namespace ecommerce.Controllers
                     if (user.Email == "admin@agmn.org")
                     {
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
+                        await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
                         return RedirectToAction("Index", "Admin");
                     }
 
@@ -204,11 +205,44 @@ namespace ecommerce.Controllers
                     TempData["Error"] = "Error loading information";
                 }
 
-                var user = new ApplicationUser { UserName = elvm.Email, Email = elvm.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = elvm.Email,
+                    Email = elvm.Email,
+                    FirstName = elvm.FirstName,
+                    LastName = elvm.LastName,
+                    Birthday = elvm.Birthday,
+                    FavoriteAnimal = elvm.FavoriteAnimal
+                };
                 var result = await _userManager.CreateAsync(user);
 
                 if (result.Succeeded)
                 {
+                    //create a list of claims called claims
+                    List<Claim> claims = new List<Claim>();
+
+
+                    // create new claims
+                    Claim nameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
+                    Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+                    Claim animalClaim = new Claim("FavAnimal", $"{user.FavoriteAnimal}");
+
+
+                    //add claims to claims list
+                    claims.Add(nameClaim);
+                    claims.Add(emailClaim);
+                    claims.Add(animalClaim);
+
+                    await _userManager.AddClaimsAsync(user, claims);
+
+                    // Instantiates a new basket
+                    Basket basket = new Basket();
+                    //Sets basket's userID as id of user
+                    basket.UserID = user.Id;
+                    //Dependency Injection to IBasket 
+                    //There we will add the basket to the BasketTable
+                    //AddToBasket and AddBasket are different
+                    _context.AddBasket(basket);
                     result = await _userManager.AddLoginAsync(user, info);
 
                     if (result.Succeeded)
