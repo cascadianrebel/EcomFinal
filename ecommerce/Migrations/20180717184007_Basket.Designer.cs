@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ecommerce.Data;
 
 namespace ecommerce.Migrations
 {
     [DbContext(typeof(EcomDbContext))]
-    partial class EcomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180717184007_Basket")]
+    partial class Basket
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,9 +44,7 @@ namespace ecommerce.Migrations
 
                     b.Property<int>("BasketID");
 
-                    b.Property<int?>("OrderID");
-
-                    b.Property<int>("ProductID");
+                    b.Property<int?>("ProductID");
 
                     b.Property<int>("Quantity");
 
@@ -52,38 +52,9 @@ namespace ecommerce.Migrations
 
                     b.HasIndex("BasketID");
 
-                    b.HasIndex("OrderID");
-
                     b.HasIndex("ProductID");
 
                     b.ToTable("BasketItemTable");
-                });
-
-            modelBuilder.Entity("ecommerce.Models.Order", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address1");
-
-                    b.Property<string>("Address2");
-
-                    b.Property<int>("BasketID");
-
-                    b.Property<string>("City");
-
-                    b.Property<DateTime>("OrderDate");
-
-                    b.Property<string>("State");
-
-                    b.Property<string>("UserID");
-
-                    b.Property<string>("ZipCode");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("OrderTable");
                 });
 
             modelBuilder.Entity("ecommerce.Models.Product", b =>
@@ -127,14 +98,9 @@ namespace ecommerce.Migrations
                         .HasForeignKey("BasketID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ecommerce.Models.Order")
-                        .WithMany("BasketItems")
-                        .HasForeignKey("OrderID");
-
                     b.HasOne("ecommerce.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ProductID");
                 });
 #pragma warning restore 612, 618
         }

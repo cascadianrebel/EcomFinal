@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,10 +22,10 @@ namespace ecommerce
 
         public Startup(IConfiguration configuration)
         {
-            //var builder = new ConfigurationBuilder().AddEnvironmentVariables();
-            //builder.AddUserSecrets<Startup>();
-            //Configuration = builder.Build();
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder().AddEnvironmentVariables();
+            builder.AddUserSecrets<Startup>();
+            Configuration = builder.Build();
+            //Configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -37,27 +38,44 @@ namespace ecommerce
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddAuthentication()
+                .AddMicrosoftAccount(microsoftOptions =>
+                {
+                    microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
+                    microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
+                });
+                services.AddAuthentication().AddGoogle(googleOptions =>
+                {
+                    googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                    googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                });
+
+
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("AdminOnly", policy => policy.RequireRole(ApplicationRoles.Admin));
                 options.AddPolicy("HasFavAnimal", policy => policy.RequireClaim("FavAnimal"));
             });
 
+
             //Everytime you see IInventory create an instance of DevECOMRepo
             //Registering our Dependency Injection
             services.AddScoped<IInventory, DevInventory>();
-
-            services.AddDbContext<EcomDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
-
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("SquirrelConnection")));
+            services.AddScoped<IBasket, DevBasket>();
+            services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IOrder, DevOrder>();
 
             //services.AddDbContext<EcomDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //   options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("SquirrelConnection")));
+
+            services.AddDbContext<EcomDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

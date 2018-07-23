@@ -1,22 +1,11 @@
-﻿@model ecommerce.Models.ViewModels.RegisterViewModel
+﻿@model ecommerce.Models.ViewModels.ExternalLoginViewModel
 
-@{ViewData["Title"] = "Register";}
+<h2>External Login</h2>
 
-@{ Layout = "_Layout";}
-
-<h1>New User Registration</h1>
-
-<h2>Create an account</h2>
-
-<p>Already Registered? <a asp-controller="Account" asp-action="Login">Click Here to Log In!</a></p>
-
-
-<form method="post" asp-controller="Account" form-action="Register">
-
+<form method="post" asp-action="ExternalLoginConfirmation">
     <div>
         <label asp-for="Email">Email</label>
         <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
     </div>
 
     <div>
@@ -54,6 +43,5 @@
         <input asp-for="FavoriteAnimal" />
         <span asp-validation-for="FavoriteAnimal"></span>
     </div>
-
-    <button type="submit">Register User</button>
+    <button type="submit">Register</button>
 </form>
