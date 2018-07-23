@@ -44,11 +44,11 @@ namespace ecommerce
                     microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
                     microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
                 });
-                services.AddAuthentication().AddGoogle(googleOptions =>
-                {
-                    googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
-                    googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-                });
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            });
 
 
             services.AddAuthorization(options =>
@@ -66,16 +66,16 @@ namespace ecommerce
             services.AddScoped<IOrder, DevOrder>();
 
             //services.AddDbContext<EcomDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             //services.AddDbContext<ApplicationDbContext>(options =>
-            //   options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
+            //options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("SquirrelConnection")));
+                options.UseSqlServer(Configuration["ConnectionStrings:SquirrelConnection"]));
 
             services.AddDbContext<EcomDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ProductionConnection")));
+                options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
