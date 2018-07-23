@@ -22,6 +22,15 @@ form in the future where user can vote/comment on future profucts.
 ## Database Schema
 ![DB_Schema](ecommerce/wwwroot/Assets/DB_Schema.PNG)
 
+## Database Schema Explanation
+Users are stored in the Identity table. For simplicity, we only included the string ID of the user in the schema. 
+Every user has a Basket. This is illustrated by the UserID Foreign key in the basket table. 
+
+The Product table contains all the necessary information on each product. When a user adds an item to their basket,
+a basket item is created and stored in the BasketItem Table. Each BasketItem has a productID to know which item was 
+put into the basket and a BasketID to know which basket it was put inside of. Once the user completed the checkout,
+a Order is created with their shipping address, UserID to know which user checkedout, and BasketID to know which basket
+was checked out.
 
 ## Getting Started
 Go to the Website
