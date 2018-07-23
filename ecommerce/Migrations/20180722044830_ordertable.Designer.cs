@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ecommerce.Data;
 
 namespace ecommerce.Migrations
 {
     [DbContext(typeof(EcomDbContext))]
-    partial class EcomDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180722044830_ordertable")]
+    partial class ordertable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,21 +67,9 @@ namespace ecommerce.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address1");
-
-                    b.Property<string>("Address2");
-
                     b.Property<int>("BasketID");
 
-                    b.Property<string>("City");
-
-                    b.Property<DateTime>("OrderDate");
-
-                    b.Property<string>("State");
-
                     b.Property<string>("UserID");
-
-                    b.Property<string>("ZipCode");
 
                     b.HasKey("ID");
 

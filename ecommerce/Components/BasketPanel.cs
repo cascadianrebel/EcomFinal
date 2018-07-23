@@ -27,7 +27,7 @@ namespace ecommerce.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var user = await _userManager.FindByEmailAsync(User.Identity.Name);
-            var basket = _context.BasketTable.FirstOrDefault(b => b.UserID == user.Id);
+            var basket = _context.BasketTable.FirstOrDefault(b => b.UserID == user.Id && b.IsComplete == false);
             var basketItems = await _context.BasketItemTable.Where(x => x.BasketID == basket.ID).ToListAsync();
             foreach (var item in basketItems)
             {
