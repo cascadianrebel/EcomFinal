@@ -1,0 +1,115 @@
+﻿@import "_themes.scss";
+
+html {
+    height: 100vh;
+}
+
+header {
+    background-color: $Secondary;
+    color: $White;
+    height: $BaseHeight;
+    position: relative;
+}
+
+header h2 {
+    position: absolute;
+    font-family: sans-serif;
+    font-size: $BaseHeight*.4;
+    margin-left: 20%;
+    overflow: hidden;
+    top: $BaseHeight/3;
+}
+
+header p, header a {
+    position: absolute;
+    color: white;
+    bottom: 2vw;
+    right: 0;
+    margin-right: 4em;
+    text-align: right;
+}
+header a:visited {
+    color: white;
+}
+
+main {
+    position: relative;
+    width: 100%;
+}
+
+nav {
+    background-color: $Primary;
+    border-radius: 0 5px 5px 0;
+    min-height: $BaseHeight * .7;
+    margin-left: -1px;
+    margin-top: 3px;
+    overflow: hidden;
+    padding: 1em 0em 1em 1em;
+    position: absolute;
+    transition: 1s all;
+    width: 4%;
+    min-width: 30px;
+
+    &:hover {
+        background-color: lightblue;
+        width: 25%;
+
+        li {
+            display: block;
+            font-size: 4vmin;
+            left: 40%;
+            position: absolute;
+            text-align: center;
+            top: 35%;
+            text-orientation: sideways;
+            writing-mode: horizontal-tb;
+        }
+    }
+}
+
+nav ul {
+    font-weight: bold;
+    margin-left: .5em;
+    margin-top: .5em;
+    text-orientation: upright;
+    writing-mode: vertical-rl;
+}
+
+nav li {
+    display: none;
+}
+
+#MainBody {
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+#MainBody h3 {
+    font-size: $BaseHeight * .3;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+#MainBody p {
+    text-align: center;
+}
+
+#BasketTab {
+    display: block;
+    font-weight: bold;
+    margin-right: .5em;
+    margin-top: .5em;
+    text-orientation: upright;
+    transition: 1s all;
+    writing-mode: vertical-rl;
+}
+
+
+
+footer {
+    display: none;
+}

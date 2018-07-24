@@ -1,0 +1,62 @@
+﻿#BasketPanel {
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 4%;
+  min-width: 30px;
+  background-color: orange;
+  border-radius: 5px 0 0 5px;
+  min-height: 14vh;
+  margin-top: 3px;
+  overflow: hidden;
+  padding-bottom: 1em;
+  padding-left: 1em;
+  padding-top: 1em;
+  position: absolute;
+  text-align: center;
+  text-orientation: upright;
+  transition: 1s all;
+  width: 4%;
+  writing-mode: vertical-lr;
+  min-width: 30px; }
+  #BasketPanel#BasketPanel p, #BasketPanel h5 {
+    display: none; }
+  #BasketPanel#BasketPanel hr {
+    display: none; }
+  #BasketPanel#BasketPanel a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold; }
+  #BasketPanel:hover {
+    background-color: lightblue;
+    height: 100vh;
+    text-orientation: sideways;
+    width: 25%;
+    writing-mode: horizontal-tb; }
+    #BasketPanel:hover#BasketPanel h2 {
+      position: fixed;
+      font-size: 4vmin;
+      right: 40%;
+      margin-bottom: 5em;
+      position: absolute;
+      text-align: center;
+      text-decoration: underline; }
+    #BasketPanel:hover#BasketPanel p, #BasketPanel:hover h5 {
+      display: block; }
+    #BasketPanel:hover#BasketPanel hr {
+      display: block; }
+    #BasketPanel:hover#BasketPanel h4, #BasketPanel:hover h5 {
+      text-orientation: sideways;
+      writing-mode: horizontal-tb; }
+    #BasketPanel:hover#BasketTab {
+      display: none; }
+    #BasketPanel:hover#BasketEmpty {
+      display: block; }
+    #BasketPanel:hovera {
+      color: white; }
+    #BasketPanel:hovera:visited {
+      color: white; }
+
+#BasketPanel img {
+  max-width: 40%; }
+

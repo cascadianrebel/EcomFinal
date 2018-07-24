@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/CSS/StyleSheet.css",
+    "inputFile": "wwwroot/CSS/StyleSheet.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/BasketPanel.css",
+    "inputFile": "wwwroot/CSS/BasketPanel.scss"
+  }
+]

@@ -1,69 +1,95 @@
-﻿html{
-    min-height: 100%;
-}
+﻿html {
+  height: 100vh; }
 
 header {
-    border: 1px solid black;
-    display: inline-flex;
-    margin: auto;
-    padding-left: 5em;
-    width: 100%;
-}
+  background-color: blue;
+  color: white;
+  height: 20vh;
+  position: relative; }
 
 header h2 {
-    display: inline-block;
-    width: 75%;
-}
+  position: absolute;
+  font-family: sans-serif;
+  font-size: 8vh;
+  margin-left: 20%;
+  overflow: hidden;
+  top: 6.66667vh; }
 
-header div {
-    display: block;
-    margin: auto;
-    text-align: center;
-    width: 25%;
-}
+header p, header a {
+  position: absolute;
+  color: white;
+  bottom: 2vw;
+  right: 0;
+  margin-right: 4em;
+  text-align: right; }
+
+header a:visited {
+  color: white; }
 
 main {
-    display: inline-flex;
-    margin: auto;
-    overflow: hidden;
-    width: 100%;
-}
+  position: relative;
+  width: 100%; }
 
 nav {
-    display: inline-block;
-    margin-left: 2em;
-    padding: .5em 2em 0 0;
-    max-width: 20%;
-}
+  background-color: orange;
+  border-radius: 0 5px 5px 0;
+  min-height: 14vh;
+  margin-left: -1px;
+  margin-top: 3px;
+  overflow: hidden;
+  padding: 1em 0em 1em 1em;
+  position: absolute;
+  transition: 1s all;
+  width: 4%;
+  min-width: 30px; }
+  nav:hover {
+    background-color: lightblue;
+    width: 25%; }
+    nav:hover li {
+      display: block;
+      font-size: 4vmin;
+      left: 40%;
+      position: absolute;
+      text-align: center;
+      top: 35%;
+      text-orientation: sideways;
+      writing-mode: horizontal-tb; }
+
+nav ul {
+  font-weight: bold;
+  margin-left: .5em;
+  margin-top: .5em;
+  text-orientation: upright;
+  writing-mode: vertical-rl; }
+
+nav li {
+  display: none; }
 
 #MainBody {
-    display: inline-block;
-    margin: auto;
-    padding: 1em;
-    max-width: 60%;
-}
-#MainBody img{
-    border-radius: 5px;
-    max-width: 45%;
-}
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: -1; }
 
-#BasketPanel {
-    border: 2px solid black;
-    display: inline-block;
-    margin-right: 2em;
-    overflow: scroll;
-    padding: 1em;
-    max-width: 35%;
-}
-#BasketPanel h2 {
-    text-align: center;
-}
-#BasketPanel img{
-    max-width: 25%;
-}
+#MainBody h3 {
+  font-size: 6vh;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  text-align: center; }
 
-#quantity{
-    text-align: right;
-}
+#MainBody p {
+  text-align: center; }
 
+#BasketTab {
+  display: block;
+  font-weight: bold;
+  margin-right: .5em;
+  margin-top: .5em;
+  text-orientation: upright;
+  transition: 1s all;
+  writing-mode: vertical-rl; }
+
+footer {
+  display: none; }
 
