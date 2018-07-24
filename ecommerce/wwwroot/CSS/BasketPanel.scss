@@ -1,6 +1,11 @@
 ﻿@import "_themes.scss";
 
 
+$Primary: orange;
+$Secondary: blue;
+$BaseHeight: 100vh * .2;
+$White: white;
+
 #BasketPanel {
     display: block;
     position: absolute;
@@ -11,7 +16,6 @@
     border-radius: 5px 0 0 5px;
     min-height: $BaseHeight * .7;
     margin-top: 3px;
-    overflow: hidden;
     padding-bottom: 1em;
     padding-left: 1em;
     padding-top: 1em;
@@ -23,70 +27,81 @@
     writing-mode: vertical-lr;
     min-width: 30px;
 
-    &#BasketPanel p, h5 {
-        display: none;
-    }
-
-    &#BasketPanel hr {
-        display: none;
-    }
-
     &#BasketPanel a {
         text-decoration: none;
-        color: black;
-        font-weight: bold;
     }
 
+    &#BasketPanel div, hr {
+        display: none;
+    }
 
     &:hover {
         background-color: lightblue;
-        height: 100vh;
         text-orientation: sideways;
-        width: 25%;
+        width: 30%;
         writing-mode: horizontal-tb;
 
-        &#BasketPanel h2 {
-            position: fixed;
-            font-size: 4vmin;
-            right: 40%;
-            margin-bottom: 5em;
-            position: absolute;
-            text-align: center;
-            text-decoration: underline;
-        }
-
-        &#BasketPanel p, h5 {
+        &#BasketPanel div {
             display: block;
+            position: relative;
+            height: 100%;
         }
 
         &#BasketPanel hr {
             display: block;
         }
 
-        &#BasketPanel h4, h5 {
-            text-orientation: sideways;
-            writing-mode: horizontal-tb;
-        }
+        &#BasketPanel a {
+            text-decoration: underline;
+            color: navy;
+            font-size: 2em;
 
-        &#BasketTab {
-            display: none;
-        }
-
-        &#BasketEmpty {
-            display: block;
-        }
-
-        &a {
-            color: white;
-        }
-
-        &a:visited {
-            color: white;
+            &:visited {
+                color: navy;
+            }
         }
     }
 }
 
+#BasketPanel div{
+    height: 100%;
+    overflow: hidden;
+    padding: 1em;
+    position: relative;
+}
+
+#BasketPanel h3 {
+    font-size: larger;
+    font-weight: bold;
+}
 
 #BasketPanel img {
+    clear: right;
     max-width: 40%;
+    max-height: $BaseHeight * .6;
+    float: left;
+    border: 2px solid black;
+    border-radius: 10%;
+    box-shadow: 1px 2px 8px $Primary;
 }
+#BasketPanel div hr {
+    margin-top: 2em;
+}
+
+#BasketPanel p {
+    margin-top: 1em;
+}
+
+#BasketPanel a {
+    font-weight: bold;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
+
+
+
+
