@@ -13,9 +13,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link href="~/normalize.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/CSS/StyleSheet.css" />
-    <link href="~/CSS/Theme.css" rel="stylesheet" />
+    
 
     <title>@ViewBag.Title</title>
 </head>
@@ -29,7 +29,7 @@
             }
             else
             {
-                <a asp-controller="Account" asp-action="Login">Log In</a>
+                <p> <a asp-controller="Account" asp-action="Login">Log In</a></p>
 
             }
 
@@ -37,7 +37,7 @@
     </header>
     <main>
         <nav class="navbar" id="Navigation">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav">SHOP                
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Shop" asp-action="Inventory">View Products</a>
                 </li>
@@ -55,7 +55,11 @@
             }
             else
             {
-                <p>Please Sign in to view your basket</p>
+                <h2 id="BasketTab">BASKET</h2>
+                <div>
+                    <hr/>
+                    <h3 id="EmptyBasket">Please Sign in to view your basket</h3>
+                </div>
             }
         </div>
 
