@@ -78,10 +78,10 @@ namespace ecommerce
             services.AddScoped<IOrder, DevOrder>();
 
             services.AddDbContext<EcomDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
+            options.UseSqlServer(Configuration["ConnectionStrings:UserConnection"]));
 
             //services.AddDbContext<ApplicationDbContext>(options =>
             //    options.UseSqlServer(Configuration["ConnectionStrings:SquirrelConnection"]));
