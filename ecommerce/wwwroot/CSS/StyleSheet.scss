@@ -47,11 +47,12 @@ nav {
     overflow: hidden;
     padding: 1em 0em 1em 1em;
     position: absolute;
-    transition: 1s all;
     width: 4%;
     min-width: 30px;
+    z-index:2;
 
     &:hover {
+        transition: 1s all;
         background-color: lightblue;
         color: lightblue;
         width: 25%;
@@ -79,6 +80,7 @@ nav ul {
     font-weight: bold;
     margin-left: .5em;
     margin-top: .5em;
+    text-align: center;
     text-orientation: upright;
     writing-mode: vertical-rl;
 }
@@ -89,8 +91,8 @@ nav li {
 
 #MainBody {
     height: 100vh;
-    overflow: scroll;
     position: absolute;
+    text-align:center;
     width: 100%;
     z-index: -1;
 }
@@ -105,6 +107,44 @@ nav li {
 #MainBody p {
     text-align: center;
 }
+#BasketPanel {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 4%;
+    min-width: 30px;
+    background-color: $Primary;
+    border-radius: 5px 0 0 5px;
+    font-size: large;
+    font-weight: bold;
+    min-height: $BaseHeight * .7;
+    margin-top: 3px;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-top: 1em;
+    position: absolute;
+    text-align: center;
+    text-orientation: upright;
+    transition: 1s all;
+    width: 4%;
+    writing-mode: vertical-lr;
+    min-width: 30px;
+    &#BasketPanel div{
+        display: none;
+    }
+    &:hover {
+        background-color: lightblue;
+        text-orientation: sideways;
+        width: 30%;
+        writing-mode: horizontal-tb;
+
+        &#BasketPanel div {
+            display: block;
+            position: relative;
+            height: 100%;
+        }
+      }
+    }
 
 footer {
     display: none;

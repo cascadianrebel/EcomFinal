@@ -1,11 +1,6 @@
 ﻿@import "_themes.scss";
 
 
-$Primary: orange;
-$Secondary: blue;
-$BaseHeight: 100vh * .2;
-$White: white;
-
 #BasketPanel {
     display: block;
     position: absolute;
@@ -14,10 +9,12 @@ $White: white;
     min-width: 30px;
     background-color: $Primary;
     border-radius: 5px 0 0 5px;
+    font-size: large;
+    font-weight: bold;
     min-height: $BaseHeight * .7;
     margin-top: 3px;
     padding-bottom: 1em;
-    padding-left: 1em;
+    padding-right: 1em;
     padding-top: 1em;
     position: absolute;
     text-align: center;
@@ -26,10 +23,6 @@ $White: white;
     width: 4%;
     writing-mode: vertical-lr;
     min-width: 30px;
-
-    &#BasketPanel a {
-        text-decoration: none;
-    }
 
     &#BasketPanel div, hr {
         display: none;
@@ -51,9 +44,11 @@ $White: white;
             display: block;
         }
 
-        &#BasketPanel a {
+        &#BasketPanel a, #BasketPanel h2 {
+            position: static;
+            display: block;
             text-decoration: underline;
-            color: navy;
+            color: black;
             font-size: 2em;
 
             &:visited {
@@ -93,10 +88,15 @@ $White: white;
 }
 
 #BasketPanel a {
+    color: black;
     font-weight: bold;
+    text-decoration:none;
 
     &:hover {
         cursor: pointer;
+    }
+    &:visited{
+        color: black;
     }
 }
 

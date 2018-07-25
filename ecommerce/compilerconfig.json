@@ -6,5 +6,9 @@
   {
     "outputFile": "wwwroot/CSS/BasketPanel.css",
     "inputFile": "wwwroot/CSS/BasketPanel.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/Inventory.css",
+    "inputFile": "wwwroot/CSS/Inventory.scss"
   }
 ]

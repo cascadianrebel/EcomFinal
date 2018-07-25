@@ -7,14 +7,20 @@
 @{
     Layout = "_Layout";
 }
+<head>
+    <link href="~/CSS/Inventory.css" rel="stylesheet" />
+</head>
+<section class="Inventory">
+    @foreach (var item in Model)
+    {
 
+        <div id="ProductCard">
+            <h2>@item.Name</h2>
+            <img src="@item.Image" />
 
-@foreach (var item in Model)
-{
-    <div>
-        <h2>@item.Name</h2>
-        <img src="@item.Image" />
-        <p>$@item.Price</p>
-        <p><a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.ID">View Detail</a></p>
-    </div>
-}
+            <p>$@item.Price</p>
+            <p><a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.ID">View Details</a></p>
+        </div>
+
+    }
+</section>

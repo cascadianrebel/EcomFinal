@@ -6,10 +6,12 @@
   min-width: 30px;
   background-color: orange;
   border-radius: 5px 0 0 5px;
+  font-size: large;
+  font-weight: bold;
   min-height: 14vh;
   margin-top: 3px;
   padding-bottom: 1em;
-  padding-left: 1em;
+  padding-right: 1em;
   padding-top: 1em;
   position: absolute;
   text-align: center;
@@ -18,8 +20,6 @@
   width: 4%;
   writing-mode: vertical-lr;
   min-width: 30px; }
-  #BasketPanel#BasketPanel a {
-    text-decoration: none; }
   #BasketPanel#BasketPanel div, #BasketPanel hr {
     display: none; }
   #BasketPanel:hover {
@@ -33,11 +33,13 @@
       height: 100%; }
     #BasketPanel:hover#BasketPanel hr {
       display: block; }
-    #BasketPanel:hover#BasketPanel a {
+    #BasketPanel:hover#BasketPanel a, #BasketPanel:hover #BasketPanel h2 {
+      position: static;
+      display: block;
       text-decoration: underline;
-      color: navy;
+      color: black;
       font-size: 2em; }
-      #BasketPanel:hover#BasketPanel a:visited {
+      #BasketPanel:hover#BasketPanel a:visited, #BasketPanel:hover #BasketPanel h2:visited {
         color: navy; }
 
 #BasketPanel div {
@@ -66,9 +68,11 @@
   margin-top: 1em; }
 
 #BasketPanel a {
-  text-decoration: underline;
   color: black;
-  font-weight: bold; }
+  font-weight: bold;
+  text-decoration: none; }
   #BasketPanel a:hover {
     cursor: pointer; }
+  #BasketPanel a:visited {
+    color: black; }
 
