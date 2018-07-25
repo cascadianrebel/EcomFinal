@@ -14,7 +14,7 @@
     subTotal = 0;
     subTotal = item.Quantity * item.Product.Price;
     total += subTotal;
-    <h3>@item.Product.Name</h3>
+    <h3><a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.Product.ID">@item.Product.Name</a></h3>
     <p>$@item.Product.Price</p>
     <p>Qty: @item.Quantity</p>
     <p>$@subTotal</p>
