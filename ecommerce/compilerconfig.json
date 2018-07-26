@@ -10,5 +10,9 @@
   {
     "outputFile": "wwwroot/CSS/Inventory.css",
     "inputFile": "wwwroot/CSS/Inventory.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/Login.css",
+    "inputFile": "wwwroot/CSS/Login.scss"
   }
 ]

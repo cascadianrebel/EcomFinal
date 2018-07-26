@@ -1,0 +1,108 @@
+﻿@import "_themes.scss";
+
+#MainBody {
+    height: 100vh;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: -1;
+}
+
+.LoginForm {
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.LoginForm h2 {
+    font-size: 2em;
+    font-weight: bold;
+    padding: 1em;
+}
+
+.LoginForm p {
+    font-size: 1.25em;
+    font-style: italic;
+    margin-bottom: 1em;
+    padding: .5em;
+}
+
+.LoginForm a {
+    background: $Primary;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-style: normal;
+    font-weight: bold;
+    padding: .4em;
+
+    &:hover {
+        background: lightblue;
+        cursor: pointer;
+    }
+
+    &:visited {
+        color: black;
+    }
+}
+
+.LoginForm form {
+    border: 1px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: inline-block;
+    padding: 1em;
+    text-align: center;
+    width: 20%;
+}
+
+.LoginForm form div {
+    display: inline-block;
+    padding: .25em;
+    position: relative;
+    text-align: right;
+    width: 100%;
+}
+
+.LoginForm label {
+    font-size: 1.2em;
+}
+
+.LoginForm button {
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 1em;
+    width: 100%;
+}
+
+.LoginForm .External form {
+    border: none;
+    box-shadow: none;
+    height: 6em;
+    padding: 0px;
+    width: 50%;
+}
+
+.LoginForm input {
+    max-width: 100%;
+}
+
+.LoginForm .External button {
+    background: $Primary;
+    border-radius: 6px;
+    display: inline-block;
+    height: 50%;
+    padding: .5em;
+    min-width: 15em;
+    width: 30%;
+
+    &:hover {
+        background: lightblue;
+    }
+}
+
+.LoginForm .External img {
+    height: 100%;
+    margin: 0px;
+    max-width: 100%;
+    padding: 0;
+}
