@@ -14,5 +14,9 @@
   {
     "outputFile": "wwwroot/CSS/Login.css",
     "inputFile": "wwwroot/CSS/Login.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/Register.css",
+    "inputFile": "wwwroot/CSS/Register.scss"
   }
 ]
