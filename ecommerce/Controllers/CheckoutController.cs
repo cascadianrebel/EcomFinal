@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using ecommerce.Models;
 using ecommerce.Models.Interface;
@@ -111,7 +112,20 @@ namespace ecommerce.Controllers
             Payment payment = new Payment(Configuration);
             payment.RunPayment(myOrder);
 
-            await _emailSender.SendEmailAsync(user.Email, "Your Order Receipt", "<p> Thank you for purchasing an item from Squirrels with ties </p>");
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("<h2>Squirrels with Ties: Order Receipt</h2>");
+            sb.AppendLine("<h3>Please see below for details for your recent purchase:</h3>");
+
+            foreach (BasketItem item in cvm.BasketItems)
+            {
+                sb.AppendLine($"{item.Product.Name} <strong>QTY:</strong> {item.Quantity} <strong>Price:</strong> ${item.Product.Price} <br>");
+            }
+            sb.AppendLine($"<strong>Order Total:</strong> {total}");
+            sb.Append("</p>");
+
+            await _emailSender.SendEmailAsync(user.Email, "Your Recent Purchase", sb.ToString());
+
 
             CompleteBasket(cvm, user);
             MakeNewBasket(user);
