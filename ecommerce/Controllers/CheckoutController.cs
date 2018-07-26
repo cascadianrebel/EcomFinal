@@ -7,6 +7,7 @@ using ecommerce.Models.Interface;
 using ecommerce.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -21,14 +22,16 @@ namespace ecommerce.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private IOrder _context;
         private readonly IConfiguration Configuration;
+        private readonly IEmailSender _emailSender;
 
         public CheckoutController(UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager, IConfiguration configuration, IOrder context)
+            SignInManager<ApplicationUser> signInManager, IConfiguration configuration, IOrder context, IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             Configuration = configuration;
             _context = context;
+            _emailSender = emailSender;
         }
 
         public async Task<ApplicationUser> CurrentUserAsync()
@@ -107,6 +110,9 @@ namespace ecommerce.Controllers
 
             Payment payment = new Payment(Configuration);
             payment.RunPayment(myOrder);
+
+            await _emailSender.SendEmailAsync(user.Email, "Your Order Receipt",
+                "<h2>Order Receipt</h2> <p>This is the body of the email</p>");
 
             CompleteBasket(cvm, user);
             MakeNewBasket(user);
