@@ -2,29 +2,50 @@
   height: 100vh; }
 
 header {
-  background-color: blue;
+  background: linear-gradient(to bottom right, cyan, lightgreen 50px, green);
+  border: 1px solid black;
   color: white;
-  height: 20vh;
-  position: relative; }
-
-header h2 {
-  position: absolute;
-  font-family: sans-serif;
-  font-size: 8vh;
-  margin-left: 20%;
-  overflow: hidden;
-  top: 6.66667vh; }
-
-header p, header a {
-  position: absolute;
-  color: white;
-  bottom: 2vw;
-  right: 0;
-  margin-right: 4em;
+  min-height: 20vh;
+  padding: 1em;
+  padding-right: 5em;
+  position: relative;
   text-align: right; }
 
-header a:visited {
-  color: white; }
+header h2 {
+  display: block;
+  font-family: sans-serif;
+  font-size: 4em;
+  margin-left: 20%;
+  margin-top: .25em;
+  margin-bottom: .2em;
+  text-align: left;
+  text-shadow: -2px 2px 8px black; }
+
+header p {
+  color: white;
+  display: block;
+  font-family: sans-serif;
+  font-size: 1.25em;
+  font-weight: bold;
+  text-align: right;
+  text-shadow: -2px 2px 8px black; }
+
+header a {
+  background-color: orange;
+  border: 1px solid darkorange;
+  border-radius: 20px;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-top: .5em;
+  padding: .5em;
+  text-shadow: -2px 2px 8px black;
+  box-shadow: -1px 3px 10px black; }
+  header a:hover {
+    background-color: lightblue; }
+  header a:visited {
+    color: white; }
 
 main {
   position: relative;
