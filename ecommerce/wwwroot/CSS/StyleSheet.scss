@@ -4,32 +4,60 @@ html {
     height: 100vh;
 }
 
+
 header {
-    background-color: $Secondary;
+    background: linear-gradient(to bottom right,cyan, lightgreen 50px, green);
+    border: 1px solid black;
     color: $White;
-    height: $BaseHeight;
+    min-height: $BaseHeight;
+    padding: 1em;
+    padding-right: 5em;
     position: relative;
+    text-align: right;
 }
 
 header h2 {
-    position: absolute;
+    display: block;
     font-family: sans-serif;
-    font-size: $BaseHeight*.4;
+    font-size: 4em;
     margin-left: 20%;
-    overflow: hidden;
-    top: $BaseHeight/3;
+    margin-top: .25em;
+    margin-bottom: .2em;
+    text-align: left;
+    text-shadow: -2px 2px 8px black;
 }
 
-header p, header a {
-    position: absolute;
+
+header p {
     color: white;
-    bottom: 2vw;
-    right: 0;
-    margin-right: 4em;
+    display: block;
+    font-family: sans-serif;
+    font-size: 1.25em;
+    font-weight: bold;
     text-align: right;
+    text-shadow: -2px 2px 8px black;
 }
-header a:visited {
-    color: white;
+
+header a {
+    background-color: $Primary;
+    border: 1px solid darkorange;
+    border-radius: 20px;
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-top: .5em;
+    padding: .5em;
+    text-shadow: -2px 2px 8px black;
+    box-shadow: -1px 3px 10px black;
+
+    &:hover {
+        background-color: lightblue;
+    }
+
+    &:visited {
+        color: white;
+    }
 }
 
 main {
