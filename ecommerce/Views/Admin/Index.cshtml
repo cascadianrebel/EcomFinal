@@ -1,12 +1,20 @@
-﻿<head>
+﻿@model ecommerce.Models.Interface.IOrder
+@using ecommerce.Models.ViewModels
+
+@{ Layout = "_AdminLayout";}
+
+<head>
     <link rel="stylesheet" href="~/AdminCSS/Admin.css" />
 </head>
 
-<h2>Welcom to the admin dashboard</h2>
+
+<h2>Welcome to the admin dashboard</h2>
 <div>
     <a asp-controller="Product" asp-action="Inventory">Check Inventory</a>
 </div>
 <div>
     <a asp-controller="Admin" asp-action="User">Check User</a>
 </div>
-
+<div>
+    @await Component.InvokeAsync("AdminOrderPanel")
+</div>

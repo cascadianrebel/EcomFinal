@@ -1,0 +1,22 @@
+﻿@model List<Order>
+
+@using ecommerce.Models
+
+<head>
+    <link href="~/CSS/BasketPanel.css" rel="stylesheet" />
+</head>
+
+@*<h2><a asp-controller="Basket" asp-action="Index">Basket</a></h2>*@
+
+<hr />
+
+@foreach (var order in Model)
+{
+    <div>
+        <p>ID: @order.ID </p>
+        <p>Date: @order.OrderDate</p>
+        <p>Last Name: @order.LastName</p>
+        <p>Total $@order.Total</p>
+        <hr />
+    </div>
+}
