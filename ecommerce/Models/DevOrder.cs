@@ -54,8 +54,13 @@ namespace ecommerce.Models
 
         public async void AddBasket(Basket basket)
         {
-            _context.BasketTable.Add(basket);
+            await _context.BasketTable.AddAsync(basket);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Product> GetProduct(int id)
+        {
+            return await _context.Products.FindAsync(id);
         }
     }
 }

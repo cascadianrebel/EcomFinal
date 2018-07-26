@@ -7,9 +7,11 @@
 
   <ItemGroup>
     <PackageReference Include="BuildWebCompiler" Version="1.11.326" />
+    <PackageReference Include="AuthorizeNet" Version="1.9.5" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
     <PackageReference Include="Sendgrid" Version="9.9.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
   </ItemGroup>
 
