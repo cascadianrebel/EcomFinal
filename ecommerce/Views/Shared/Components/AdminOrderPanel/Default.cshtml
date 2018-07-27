@@ -6,7 +6,6 @@
     <link href="~/CSS/BasketPanel.css" rel="stylesheet" />
 </head>
 
-@*<h2><a asp-controller="Basket" asp-action="Index">Basket</a></h2>*@
 
 <hr />
 
@@ -17,6 +16,7 @@
         <p>Date: @order.OrderDate</p>
         <p>Last Name: @order.LastName</p>
         <p>Total $@order.Total</p>
+        <p><a asp-controller="Admin" asp-action="Order" asp-route-id="@order.BasketID">View Detail</a></p>
         <hr />
     </div>
 }
