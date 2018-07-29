@@ -1,0 +1,24 @@
+﻿@page
+@model ecommerce.Pages.ProfileModel
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h2>Update Profile</h2>
+
+<form method="post">
+    <div>
+        <label asp-for="ProfileInfo.FirstName"></label>
+        <input asp-for="ProfileInfo.FirstName" />
+    </div>
+    <div>
+        <label asp-for="ProfileInfo.LastName"></label>
+        <input asp-for="ProfileInfo.LastName" />
+    </div>
+    <div>
+        <label asp-for="ProfileInfo.Email"></label>
+        <input readonly="readonly" asp-for="ProfileInfo.Email" />
+    </div>
+
+    <button type="submit">Update</button>
+</form>
