@@ -18,5 +18,9 @@
   {
     "outputFile": "wwwroot/CSS/Register.css",
     "inputFile": "wwwroot/CSS/Register.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/Admin.css",
+    "inputFile": "wwwroot/CSS/Admin.scss"
   }
 ]

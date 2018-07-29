@@ -75,3 +75,17 @@
     }
 }
 
+#AddProduct {
+    display: inline-block;
+    background-color: orange;
+    border: 1px solid black;
+    border-radius: 25px;
+    box-shadow: 3px 3px 5px lightblue;
+    color: blue;
+    padding: 2em;
+    text-align: center;
+    text-decoration: none;
+    transition: .3s all;
+    margin-top:10px;
+
+}
