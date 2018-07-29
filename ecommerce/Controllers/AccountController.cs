@@ -99,16 +99,14 @@ namespace ecommerce.Controllers
                     //AddToBasket and AddBasket are different
                     _context.AddBasket(basket);
 
-                    await _signInManager.SignInAsync(user, false);
-
-
                     if (user.Email == "admin@agmn.org")
                     {
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
+                        await _signInManager.SignInAsync(user, false);
                         return RedirectToAction("Index", "Admin");
                     }
-
+                    await _signInManager.SignInAsync(user, false);
                     await _emailSender.SendEmailAsync(user.Email, "Welcome", "<p> You have successfully registered </p>");
                     await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
                     return RedirectToAction("Index", "Home");

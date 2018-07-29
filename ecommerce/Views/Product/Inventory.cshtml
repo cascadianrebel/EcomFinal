@@ -4,16 +4,21 @@
     Layout = "_Layout";
 }
 
-<p><a asp-controller="Product" asp-action="AddProduct">Add Product</a></p>
+<head>
+    <link href="~/CSS/Inventory.css" rel="stylesheet" />
+</head>
 
-@foreach (var item in Model)
-{
-    <div>
-        <h2>@item.Name</h2>
-        <img src="@item.Image" />
-        <p>@item.Description</p>
-        <p>$@item.Price</p>
-        <p>SKU: @item.Sku</p>
-        <p><a asp-controller="Product" asp-action="Detail" asp-route-id="@item.ID">View Detail</a></p>
-    </div>
-}
+<a id="AddProduct" asp-controller="Product" asp-action="AddProduct">Add Product</a>
+
+<section class="Inventory">
+    @foreach (var item in Model)
+    {
+        <div id="ProductCard">
+            <h2>@item.Name</h2>
+            <img src="@item.Image" />
+            <p>$@item.Price</p>
+            <p>SKU: @item.Sku</p>
+            <p><a asp-controller="Product" asp-action="Detail" asp-route-id="@item.ID">View Detail</a></p>
+        </div>
+    }
+</section>
