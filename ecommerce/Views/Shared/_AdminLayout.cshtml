@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ecommerce.Models
+@using ecommerce.Components
+@using System.Security.Claims;
+@{
+    ViewData["Title"] = "Squirrels with Ties";
+}
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/normalize.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/CSS/StyleSheet.css" />
+
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header class="jumbotron" id="Header">
+        <h2>Squirrels With Ties</h2>
+        <div>
+                <p>@User.Claims.First(c => c.Type == "FullName").Value: </p>
+                <a class="nav-link" asp-controller="Account" asp-action="Logout">Admin Log Out</a>
+        </div>
+    </header>
+    <main>
+        <nav class="navbar" id="Navigation">
+            <ul class="navbar-nav">
+                SHOP
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Shop" asp-action="Inventory">View Products</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="center-block text-center" id="MainBody">
+            @RenderBody()
+        </div>
+
+    </main>
+    <footer>
+        <div>
+            <p>Site Created By Anthony Green and Mario Nishio</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+</body>
+</html>
+
