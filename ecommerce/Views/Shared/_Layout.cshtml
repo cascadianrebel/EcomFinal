@@ -16,7 +16,7 @@
     <link href="~/normalize.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/CSS/Layout.css" />
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 
     <title>@ViewBag.Title</title>
@@ -40,20 +40,21 @@
     </header>
     <main>
         <div id="Menu">
-            <nav class="navbar" id="Navigation">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
-                        <a class="nav-link" asp-controller="Shop" asp-action="Inventory">Products</a>
-                        <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
-                        <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-        <div class="center-block text-center" id="MainBody">
-            @RenderBody()
+            <i class="fas fa-chevron-right"></i>
+            <aside>
+                <div></div>
+                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="nav-link" asp-controller="Shop" asp-action="Inventory">Products</a>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <a class="nav-link" asp-page="Profile">Profile</a>
+                }
+                else
+                {
+                    <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                    <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+                }
+            </aside>
         </div>
 
         <div id="Basket">
@@ -71,6 +72,10 @@
                     </div>
                 }
             </div>
+        </div>
+
+        <div class="center-block text-center" id="MainBody">
+            @RenderBody()
         </div>
 
     </main>

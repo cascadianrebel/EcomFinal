@@ -2,18 +2,19 @@
 
 body{
     background-color:$Primary;
+    position:relative;
 }
 
 header {
     position: relative;
-    height: 400px;
+    height: $BannerHeight;
     background-color:$Secondary;
     background-image: url(../Assets/squirrel_banner.jpg);
     background-position: center;
     background-size: cover;
 
     h1 {
-        font-family: 'Pacifico', cursive;
+        font-family:$BannerFont;
         font-size: 100px;
         width: 20vw;
         position: absolute;
@@ -45,7 +46,7 @@ header {
             box-sizing: border-box;
             text-decoration: none;
             text-transform: uppercase;
-            font-family: 'Roboto',sans-serif;
+            font-family: $NavFont;
             font-weight: 400;
             color: $Primary;
             text-align: center;
@@ -60,14 +61,13 @@ header {
 }
 
 main {
-    position: relative;
     width: 100%;
 
     #Menu {
         position: absolute;
-        top: 50px;
-        width: 50px;
-        height: 100px;
+        top: $BannerHeight + $BigGutter;
+        width: $SideIconWidth;
+        height: $SideIconHeight;
         background-color: $Tertiary;
         transition: all 0.5s;
         cursor: pointer;
@@ -77,20 +77,80 @@ main {
             width: 450px;
         }
 
-        &hover #Navigation {
+        &:hover > aside {
             width: 400px;
-            font-size: $FontSize;
+            font-size: $FontSize * 2;
         }
     }
 
-    #Navigation {
-        outline: 1px solid red;
+    aside {
+        background-color: $Tertiary;
         position: absolute;
-        top: -450px;
+        top: -$BannerHeight - $BigGutter;
         height: 100vh;
         width: 0;
         transition: all 0.5s;
         border-radius: 0 3px 3px 0;
         font-size: 0;
+
+        div {
+            height: $BannerHeight - $BigGutter;
+        }
+
+        a {
+            margin-bottom: $BigGutter;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: $Primary;
+            font-family: $BannerFont;
+            /*text-transform: uppercase;*/
+
+            &:hover {
+                color: $Secondary;
+            }
+        }
+    }
+
+    #Basket {
+        position: absolute;
+        top: $BannerHeight + ($BigGutter * 2) + $SideIconHeight;
+        width: $SideIconWidth;
+        height: $SideIconHeight;
+        background-color: $Tertiary;
+        transition: all 0.5s;
+        cursor: pointer;
+        border-radius: 0 3px 3px 0;
+
+        &:hover {
+            width: 650px;
+        }
+
+        &:hover > #BasketPanel {
+            width: 600px;
+            font-size: $FontSize;
+        }
+    }
+
+    #BasketPanel {
+        background-color: $Tertiary;
+        position: absolute;
+        top: -$BannerHeight - ($BigGutter * 2) - $SideIconHeight;
+        height: 100vh;
+        width: 0;
+        transition: all 0.5s;
+        border-radius: 0 3px 3px 0;
+        font-size: 0;
+    }
+
+    #MainBody {
+        width: 75%;
+        margin: 0 auto;
+    }
+
+    i{
+        height:$SideIconHeight;
+        width:$SideIconWidth;
+        font-size:$FontSize*2;
     }
 }
