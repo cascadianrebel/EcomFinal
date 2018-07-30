@@ -41,14 +41,26 @@ namespace ecommerce
             services.AddAuthentication()
                 .AddMicrosoftAccount(microsoftOptions =>
                 {
-                    microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
-                    microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
+                    microsoftOptions.ClientId = Configuration["OAUTH:Authentication:Microsoft:ApplicationId"];
+                    microsoftOptions.ClientSecret = Configuration["OAUTH:Authentication:Microsoft:Password"];
+                })
+                .AddGoogle(googleOptions =>
+                {
+                    googleOptions.ClientId = Configuration["OAUTH:Authentication:Google:ClientId"];
+                    googleOptions.ClientSecret = Configuration["OAUTH:Authentication:Google:ClientSecret"];
                 });
-            services.AddAuthentication().AddGoogle(googleOptions =>
-            {
-                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
-                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-            });
+
+            //services.AddAuthentication()
+            //    .AddMicrosoftAccount(microsoftOptions =>
+            //    {
+            //        microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
+            //        microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
+            //    })
+            //    .AddGoogle(googleOptions =>
+            //    {
+            //        googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+            //        googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            //    });
 
 
             services.AddAuthorization(options =>
@@ -65,21 +77,11 @@ namespace ecommerce
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<IOrder, DevOrder>();
 
-            services.AddDbContext<EcomDbContext>(options =>
-                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-
-            services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlServer(Configuration["ConnectionStrings: UserConnection"]));
-
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("SquirrelConnection")));
-
             //services.AddDbContext<EcomDbContext>(options =>
-
-            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
 
             //services.AddDbContext<ApplicationDbContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("UserConnection")));
+            //   options.UseSqlServer(Configuration["ConnectionStrings:UserConnection"]));
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration["ConnectionStrings:SquirrelConnection"]));

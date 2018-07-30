@@ -13,9 +13,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link href="~/normalize.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/CSS/StyleSheet.css" />
-    <link href="~/CSS/Theme.css" rel="stylesheet" />
+    
 
     <title>@ViewBag.Title</title>
 </head>
@@ -25,7 +25,8 @@
         <div>
             @if (SignInManager.IsSignedIn(User))
             {
-                <p>@User.Claims.First(c => c.Type == "FullName").Value:<a class="nav-link" asp-controller="Account" asp-action="Logout">Log Out</a></p>
+                <p>@User.Claims.First(c => c.Type == "FullName").Value: </p>
+                <a class="nav-link" asp-controller="Account" asp-action="Logout">Log Out</a>
             }
             else
             {
@@ -37,7 +38,7 @@
     </header>
     <main>
         <nav class="navbar" id="Navigation">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav">SHOP                
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Shop" asp-action="Inventory">View Products</a>
                 </li>
@@ -55,12 +56,20 @@
             }
             else
             {
-                <p>Please Sign in to view your basket</p>
+                <h2 id="BasketTab">BASKET</h2>
+                <div>
+                    <hr/>
+                    <h3 id="EmptyBasket">Please Sign in to view your basket</h3>
+                </div>
             }
         </div>
 
     </main>
-
+    <footer>
+        <div>
+            <p>Site Created By Anthony Green and Mario Nishio</p>            
+        </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>

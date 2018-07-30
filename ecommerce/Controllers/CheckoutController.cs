@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using ecommerce.Models;
 using ecommerce.Models.Interface;
 using ecommerce.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -21,14 +23,16 @@ namespace ecommerce.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private IOrder _context;
         private readonly IConfiguration Configuration;
+        private readonly IEmailSender _emailSender;
 
         public CheckoutController(UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager, IConfiguration configuration, IOrder context)
+            SignInManager<ApplicationUser> signInManager, IConfiguration configuration, IOrder context, IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             Configuration = configuration;
             _context = context;
+            _emailSender = emailSender;
         }
 
         public async Task<ApplicationUser> CurrentUserAsync()
@@ -65,11 +69,19 @@ namespace ecommerce.Controllers
 
         public async Task<IActionResult> Summary(CheckoutViewModel cvm)
         {
-            var user = await CurrentUserAsync();
+            ApplicationUser user = await CurrentUserAsync();
             cvm.BasketItems = _context.GetAllBasketItem(user.Id).Result;
+            decimal total = 0;
+            foreach (BasketItem item in cvm.BasketItems)
+            {
+                item.Product = _context.GetProduct(item.ProductID).Result;
+                total += (item.Product.Price * item.Quantity);
+            }
 
             Order myOrder = new Order
             {
+                FirstName = cvm.FirstName,
+                LastName = cvm.LastName,
                 Address1 = cvm.Address1,
                 Address2 = cvm.Address2,
                 City = cvm.City,
@@ -77,23 +89,63 @@ namespace ecommerce.Controllers
                 ZipCode = cvm.ZipCode,
                 OrderDate = DateTime.Today,
                 UserID = user.Id,
-                BasketID = _context.GetBasketID(user.Id)
+                BasketID = _context.GetBasketID(user.Id),
+                Total = total,
+                BasketItems = cvm.BasketItems,
             };
 
-            Basket basket = _context.GetCurrentBasket(myOrder.UserID).Result;
+            if (cvm.CreditCard == CreditCard.AmericanExpress)
+            {
+                myOrder.CreditCard = "370000000000002";
+            }
+            if (cvm.CreditCard == CreditCard.Visa)
+            {
+                myOrder.CreditCard = "4111111111111111";
+            }
+            if (cvm.CreditCard == CreditCard.Mastercard)
+            {
+                myOrder.CreditCard = "5424000000000015";
+            }
+
+            _context.SaveOrder(myOrder);
+
+            Payment payment = new Payment(Configuration);
+            payment.RunPayment(myOrder);
+
+            //Email Receipt Creation
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<h2>Squirrels with Ties: Order Receipt</h2>");
+            sb.AppendLine("<h3>Please see below for details for your recent purchase:</h3>");
+            foreach (BasketItem item in cvm.BasketItems)
+            {
+                sb.AppendLine($"{item.Product.Name} <strong>QTY:</strong> {item.Quantity} <strong>Price:</strong> ${item.Product.Price} <br>");
+            }
+            sb.AppendLine($"<strong>Order Total:</strong> {total}");
+            sb.Append("</p>");
+            await _emailSender.SendEmailAsync(user.Email, "Your Recent Purchase", sb.ToString());
+
+
+            CompleteBasket(cvm, user);
+            MakeNewBasket(user);
+
+            return View(cvm);
+        }
+
+        public void CompleteBasket(CheckoutViewModel cvm, ApplicationUser user)
+        {
+            Basket basket = _context.GetCurrentBasket(user.Id).Result;
             basket.IsComplete = true;
             _context.UpdateBasket(basket);
+        }
 
+        public void MakeNewBasket(ApplicationUser user)
+        {
             Basket newBasket = new Basket
             {
                 UserID = user.Id,
                 IsComplete = false
             };
             _context.AddBasket(newBasket);
-
-            _context.SaveOrder(myOrder);
-
-            return View(cvm);
         }
     }
 }

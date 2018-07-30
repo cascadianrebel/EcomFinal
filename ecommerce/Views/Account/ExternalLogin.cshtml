@@ -1,47 +1,57 @@
 ﻿@model ecommerce.Models.ViewModels.ExternalLoginViewModel
 
-<h2>External Login</h2>
+@{ Layout = "_Layout";}
 
-<form method="post" asp-action="ExternalLoginConfirmation">
-    <div>
-        <label asp-for="Email">Email</label>
-        <input asp-for="Email" />
-    </div>
+<head>
+    <link href="~/CSS/Register.css" rel="stylesheet" />
+</head>
 
-    <div>
-        <label asp-for="FirstName">First Name</label>
-        <input asp-for="FirstName" />
-        <span asp-validation-for="FirstName"></span>
-    </div>
 
-    <div>
-        <label asp-for="LastName">Last Name</label>
-        <input asp-for="LastName" />
-        <span asp-validation-for="LastName"></span>
-    </div>
+<section class="LoginForm">
 
-    <div>
-        <label asp-for="Birthday">Birthday </label>
-        <input asp-for="Birthday" />
-        <span asp-validation-for="Birthday"></span>
-    </div>
+    <p>Already Registered? <a asp-controller="Account" asp-action="Login">Click Here to Log In!</a></p>
+    <form method="post" asp-action="ExternalLoginConfirmation">
+        <h2>Create an account</h2>
+        <div>
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" />
+        </div>
 
-    <div>
-        <label asp-for="Password">Password</label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
+        <div>
+            <label asp-for="FirstName">First Name</label>
+            <input asp-for="FirstName" />
+            <span asp-validation-for="FirstName"></span>
+        </div>
 
-    <div>
-        <label asp-for="ConfirmPassword">Confirm Password</label>
-        <input asp-for="ConfirmPassword" />
-        <span asp-validation-for="ConfirmPassword"></span>
-    </div>
+        <div>
+            <label asp-for="LastName">Last Name</label>
+            <input asp-for="LastName" />
+            <span asp-validation-for="LastName"></span>
+        </div>
 
-    <div>
-        <label asp-for="FavoriteAnimal">Favorite Animal</label>
-        <input asp-for="FavoriteAnimal" />
-        <span asp-validation-for="FavoriteAnimal"></span>
-    </div>
-    <button type="submit">Register</button>
-</form>
+        <div>
+            <label asp-for="Birthday">Birthday </label>
+            <input asp-for="Birthday" />
+            <span asp-validation-for="Birthday"></span>
+        </div>
+
+        <div>
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+
+        <div>
+            <label asp-for="ConfirmPassword">Confirm Password</label>
+            <input asp-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword"></span>
+        </div>
+
+        <div>
+            <label asp-for="FavoriteAnimal">Favorite Animal</label>
+            <input asp-for="FavoriteAnimal" />
+            <span asp-validation-for="FavoriteAnimal"></span>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+</section>

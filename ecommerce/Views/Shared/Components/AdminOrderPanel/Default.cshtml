@@ -1,0 +1,22 @@
+﻿@model List<Order>
+
+@using ecommerce.Models
+
+<head>
+    <link href="~/CSS/BasketPanel.css" rel="stylesheet" />
+</head>
+
+
+<hr />
+
+@foreach (var order in Model)
+{
+    <div>
+        <p>ID: @order.ID </p>
+        <p>Date: @order.OrderDate</p>
+        <p>Last Name: @order.LastName</p>
+        <p>Total $@order.Total</p>
+        <p><a asp-controller="Admin" asp-action="Order" asp-route-id="@order.BasketID">View Detail</a></p>
+        <hr />
+    </div>
+}

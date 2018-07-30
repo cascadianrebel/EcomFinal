@@ -5,18 +5,24 @@
 
 @inject SignInManager<ApplicationUser> SignInManager
 
+<head>
+    <link href="~/CSS/BasketPanel.css" rel="stylesheet" />
+</head>
 
-<h2><a asp-controller="Basket" asp-action="Index">View Basket</a></h2>
+<h2><a asp-controller="Basket" asp-action="Index">Basket</a></h2>
 
 <hr />
 
-    @foreach (var item in Model)
-    {
-        <p><img src="@item.Product.Image" alt="@item.Product.Name" /> <strong> @item.Product.Name</strong></p>
-        <p id="quantity"><strong>Price:</strong> $@item.Product.Price <strong>QTY:</strong> @item.Quantity</p>
-       
+@foreach (var item in Model)
+{
+    <div>
+        <img src="@item.Product.Image" alt="@item.Product.Name" />
+        <h3>@item.Product.Name</h3>
+        <p>Price: @item.Product.Price</p>
+        <p>qty:  @item.Quantity</p>
         <hr />
-    }
+    </div>
+}
 
-    
+
 

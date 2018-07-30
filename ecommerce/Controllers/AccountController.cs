@@ -99,16 +99,14 @@ namespace ecommerce.Controllers
                     //AddToBasket and AddBasket are different
                     _context.AddBasket(basket);
 
-                    await _signInManager.SignInAsync(user, false);
-
-
                     if (user.Email == "admin@agmn.org")
                     {
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
+                        await _signInManager.SignInAsync(user, false);
                         return RedirectToAction("Index", "Admin");
                     }
-
+                    await _signInManager.SignInAsync(user, false);
                     await _emailSender.SendEmailAsync(user.Email, "Welcome", "<p> You have successfully registered </p>");
                     await _userManager.AddToRoleAsync(user, ApplicationRoles.Member);
                     return RedirectToAction("Index", "Home");
@@ -123,6 +121,7 @@ namespace ecommerce.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+
             return View();
         }
 
@@ -130,16 +129,18 @@ namespace ecommerce.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {
+            var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
+            var user = await _userManager.FindByEmailAsync(lvm.Email);
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
                 if (result.Succeeded)
                 {
-                    var user = await _userManager.FindByEmailAsync(lvm.Email);
                     if (await _userManager.IsInRoleAsync(user, ApplicationRoles.Admin))
                     {
                         return RedirectToAction("Index", "Admin");
                     }
+                    
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -147,6 +148,7 @@ namespace ecommerce.Controllers
                     ModelState.AddModelError(string.Empty, "Either your email or password was incorrect");
                 }
             }
+           
             return View(lvm);
         }
 
@@ -190,6 +192,7 @@ namespace ecommerce.Controllers
             }
 
             var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            
             return View("ExternalLogin", new ExternalLoginViewModel { Email = email });
         }
 
@@ -248,7 +251,7 @@ namespace ecommerce.Controllers
                     if (result.Succeeded)
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false);
-
+                        
                         return RedirectToAction("Index", "Home");
                     }
                 }

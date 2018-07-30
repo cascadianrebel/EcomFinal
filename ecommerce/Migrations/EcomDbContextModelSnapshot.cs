@@ -73,9 +73,17 @@ namespace ecommerce.Migrations
 
                     b.Property<string>("City");
 
+                    b.Property<string>("CreditCard");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
                     b.Property<DateTime>("OrderDate");
 
-                    b.Property<string>("State");
+                    b.Property<int>("State");
+
+                    b.Property<decimal>("Total");
 
                     b.Property<string>("UserID");
 

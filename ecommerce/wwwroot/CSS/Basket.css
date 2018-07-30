@@ -3,38 +3,35 @@
     width: 0%;
     z-index: -1;
 }
-#MainBody{
-    display: block;
-    height: auto;
-    margin-left: 0;
-    margin-right: 0;
-    max-width: none;
-    width:100%;
-    z-index: 1;
+.Inventory {
+    padding: 2em;
+    position: relative;
+    text-align: center;
 }
-#MainBody h2{
-    display: block;
-}
-
-#MainBody img{
-        max-width:40%;
+.Inventory div{
+    position:absolute;
+    top: 0px;
+    width: 100%;
 }
 .card {
-    display: table;
+    display: block;
+    position: relative;
     width: 100%;
 }
 #BasketItem {
-    display: table-cell;
+    display: inline-block;
     max-width: 45%;
     text-align: center;
-    vertical-align: central;
 }
 .crud {
-    display: table-cell;
+    display: inline-block;
     max-width: 45%;
     text-align: center;
     vertical-align: central;
 }
 input {
     max-width: 5em;
+}
+img{
+    max-width: 45%;
 }
