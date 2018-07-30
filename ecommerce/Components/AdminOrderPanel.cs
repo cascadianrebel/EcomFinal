@@ -30,6 +30,7 @@ namespace ecommerce.Components
             {
                 Basket basket = await _context.BasketTable.FirstOrDefaultAsync(b => b.ID == k.BasketID);    
                 var basketItems = await _context.BasketItemTable.Where(x => x.BasketID == basket.ID).ToListAsync();
+  
                 foreach(var x in basketItems)
                 {
                     x.Product = await _context.Products.FindAsync(x.ProductID);
