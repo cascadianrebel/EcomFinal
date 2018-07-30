@@ -39,3 +39,7 @@
       color: #7da87b;
       border-color: #7da87b; }
 
+main {
+  position: relative;
+  width: 100%; }
+
