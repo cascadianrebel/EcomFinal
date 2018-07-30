@@ -39,11 +39,14 @@
         </div>
     </header>
     <main>
+        <div id="Menu"></div>
         <nav class="navbar" id="Navigation">
             <ul class="navbar-nav">
-                SHOP
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Shop" asp-action="Inventory">View Products</a>
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                    <a class="nav-link" asp-controller="Shop" asp-action="Inventory">Products</a>
+                    <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                    <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
                 </li>
             </ul>
         </nav>
@@ -52,6 +55,7 @@
             @RenderBody()
         </div>
 
+        <div id="Basket"></div>
         <div id="BasketPanel">
             @if (SignInManager.IsSignedIn(User))
             {
