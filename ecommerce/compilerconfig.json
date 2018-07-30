@@ -1,26 +1,26 @@
 ﻿[
   {
-    "outputFile": "wwwroot/CSS/StyleSheet.css",
-    "inputFile": "wwwroot/CSS/StyleSheet.scss"
+    "outputFile": "wwwroot/CSS/Layout.css",
+    "inputFile": "wwwroot/CSS/Layout.scss"
   },
-  {
-    "outputFile": "wwwroot/CSS/BasketPanel.css",
-    "inputFile": "wwwroot/CSS/BasketPanel.scss"
-  },
+  //{
+  //  "outputFile": "wwwroot/CSS/BasketPanel.css",
+  //  "inputFile": "wwwroot/CSS/BasketPanel.scss"
+  //},
   {
     "outputFile": "wwwroot/CSS/Inventory.css",
     "inputFile": "wwwroot/CSS/Inventory.scss"
   },
-  {
-    "outputFile": "wwwroot/CSS/Login.css",
-    "inputFile": "wwwroot/CSS/Login.scss"
-  },
-  {
-    "outputFile": "wwwroot/CSS/Register.css",
-    "inputFile": "wwwroot/CSS/Register.scss"
-  },
-  {
-    "outputFile": "wwwroot/CSS/Admin.css",
-    "inputFile": "wwwroot/CSS/Admin.scss"
-  }
+  //{
+  //  "outputFile": "wwwroot/CSS/Login.css",
+  //  "inputFile": "wwwroot/CSS/Login.scss"
+  //},
+  //{
+  //  "outputFile": "wwwroot/CSS/Register.css",
+  //  "inputFile": "wwwroot/CSS/Register.scss"
+  //},
+  //{
+  //  "outputFile": "wwwroot/CSS/Admin.css",
+  //  "inputFile": "wwwroot/CSS/Admin.scss"
+  //}
 ]

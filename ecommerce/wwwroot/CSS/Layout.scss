@@ -1,0 +1,214 @@
+﻿@import '_themes';
+
+body{
+    background-color:$Primary;
+    position:relative;
+}
+
+header {
+    position: relative;
+    height: $BannerHeight;
+    background-color:$Secondary;
+    background-image: url(../Assets/squirrel_banner.jpg);
+    background-position: center;
+    background-size: cover;
+
+    h1 {
+        font-family:$BannerFont;
+        font-size: 100px;
+        width: 20vw;
+        position: absolute;
+        top: 50px;
+        left: 10vw;
+        text-align: right;
+
+        a {
+            text-decoration: none;
+            color: $Primary;
+            transition: all $TransitionTime;
+        }
+
+        a:hover {
+            color: $Secondary;
+        }
+    }
+
+    div {
+        position: absolute;
+        bottom: 100px;
+        right: 10vw;
+
+        p{
+            color:$Primary;
+            font-size:$FontSize;
+            text-transform:uppercase;
+            font:$NavFont;
+            margin-bottom:$SmallGutter;
+        }
+
+        a {
+            display: inline-block;
+            padding: 0.5em 3em;
+            border: 0.16em solid $Primary;
+            margin: 0 0.3em 0.3em 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: $NavFont;
+            font-weight: 400;
+            color: $Primary;
+            text-align: center;
+            transition: all $TransitionTime;
+        }
+
+        a:hover {
+            color: $Secondary;
+            border-color: $Secondary;
+        }
+    }
+}
+
+main {
+    width: 100%;
+
+    #Menu {
+        position: fixed;
+        top: $BannerHeight + $BigGutter;
+        width: $SideIconWidth;
+        height: $SideIconHeight;
+        background-color: $Tertiary;
+        transition: all $SidePullTime;
+        cursor: pointer;
+        border-radius: 0 3px 3px 0;
+
+        &:hover {
+            width: $SideBarMenuWidth + $SideIconWidth;
+        }
+
+        &:hover > aside {
+            width: $SideBarMenuWidth;
+            font-size: $FontSize * 2;
+            z-index: 1;
+        }
+
+        &:hover > i {
+            left: (0.25 * $SideIconWidth) + $SideBarMenuWidth;
+            transform: scaleX(-1);
+        }
+
+        &:hover + #Basket {
+            width: 0;
+        }
+
+        &:hover + #Basket #cart {
+            font-size:0;
+        }
+    }
+
+    aside {
+        background-color: $Tertiary;
+        position: absolute;
+        top: -$BannerHeight - $BigGutter;
+        height: 100vh;
+        width: 0;
+        transition: all $SidePullTime;
+        border-radius: 0 3px 3px 0;
+        font-size: 0;
+
+        div {
+            height: $BannerHeight - $BigGutter;
+        }
+
+        a {
+            margin-bottom: $BigGutter;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: $Primary;
+            font-family: $BannerFont;
+
+            &:hover {
+                color: $Secondary;
+            }
+        }
+    }
+
+    #Basket {
+        position: fixed;
+        top: $BannerHeight + ($BigGutter * 2) + $SideIconHeight;
+        width: $SideIconWidth;
+        height: $SideIconHeight;
+        background-color: $Tertiary;
+        transition: all $SidePullTime;
+        cursor: pointer;
+        border-radius: 0 3px 3px 0;
+
+        &:hover {
+            width: $SideBarBasketWidth + $SideIconWidth;
+        }
+
+        &:hover > #BasketPanel {
+            width: $SideBarBasketWidth;
+            font-size: $FontSize;
+        }
+
+        &:hover > #cart {
+            left: $SideBarBasketWidth;
+        }
+    }
+
+    #BasketPanel {
+        background-color: $Tertiary;
+        position: absolute;
+        top: -$BannerHeight - ($BigGutter * 2) - $SideIconHeight;
+        height: 100vh;
+        width: 0;
+        transition: all $SidePullTime;
+        border-radius: 0 3px 3px 0;
+        font-size: 0;
+
+        div {
+            color: $Primary;
+            text-align: center;
+            margin-top: 50%;
+
+            a {
+                display: inline-block;
+                padding: 0.5em 3em;
+                border: 0.16em solid $Primary;
+                margin: 0 0.3em 0.3em 0;
+                box-sizing: border-box;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-family: $NavFont;
+                font-weight: 400;
+                color: $Primary;
+                text-align: center;
+            }
+
+            a:hover {
+                color: $Secondary;
+                border-color: $Secondary;
+            }
+        }
+    }
+
+    #MainBody {
+        width: 75%;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    i {
+        position: absolute;
+        top: (0.5 * $SideIconHeight) - $FontSize;
+        Left: (0.25 * $SideIconWidth);
+        font-size: $FontSize*2;
+        color: $Primary;
+        transition: all $SidePullTime;
+    }
+
+    #cart {
+        left: 0;
+    }
+}
