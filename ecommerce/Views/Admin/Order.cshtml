@@ -1,4 +1,5 @@
 ﻿@model ecommerce.Models.Order
+@using ecommerce.Models
 
 
 @{
@@ -7,27 +8,21 @@
 
 
 
-<h2>ID: @Model.ID User: @Model.LastName, @Model.FirstName </h2>
-<p>DATE: @Model.OrderDate.DayOfYear</p>
+<p>Order ID: @Model.ID </p>
+<h3>@Model.LastName, @Model.FirstName </h3>
+<p>DATE: @Model.OrderDate.Day</p>
 <p>@Model.Address1 @Model.Address2 @Model.City, @Model.State @Model.ZipCode </p>
+<hr />
 
-@{var orderItems = Model.BasketItems;}
-        
+@foreach(var x in Model.BasketItems){
+<div>
+    <p>Product: @x.Product.Name</p>
+    <p>Price: @x.Product.Price</p>
+    <p>Quantity: @x.Quantity</p>
+</div>
+    <hr/>
+}
 
-
-<table>
-    <thead>Product</thead>
-    <thead>Price</thead>
-    <thead>Quantity</thead>
-    @*<tr>
-        @foreach (var x in orderItems.FirstOrDefault(i => i.BasketID == Model.ID )
-        {
-        <td>@x.Product.Name</td>
-        <td>@x.Product.Price</td>
-        <td>@x.Quantity</td>
-        }
-</tr>*@
-</table>
 
 <h2>Order Total @Model.Total</h2>
 
