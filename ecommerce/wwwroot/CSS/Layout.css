@@ -50,17 +50,21 @@ main {
   main #Menu {
     position: absolute;
     top: 440px;
-    width: 50px;
+    width: 60px;
     height: 100px;
     background-color: #326765;
     transition: all 0.5s;
     cursor: pointer;
     border-radius: 0 3px 3px 0; }
     main #Menu:hover {
-      width: 450px; }
+      width: 460px; }
     main #Menu:hover > aside {
       width: 400px;
-      font-size: 42px; }
+      font-size: 42px;
+      z-index: 1; }
+    main #Menu:hover > i {
+      left: 415px;
+      transform: scaleX(-4); }
   main aside {
     background-color: #326765;
     position: absolute;
@@ -78,24 +82,25 @@ main {
       text-align: center;
       text-decoration: none;
       color: #f5f5c6;
-      font-family: "Pacifico", cursive;
-      /*text-transform: uppercase;*/ }
+      font-family: "Pacifico", cursive; }
       main aside a:hover {
         color: #7da87b; }
   main #Basket {
     position: absolute;
     top: 580px;
-    width: 50px;
+    width: 60px;
     height: 100px;
     background-color: #326765;
     transition: all 0.5s;
     cursor: pointer;
     border-radius: 0 3px 3px 0; }
     main #Basket:hover {
-      width: 650px; }
+      width: 660px; }
     main #Basket:hover > #BasketPanel {
       width: 600px;
       font-size: 21px; }
+    main #Basket:hover > #cart {
+      left: 600px; }
   main #BasketPanel {
     background-color: #326765;
     position: absolute;
@@ -109,7 +114,12 @@ main {
     width: 75%;
     margin: 0 auto; }
   main i {
-    height: 100px;
-    width: 50px;
-    font-size: 42px; }
+    position: absolute;
+    top: 29px;
+    Left: 15px;
+    font-size: 42px;
+    color: #f5f5c6;
+    transition: all 0.5s; }
+  main #cart {
+    left: 0; }
 

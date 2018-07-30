@@ -69,17 +69,23 @@ main {
         width: $SideIconWidth;
         height: $SideIconHeight;
         background-color: $Tertiary;
-        transition: all 0.5s;
+        transition: all $SidePullTime;
         cursor: pointer;
         border-radius: 0 3px 3px 0;
 
         &:hover {
-            width: 450px;
+            width: $SideBarMenuWidth + $SideIconWidth;
         }
 
         &:hover > aside {
-            width: 400px;
+            width: $SideBarMenuWidth;
             font-size: $FontSize * 2;
+            z-index: 1;
+        }
+
+        &:hover > i {
+            left: (0.25 * $SideIconWidth) + $SideBarMenuWidth;
+            transform: scaleX(-1);
         }
     }
 
@@ -89,7 +95,7 @@ main {
         top: -$BannerHeight - $BigGutter;
         height: 100vh;
         width: 0;
-        transition: all 0.5s;
+        transition: all $SidePullTime;
         border-radius: 0 3px 3px 0;
         font-size: 0;
 
@@ -104,7 +110,6 @@ main {
             text-decoration: none;
             color: $Primary;
             font-family: $BannerFont;
-            /*text-transform: uppercase;*/
 
             &:hover {
                 color: $Secondary;
@@ -118,17 +123,21 @@ main {
         width: $SideIconWidth;
         height: $SideIconHeight;
         background-color: $Tertiary;
-        transition: all 0.5s;
+        transition: all $SidePullTime;
         cursor: pointer;
         border-radius: 0 3px 3px 0;
 
         &:hover {
-            width: 650px;
+            width: $SideBarBasketWidth + $SideIconWidth;
         }
 
         &:hover > #BasketPanel {
-            width: 600px;
+            width: $SideBarBasketWidth;
             font-size: $FontSize;
+        }
+
+        &:hover > #cart{
+            left:$SideBarBasketWidth;
         }
     }
 
@@ -138,7 +147,7 @@ main {
         top: -$BannerHeight - ($BigGutter * 2) - $SideIconHeight;
         height: 100vh;
         width: 0;
-        transition: all 0.5s;
+        transition: all $SidePullTime;
         border-radius: 0 3px 3px 0;
         font-size: 0;
     }
@@ -148,9 +157,16 @@ main {
         margin: 0 auto;
     }
 
-    i{
-        height:$SideIconHeight;
-        width:$SideIconWidth;
-        font-size:$FontSize*2;
+    i {
+        position: absolute;
+        top: (0.5 * $SideIconHeight) - $FontSize;
+        Left: (0.25 * $SideIconWidth);
+        font-size: $FontSize*2;
+        color: $Primary;
+        transition: all $SidePullTime;
+    }
+
+    #cart {
+        left: 0;
     }
 }

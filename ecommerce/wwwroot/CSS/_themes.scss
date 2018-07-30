@@ -5,7 +5,10 @@ $Tertiary: #326765;
 /*Make it responsive*/
 $BannerHeight: 400px;
 $SideIconHeight: 100px;
-$SideIconWidth:50px;
+$SideIconWidth:60px;
+$SideBarMenuWidth: 400px;
+$SideBarBasketWidth: 600px;
+
 
 $BigGutter: 40px;
 $SmallGutter: $BigGutter / 2;
@@ -14,6 +17,7 @@ $BaseHeight: 100vh * .2;
 $White: white;
 
 $TransitionTime: 0.3s;
+$SidePullTime: 0.5s;
 
 $BannerFont: 'Pacifico', cursive;
 $NavFont:'Roboto',sans-serif;
