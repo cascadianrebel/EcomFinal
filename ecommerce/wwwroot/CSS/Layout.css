@@ -64,7 +64,7 @@ main {
       z-index: 1; }
     main #Menu:hover > i {
       left: 415px;
-      transform: scaleX(-4); }
+      transform: scaleX(-1); }
   main aside {
     background-color: #326765;
     position: absolute;
