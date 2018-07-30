@@ -14,14 +14,16 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/normalize.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/CSS/StyleSheet.css" />
-    
+    <link rel="stylesheet" href="~/CSS/Layout.css" />
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
 
     <title>@ViewBag.Title</title>
 </head>
 <body>
     <header class="jumbotron" id="Header">
-        <h2>Squirrels With Ties</h2>
+        <h1><a asp-controller="Home" asp-action="Index">Squirrels With Ties</a></h1>
         <div>
             @if (SignInManager.IsSignedIn(User))
             {
@@ -38,7 +40,8 @@
     </header>
     <main>
         <nav class="navbar" id="Navigation">
-            <ul class="navbar-nav">SHOP                
+            <ul class="navbar-nav">
+                SHOP
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Shop" asp-action="Inventory">View Products</a>
                 </li>
@@ -48,9 +51,9 @@
         <div class="center-block text-center" id="MainBody">
             @RenderBody()
         </div>
-        
+
         <div id="BasketPanel">
-             @if (SignInManager.IsSignedIn(User))
+            @if (SignInManager.IsSignedIn(User))
             {
                 @await Component.InvokeAsync("BasketPanel")
             }
@@ -58,7 +61,7 @@
             {
                 <h2 id="BasketTab">BASKET</h2>
                 <div>
-                    <hr/>
+                    <hr />
                     <h3 id="EmptyBasket">Please Sign in to view your basket</h3>
                 </div>
             }
@@ -67,7 +70,7 @@
     </main>
     <footer>
         <div>
-            <p>Site Created By Anthony Green and Mario Nishio</p>            
+            <p>Site Created By Anthony Green and Mario Nishio</p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

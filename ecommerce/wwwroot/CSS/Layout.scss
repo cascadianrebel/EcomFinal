@@ -1,0 +1,57 @@
+﻿@import '_themes';
+
+header {
+    position: relative;
+    height: 400px;
+    background-image: url(../Assets/squirrel_banner.jpg);
+    background-position: center;
+    background-size: cover;
+
+    h1 {
+        font-family: 'Pacifico', cursive;
+        font-size: 100px;
+        width: 20vw;
+        position: absolute;
+        top: 50px;
+        left: 10vw;
+        text-align: right;
+
+        a {
+            text-decoration: none;
+            color: $Primary;
+            transition: all $TransitionTime;
+        }
+
+        a:hover {
+            color: $Secondary;
+        }
+    }
+
+    div {
+        position: absolute;
+        bottom: 100px;
+        right: 10vw;
+
+        a {
+            display: inline-block;
+            padding: 0.5em 3em;
+            border: 0.16em solid $Primary;
+            margin: 0 0.3em 0.3em 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: 'Roboto',sans-serif;
+            font-weight: 400;
+            color: $Primary;
+            text-align: center;
+            transition: all $TransitionTime;
+        }
+
+        a:hover {
+            color: $Secondary;
+            border-color: $Secondary;
+        }
+    }
+}
+
+
