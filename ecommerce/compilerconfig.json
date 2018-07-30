@@ -2,15 +2,15 @@
   {
     "outputFile": "wwwroot/CSS/Layout.css",
     "inputFile": "wwwroot/CSS/Layout.scss"
-  }
+  },
   //{
   //  "outputFile": "wwwroot/CSS/BasketPanel.css",
   //  "inputFile": "wwwroot/CSS/BasketPanel.scss"
   //},
-  //{
-  //  "outputFile": "wwwroot/CSS/Inventory.css",
-  //  "inputFile": "wwwroot/CSS/Inventory.scss"
-  //},
+  {
+    "outputFile": "wwwroot/CSS/Inventory.css",
+    "inputFile": "wwwroot/CSS/Inventory.scss"
+  },
   //{
   //  "outputFile": "wwwroot/CSS/Login.css",
   //  "inputFile": "wwwroot/CSS/Login.scss"

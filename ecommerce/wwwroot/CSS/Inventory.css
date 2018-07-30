@@ -1,0 +1,9 @@
+﻿/*Make it responsive*/
+#ProductCard {
+  display: inline-block;
+  outline: 1px solid red;
+  width: 30%;
+  background-color: #7da87b; }
+  #ProductCard img {
+    width: 100%; }
+

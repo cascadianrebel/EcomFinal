@@ -1,0 +1,12 @@
+﻿@import '_themes';
+
+#ProductCard{
+    display:inline-block;
+    outline:1px solid red;
+    width: 30%;
+    background-color:$Secondary; 
+
+    img{
+        width:100%;
+    }
+}

@@ -38,6 +38,14 @@ header {
         bottom: 100px;
         right: 10vw;
 
+        p{
+            color:$Primary;
+            font-size:$FontSize;
+            text-transform:uppercase;
+            font:$NavFont;
+            margin-bottom:$SmallGutter;
+        }
+
         a {
             display: inline-block;
             padding: 0.5em 3em;
@@ -64,7 +72,7 @@ main {
     width: 100%;
 
     #Menu {
-        position: absolute;
+        position: fixed;
         top: $BannerHeight + $BigGutter;
         width: $SideIconWidth;
         height: $SideIconHeight;
@@ -86,6 +94,14 @@ main {
         &:hover > i {
             left: (0.25 * $SideIconWidth) + $SideBarMenuWidth;
             transform: scaleX(-1);
+        }
+
+        &:hover + #Basket {
+            width: 0;
+        }
+
+        &:hover + #Basket #cart {
+            font-size:0;
         }
     }
 
@@ -118,7 +134,7 @@ main {
     }
 
     #Basket {
-        position: absolute;
+        position: fixed;
         top: $BannerHeight + ($BigGutter * 2) + $SideIconHeight;
         width: $SideIconWidth;
         height: $SideIconHeight;
@@ -136,8 +152,8 @@ main {
             font-size: $FontSize;
         }
 
-        &:hover > #cart{
-            left:$SideBarBasketWidth;
+        &:hover > #cart {
+            left: $SideBarBasketWidth;
         }
     }
 
@@ -150,10 +166,36 @@ main {
         transition: all $SidePullTime;
         border-radius: 0 3px 3px 0;
         font-size: 0;
+
+        div {
+            color: $Primary;
+            text-align: center;
+            margin-top: 50%;
+
+            a {
+                display: inline-block;
+                padding: 0.5em 3em;
+                border: 0.16em solid $Primary;
+                margin: 0 0.3em 0.3em 0;
+                box-sizing: border-box;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-family: $NavFont;
+                font-weight: 400;
+                color: $Primary;
+                text-align: center;
+            }
+
+            a:hover {
+                color: $Secondary;
+                border-color: $Secondary;
+            }
+        }
     }
 
     #MainBody {
         width: 75%;
+        height: 100%;
         margin: 0 auto;
     }
 

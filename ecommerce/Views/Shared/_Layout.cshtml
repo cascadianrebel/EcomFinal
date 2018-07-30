@@ -47,7 +47,7 @@
                 <a class="nav-link" asp-controller="Shop" asp-action="Inventory">Products</a>
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <a class="nav-link" asp-page="Profile">Profile</a>
+                    <a class="nav-link" asp-page="/Profile">Profile</a>
                     <a class="nav-link" asp-controller="Account" asp-action="Logout">Log Out</a>
                 }
                 else
@@ -67,9 +67,8 @@
                 }
                 else
                 {
-                    <h2 id="BasketTab">BASKET</h2>
                     <div>
-                        <h3 id="EmptyBasket">Sign in to view your basket</h3>
+                        <h3 id="EmptyBasket"><a class="nav-link" asp-controller="Account" asp-action="Login">Login</a> <br> to view your basket</h3>
                     </div>
                 }
             </div>

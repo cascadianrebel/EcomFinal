@@ -28,6 +28,12 @@ header {
     position: absolute;
     bottom: 100px;
     right: 10vw; }
+    header div p {
+      color: #f5f5c6;
+      font-size: 21px;
+      text-transform: uppercase;
+      font: "Roboto", sans-serif;
+      margin-bottom: 20px; }
     header div a {
       display: inline-block;
       padding: 0.5em 3em;
@@ -48,7 +54,7 @@ header {
 main {
   width: 100%; }
   main #Menu {
-    position: absolute;
+    position: fixed;
     top: 440px;
     width: 60px;
     height: 100px;
@@ -65,6 +71,10 @@ main {
     main #Menu:hover > i {
       left: 415px;
       transform: scaleX(-1); }
+    main #Menu:hover + #Basket {
+      width: 0; }
+    main #Menu:hover + #Basket #cart {
+      font-size: 0; }
   main aside {
     background-color: #326765;
     position: absolute;
@@ -86,7 +96,7 @@ main {
       main aside a:hover {
         color: #7da87b; }
   main #Basket {
-    position: absolute;
+    position: fixed;
     top: 580px;
     width: 60px;
     height: 100px;
@@ -110,8 +120,28 @@ main {
     transition: all 0.5s;
     border-radius: 0 3px 3px 0;
     font-size: 0; }
+    main #BasketPanel div {
+      color: #f5f5c6;
+      text-align: center;
+      margin-top: 50%; }
+      main #BasketPanel div a {
+        display: inline-block;
+        padding: 0.5em 3em;
+        border: 0.16em solid #f5f5c6;
+        margin: 0 0.3em 0.3em 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        color: #f5f5c6;
+        text-align: center; }
+      main #BasketPanel div a:hover {
+        color: #7da87b;
+        border-color: #7da87b; }
   main #MainBody {
     width: 75%;
+    height: 100%;
     margin: 0 auto; }
   main i {
     position: absolute;
