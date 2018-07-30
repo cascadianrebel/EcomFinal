@@ -32,8 +32,13 @@ namespace ecommerce.Controllers
         {
             
             var order = _order.OrderTable.FirstOrDefault(x => x.BasketID == id);
-            var basket = _order.BasketItemTable.FirstOrDefault(x => x.ID == id);
+            var basket = _order.BasketTable.FirstOrDefault(x => x.ID == order.BasketID);
+            order.BasketItems = _order.BasketItemTable.Where(c => c.BasketID == basket.ID).ToList();
 
+            foreach (var i in order.BasketItems)
+            {
+                i.Product = _order.Products.FirstOrDefault(x => x.ID == i.ProductID);
+            }
 
             return View (order);
         }
