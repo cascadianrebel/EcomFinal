@@ -1,0 +1,30 @@
+﻿@model List<Order>
+
+@using ecommerce.Models
+
+
+<hr />
+
+@foreach (var order in Model)
+{
+    <div>
+        <p>ID: @order.ID </p>
+        <p>Date: @order.OrderDate</p>
+        <p>Name: @order.LastName, @order.FirstName</p>
+        <p>Items Purchased: @order.BasketItems.Count</p>
+        
+    </div>
+
+    @foreach (var x in order.BasketItems)
+    {
+
+        <p>Product @x.Product.Name</p>
+        <p>Price: @x.Product.Price</p>
+        <p>Quantity: @x.Quantity</p>
+
+    }
+    <h2>Total $@order.Total</h2>
+}
+
+
+
