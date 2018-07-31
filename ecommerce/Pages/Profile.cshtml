@@ -4,21 +4,32 @@
     ViewData["Title"] = "Profile";
 }
 
-<h2>Update Profile</h2>
+@{Layout = "_Layout";}
 
-<form method="post">
-    <div>
-        <label asp-for="ProfileInfo.FirstName"></label>
-        <input asp-for="ProfileInfo.FirstName" />
-    </div>
-    <div>
-        <label asp-for="ProfileInfo.LastName"></label>
-        <input asp-for="ProfileInfo.LastName" />
-    </div>
-    <div>
-        <label asp-for="ProfileInfo.Email"></label>
-        <input readonly="readonly" asp-for="ProfileInfo.Email" />
-    </div>
+<head>
+    <link href="~/CSS/Form.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+          crossorigin="anonymous">
+</head>
 
-    <button type="submit">Update</button>
-</form>
+<section>
+
+    <form method="post">
+    <h2>Update Profile</h2>
+        <div>
+            <label asp-for="ProfileInfo.FirstName"></label>
+            <input asp-for="ProfileInfo.FirstName" />
+        </div>
+        <div>
+            <label asp-for="ProfileInfo.LastName"></label>
+            <input asp-for="ProfileInfo.LastName" />
+        </div>
+        <div>
+            <label asp-for="ProfileInfo.Email"></label>
+            <input readonly="readonly" asp-for="ProfileInfo.Email" />
+        </div>
+
+        <button type="submit">Update</button>
+    </form>
+</section>

@@ -4,16 +4,18 @@ section {
     text-align: center;
     color: $Quaduary;
     font-family: sans-serif;
+    background-color:$Secondary;
+    padding-bottom:2vh;
 
     p {
-        margin-top:3vh;
+        margin-top: 1.5vh;
         font-size: $FontSize;
 
         a {
-            color:$Quaduary;
+            color: $Primary;
             display: inline-block;
             padding: 0.5em 3em;
-            border: 0.16em solid $Quaduary;
+            border: 0.16em solid $Primary;
             margin: 3vh 0.3em 0.3em 0;
             box-sizing: border-box;
             text-decoration: none;
@@ -25,32 +27,53 @@ section {
         }
 
         a:hover {
-            color: $Tertiary;
-            border-color: $Tertiary;
+            color: $Quaduary;
+            border-color: $Quaduary;
         }
     }
 
-    form{
-        h2{
-            margin-bottom:3.5vh;
-            padding-top:3vh;
-            color:$Primary;
-            font-size:75px;
-            font-family:$BannerFont
+    form {
+
+        h2 {
+            margin-bottom: 3.5vh;
+            padding-top: 3vh;
+            color: $Primary;
+            font-size: 75px;
+            font-family: $BannerFont
         }
 
-        div{
-            width:40%;
-            font-size:$FontSize;
-            margin:0 auto;
-            label{
-                width:100%;
-                display:block;
-                text-align:left;
+        div {
+            width: 40%;
+            font-size: $FontSize;
+            margin: 0 auto;
+
+            label {
+                width: 100%;
+                display: block;
+                text-align: left;
+                color: $Primary;
             }
-            input{
-                width:100%;
-                height:3vh;
+
+            input {
+                width: 100%;
+                height: 3vh;
+                margin-bottom: 1vh;
+                border-radius: 0.3em;
+            }
+        }
+
+        button {
+            color: $Primary;
+            background: $Secondary;
+            padding: 0.5em 3em;
+            font-size: $FontSize * 1.5;
+            border: 0.16em solid $Primary;
+            margin-bottom: 1vh;
+            transition: all $TransitionTime;
+
+            &:hover {
+                color: $Quaduary;
+                border: 0.16em solid $Quaduary;
             }
         }
     }

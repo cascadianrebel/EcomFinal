@@ -13,5 +13,10 @@
     "outputFile": "wwwroot/CSS/Form.css",
     "inputFile": "wwwroot/CSS/Form.scss",
     "sourceMap": false
+  },
+  {
+    "outputFile": "wwwroot/CSS/Home.css",
+    "inputFile": "wwwroot/CSS/Home.scss",
+    "sourceMap": false
   }
 ]

@@ -3,7 +3,10 @@
 @{ Layout = "_Layout";}
 
 <head>
-    <link href="~/CSS/Register.css" rel="stylesheet" />
+    <link href="~/CSS/Form.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+          crossorigin="anonymous">
 </head>
 
 
@@ -52,5 +55,5 @@
         </div>
         <button type="submit">Register</button>
     </form>
-    <p>Already Registered? <a asp-controller="Account" asp-action="Login">Click Here to Log In!</a></p>
+    <p>or <br /> <a asp-controller="Account" asp-action="Login">Login</a></p>
 </section>

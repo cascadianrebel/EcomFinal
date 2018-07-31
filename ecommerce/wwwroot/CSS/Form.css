@@ -2,15 +2,17 @@
 section {
   text-align: center;
   color: #27253d;
-  font-family: sans-serif; }
+  font-family: sans-serif;
+  background-color: #7da87b;
+  padding-bottom: 2vh; }
   section p {
-    margin-top: 3vh;
+    margin-top: 1.5vh;
     font-size: 21px; }
     section p a {
-      color: #27253d;
+      color: #f5f5c6;
       display: inline-block;
       padding: 0.5em 3em;
-      border: 0.16em solid #27253d;
+      border: 0.16em solid #f5f5c6;
       margin: 3vh 0.3em 0.3em 0;
       box-sizing: border-box;
       text-decoration: none;
@@ -20,8 +22,8 @@ section {
       text-align: center;
       transition: all 0.3s; }
     section p a:hover {
-      color: #326765;
-      border-color: #326765; }
+      color: #27253d;
+      border-color: #27253d; }
   section form h2 {
     margin-bottom: 3.5vh;
     padding-top: 3vh;
@@ -35,8 +37,22 @@ section {
     section form div label {
       width: 100%;
       display: block;
-      text-align: left; }
+      text-align: left;
+      color: #f5f5c6; }
     section form div input {
       width: 100%;
-      height: 3vh; }
+      height: 3vh;
+      margin-bottom: 1vh;
+      border-radius: 0.3em; }
+  section form button {
+    color: #f5f5c6;
+    background: #7da87b;
+    padding: 0.5em 3em;
+    font-size: 31.5px;
+    border: 0.16em solid #f5f5c6;
+    margin-bottom: 1vh;
+    transition: all 0.3s; }
+    section form button:hover {
+      color: #27253d;
+      border: 0.16em solid #27253d; }
 
