@@ -1,0 +1,42 @@
+﻿/*Make it responsive*/
+section {
+  text-align: center;
+  color: #27253d;
+  font-family: sans-serif; }
+  section p {
+    margin-top: 3vh;
+    font-size: 21px; }
+    section p a {
+      color: #27253d;
+      display: inline-block;
+      padding: 0.5em 3em;
+      border: 0.16em solid #27253d;
+      margin: 3vh 0.3em 0.3em 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      text-align: center;
+      transition: all 0.3s; }
+    section p a:hover {
+      color: #326765;
+      border-color: #326765; }
+  section form h2 {
+    margin-bottom: 3.5vh;
+    padding-top: 3vh;
+    color: #f5f5c6;
+    font-size: 75px;
+    font-family: "Pacifico", cursive; }
+  section form div {
+    width: 40%;
+    font-size: 21px;
+    margin: 0 auto; }
+    section form div label {
+      width: 100%;
+      display: block;
+      text-align: left; }
+    section form div input {
+      width: 100%;
+      height: 3vh; }
+
