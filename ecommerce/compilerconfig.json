@@ -18,5 +18,10 @@
     "outputFile": "wwwroot/CSS/Home.css",
     "inputFile": "wwwroot/CSS/Home.scss",
     "sourceMap": false
+  },
+  {
+    "outputFile": "wwwroot/CSS/BasketPanel.css",
+    "inputFile": "wwwroot/CSS/BasketPanel.scss",
+    "sourceMap": false
   }
 ]

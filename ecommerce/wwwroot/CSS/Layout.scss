@@ -71,7 +71,7 @@ header {
 
 main {
     width: 100%;
-    height:100%;
+    height: 100%;
 
     #Menu {
         position: fixed;
@@ -152,6 +152,57 @@ main {
         &:hover > #BasketPanel {
             width: $SideBarBasketWidth;
             font-size: $FontSize;
+
+            #BasketContent {
+                height:100%;
+                position:relative;
+
+                #BasketTitle {
+                    font-style: $BannerFont;
+                    font-size: $FontSize *2;
+                    text-align: center;
+                    margin: 3vh 0;
+
+                    a {
+                        font-family: $BannerFont;
+                        text-decoration: none;
+                        color: $Primary;
+
+                        &:hover {
+                            color: $Quaduary;
+                        }
+                    }
+                }
+
+                div {
+
+                    img {
+                        width: 12vh;
+                    }
+                }
+
+                #ViewBasket {
+                    position:absolute;
+                    bottom:7vh;
+                    left:166px;
+                    display: inline-block;
+                    padding: 0.5em 3em;
+                    border: 0.16em solid $Primary;
+                    margin: 0 0.3em 0.3em 0;
+                    box-sizing: border-box;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    font-family: $NavFont;
+                    font-weight: 400;
+                    color: $Primary;
+                    text-align: center;
+
+                    &:hover {
+                        color:$Quaduary;
+                        border-color:$Quaduary;
+                    }
+                }
+            }
         }
 
         &:hover > #cart {
@@ -170,7 +221,7 @@ main {
         border-radius: 0 3px 3px 0;
         font-size: 0;
 
-        div {
+        #NoBasket {
             color: $Primary;
             text-align: center;
             margin-top: 50%;
@@ -192,6 +243,13 @@ main {
             a:hover {
                 color: $Secondary;
                 border-color: $Secondary;
+            }
+        }
+
+        #BasketContent {
+
+            img {
+                width: 0;
             }
         }
     }

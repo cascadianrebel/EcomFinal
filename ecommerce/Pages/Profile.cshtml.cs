@@ -39,7 +39,7 @@ namespace ecommerce.Pages
             };
         }
 
-        public async Task OnPost()
+        public async Task<IActionResult> OnPost()
         {
             var user = await _userManager.GetUserAsync(User);
             user.FirstName = ProfileInfo.FirstName;
@@ -55,6 +55,8 @@ namespace ecommerce.Pages
 
             await _signInManager.SignOutAsync();
             await _signInManager.SignInAsync(user, false);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

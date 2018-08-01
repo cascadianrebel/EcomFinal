@@ -256,7 +256,7 @@ namespace ecommerce.Controllers
                     }
                 }
             }
-            return View(elvm);
+            return RedirectToAction("ExternalLoginCallback", "Account", elvm);
         }
     }
 }

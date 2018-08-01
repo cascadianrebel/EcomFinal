@@ -7,9 +7,10 @@
 
 <head>
     <link href="~/CSS/BasketPanel.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 </head>
 
-<h2><a asp-controller="Basket" asp-action="Index">Basket</a></h2>
+<h2 id="BasketTitle"><a asp-controller="Basket" asp-action="Index">Basket</a></h2>
 
 <hr />
 
@@ -23,3 +24,6 @@
         <hr />
     </div>
 }
+
+<a id="ViewBasket" asp-controller="Basket" asp-action="Index">View Basket</a>
+
