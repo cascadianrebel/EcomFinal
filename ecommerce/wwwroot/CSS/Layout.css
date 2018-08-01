@@ -1,5 +1,6 @@
 ﻿/*Make it responsive*/
 body {
+  font-family: sans-serif;
   background-color: #f5f5c6;
   position: relative; }
 
@@ -111,6 +112,59 @@ main {
     main #Basket:hover > #BasketPanel {
       width: 600px;
       font-size: 21px; }
+      main #Basket:hover > #BasketPanel #BasketContent {
+        text-decoration: none;
+        height: 100%;
+        position: relative; }
+        main #Basket:hover > #BasketPanel #BasketContent .BasketHR {
+          width: 200px;
+          margin: 0 auto 2vh;
+          border-color: #f5f5c6; }
+        main #Basket:hover > #BasketPanel #BasketContent #BasketTitle {
+          font-style: "Pacifico", cursive;
+          font-size: 42px;
+          text-align: center;
+          margin: 3vh 0; }
+          main #Basket:hover > #BasketPanel #BasketContent #BasketTitle a {
+            font-family: "Pacifico", cursive;
+            text-decoration: none;
+            color: #f5f5c6; }
+            main #Basket:hover > #BasketPanel #BasketContent #BasketTitle a:hover {
+              color: #27253d; }
+        main #Basket:hover > #BasketPanel #BasketContent div img {
+          margin: 0 1em 0 5%;
+          width: 13vh;
+          float: left;
+          border-radius: 0.3em; }
+          main #Basket:hover > #BasketPanel #BasketContent div img:hover {
+            transform: scale(0.95); }
+        main #Basket:hover > #BasketPanel #BasketContent div div {
+          height: 13vh;
+          color: #f5f5c6; }
+          main #Basket:hover > #BasketPanel #BasketContent div div h3 {
+            font-size: 25.2px;
+            margin: 1.5vh 0 2vh 0; }
+          main #Basket:hover > #BasketPanel #BasketContent div div p {
+            margin: 0.5vh 0;
+            color: #7da87b; }
+        main #Basket:hover > #BasketPanel #BasketContent #ViewBasket {
+          position: absolute;
+          bottom: 7vh;
+          left: 166px;
+          display: inline-block;
+          padding: 0.5em 3em;
+          border: 0.16em solid #f5f5c6;
+          margin: 0 0.3em 0.3em 0;
+          box-sizing: border-box;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-family: "Roboto", sans-serif;
+          font-weight: 400;
+          color: #f5f5c6;
+          text-align: center; }
+          main #Basket:hover > #BasketPanel #BasketContent #ViewBasket:hover {
+            color: #27253d;
+            border-color: #27253d; }
     main #Basket:hover > #cart {
       left: 600px;
       transform: scaleX(-1); }
@@ -123,11 +177,11 @@ main {
     transition: all 0.5s;
     border-radius: 0 3px 3px 0;
     font-size: 0; }
-    main #BasketPanel div {
+    main #BasketPanel #NoBasket {
       color: #f5f5c6;
       text-align: center;
       margin-top: 50%; }
-      main #BasketPanel div a {
+      main #BasketPanel #NoBasket a {
         display: inline-block;
         padding: 0.5em 3em;
         border: 0.16em solid #f5f5c6;
@@ -139,9 +193,11 @@ main {
         font-weight: 400;
         color: #f5f5c6;
         text-align: center; }
-      main #BasketPanel div a:hover {
+      main #BasketPanel #NoBasket a:hover {
         color: #7da87b;
         border-color: #7da87b; }
+    main #BasketPanel #BasketContent img {
+      width: 0; }
   main #MainBody {
     width: 75%;
     height: 100%;

@@ -28,7 +28,7 @@ namespace ecommerce.Components
         {
             var user = await _userManager.FindByEmailAsync(User.Identity.Name);
             var basket = _context.BasketTable.FirstOrDefault(b => b.UserID == user.Id && b.IsComplete == false);
-            var basketItems = await _context.BasketItemTable.Where(x => x.BasketID == basket.ID).ToListAsync();
+            var basketItems = await _context.BasketItemTable.Where(x => x.BasketID == basket.ID).Take(5).ToListAsync();
             foreach (var item in basketItems)
             {
                 item.Product = await _context.Products.FirstOrDefaultAsync(a => a.ID == item.ProductID);

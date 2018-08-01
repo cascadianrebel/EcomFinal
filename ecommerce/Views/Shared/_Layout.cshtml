@@ -18,7 +18,6 @@
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -63,11 +62,13 @@
             <div id="BasketPanel">
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    @await Component.InvokeAsync("BasketPanel")
+                    <div id="BasketContent">
+                        @await Component.InvokeAsync("BasketPanel")
+                    </div>
                 }
                 else
                 {
-                    <div>
+                    <div id="NoBasket">
                         <h3 id="EmptyBasket"><a class="nav-link" asp-controller="Account" asp-action="Login">Login</a> <br> to view your basket</h3>
                     </div>
                 }
