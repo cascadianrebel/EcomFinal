@@ -35,12 +35,20 @@ namespace ecommerce.Controllers
             _emailSender = emailSender;
         }
 
+        /// <summary>
+        /// Finds current user logged in
+        /// </summary>
+        /// <returns> the user </returns>
         public async Task<ApplicationUser> CurrentUserAsync()
         {
             return await _userManager.FindByEmailAsync(User.Identity.Name);
         }
 
         // GET: /<controller>/
+        /// <summary>
+        /// The checkout page with the user information and current basket
+        /// </summary>
+        /// <returns>View</returns>
         public IActionResult Index()
         {
             CheckoutViewModel cvm = new CheckoutViewModel();
@@ -51,6 +59,12 @@ namespace ecommerce.Controllers
             return View(cvm);
         }
 
+        /// <summary>
+        /// Very similar to Index view. But takes in the CheckoutViewModel already filled in with the 
+        /// user's inputted data from the Index View.
+        /// </summary>
+        /// <param name="cvm">CheckoutViewModel</param>
+        /// <returns>The Update View</returns>
         [HttpPost]
         public IActionResult Update(CheckoutViewModel cvm)
         {
@@ -59,6 +73,12 @@ namespace ecommerce.Controllers
             return View(cvm);
         }
 
+        /// <summary>
+        /// All of their information inputted either in Index or Update
+        /// User is unable to adjust information on this page
+        /// </summary>
+        /// <param name="cvm">CheckoutViewModel</param>
+        /// <returns> review view</returns>
         [HttpPost]
         public IActionResult Review(CheckoutViewModel cvm)
         {
@@ -67,6 +87,13 @@ namespace ecommerce.Controllers
             return View(cvm);
         }
 
+        /// <summary>
+        /// using Authrize.Net and SendGrid, we are able to process the user's checkout information and 
+        /// send a email of their reciept. Closes out their basket and creates a new basket. Returns an 
+        /// order summary view.
+        /// </summary>
+        /// <param name="cvm">CheckoutViewModel</param>
+        /// <returns>Order summary view</returns>
         public async Task<IActionResult> Summary(CheckoutViewModel cvm)
         {
             ApplicationUser user = await CurrentUserAsync();
@@ -131,6 +158,11 @@ namespace ecommerce.Controllers
             return View(cvm);
         }
 
+        /// <summary>
+        /// Changes the statud of the checked out basket to isComplete = true
+        /// </summary>
+        /// <param name="cvm"> CheckoutViewModel </param>
+        /// <param name="user">the current user</param>
         public void CompleteBasket(CheckoutViewModel cvm, ApplicationUser user)
         {
             Basket basket = _context.GetCurrentBasket(user.Id).Result;
@@ -138,6 +170,10 @@ namespace ecommerce.Controllers
             _context.UpdateBasket(basket);
         }
 
+        /// <summary>
+        /// Creates a new basket for the user
+        /// </summary>
+        /// <param name="user">the current user</param>
         public void MakeNewBasket(ApplicationUser user)
         {
             Basket newBasket = new Basket

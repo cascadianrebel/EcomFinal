@@ -1,16 +1,17 @@
 ﻿@{
     Layout = "_Layout";
 }
+
 <head>
-    <link href="~/CSS/Admin.css" rel="stylesheet" />
+    <link href="~/CSS/Home.css" rel="stylesheet" />
 </head>
 
 
-<h2>Welcome to the admin dashboard</h2>
+<h3>Welcome to the admin dashboard</h3>
 <div class="adminLink">
     <a asp-controller="Product" asp-action="Inventory">Check Inventory</a>
 </div>
 <div class="adminLink">
-    <a asp-controller="Admin" asp-action="User">Check User</a>
+    <a asp-controller="Admin" asp-action="Order">Check orders</a>
 </div>
 

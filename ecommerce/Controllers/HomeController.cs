@@ -24,6 +24,10 @@ namespace ecommerce.Controllers
 
         }
 
+        /// <summary>
+        /// Home Page
+        /// </summary>
+        /// <returns>Index view</returns>
         [AllowAnonymous]
         public IActionResult Index()
         {

@@ -30,7 +30,10 @@ namespace ecommerce.Controllers
             _userManager = userManager;
         }
 
-        // GET: /<controller>/
+        /// <summary>
+        /// Returns the view where user can view all their products in their cart
+        /// </summary>
+        /// <returns>Index view</returns>
         public async Task<IActionResult> Index()
         {
             var user = await CurrentUserAsync();
@@ -40,6 +43,11 @@ namespace ecommerce.Controllers
             return View(ivc);
         }
 
+        /// <summary>
+        /// Adds a product into the basket
+        /// </summary>
+        /// <param name="bi"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddBasketItem(BasketItem bi)
         {
@@ -51,11 +59,20 @@ namespace ecommerce.Controllers
             return RedirectToAction("Inventory", "Shop");
         }
 
+        /// <summary>
+        /// Finds the current user logged in
+        /// </summary>
+        /// <returns> the user </returns>
         public async Task<ApplicationUser> CurrentUserAsync()
         {
             return await _userManager.FindByEmailAsync(User.Identity.Name);
         }
 
+        /// <summary>
+        /// Deletes a product from the basket
+        /// </summary>
+        /// <param name="id">id of the basketItem</param>
+        /// <returns>Index View or Not Found</returns>
         public IActionResult Delete(int? id)
         {
             if (id.HasValue && id != 0)
@@ -66,6 +83,12 @@ namespace ecommerce.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Takes the information from the forum in Index and updates the quantity of the basketitem to
+        /// whatever they inputted
+        /// </summary>
+        /// <param name="ivc">UpdateQuantityViewModel</param>
+        /// <returns>Index View or Not Found</returns>
         [HttpPost]
         public IActionResult UpdateQuantity(UpdateQuantityViewModel ivc)
         {
