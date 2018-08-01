@@ -1,5 +1,6 @@
 ﻿/*Make it responsive*/
 body {
+  font-family: sans-serif;
   background-color: #f5f5c6;
   position: relative; }
 
@@ -112,8 +113,13 @@ main {
       width: 600px;
       font-size: 21px; }
       main #Basket:hover > #BasketPanel #BasketContent {
+        text-decoration: none;
         height: 100%;
         position: relative; }
+        main #Basket:hover > #BasketPanel #BasketContent .BasketHR {
+          width: 200px;
+          margin: 0 auto 2vh;
+          border-color: #f5f5c6; }
         main #Basket:hover > #BasketPanel #BasketContent #BasketTitle {
           font-style: "Pacifico", cursive;
           font-size: 42px;
@@ -126,7 +132,21 @@ main {
             main #Basket:hover > #BasketPanel #BasketContent #BasketTitle a:hover {
               color: #27253d; }
         main #Basket:hover > #BasketPanel #BasketContent div img {
-          width: 12vh; }
+          margin: 0 1em 0 5%;
+          width: 13vh;
+          float: left;
+          border-radius: 0.3em; }
+          main #Basket:hover > #BasketPanel #BasketContent div img:hover {
+            transform: scale(0.95); }
+        main #Basket:hover > #BasketPanel #BasketContent div div {
+          height: 13vh;
+          color: #f5f5c6; }
+          main #Basket:hover > #BasketPanel #BasketContent div div h3 {
+            font-size: 25.2px;
+            margin: 1.5vh 0 2vh 0; }
+          main #Basket:hover > #BasketPanel #BasketContent div div p {
+            margin: 0.5vh 0;
+            color: #7da87b; }
         main #Basket:hover > #BasketPanel #BasketContent #ViewBasket {
           position: absolute;
           bottom: 7vh;

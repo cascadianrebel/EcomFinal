@@ -1,6 +1,7 @@
 ﻿@import '_themes';
 
 body{
+    font-family:sans-serif;
     background-color:$Primary;
     position:relative;
 }
@@ -154,8 +155,15 @@ main {
             font-size: $FontSize;
 
             #BasketContent {
-                height:100%;
-                position:relative;
+                text-decoration: none;
+                height: 100%;
+                position: relative;
+
+                .BasketHR {
+                    width: 200px;
+                    margin: 0 auto 2vh;
+                    border-color: $Primary;
+                }
 
                 #BasketTitle {
                     font-style: $BannerFont;
@@ -177,14 +185,36 @@ main {
                 div {
 
                     img {
-                        width: 12vh;
+                        margin: 0 1em 0 5%;
+                        width: 13vh;
+                        float: left;
+                        border-radius:0.3em;
+
+                        &:hover{
+                            transform:scale(0.95);
+                        }
+                    }
+
+                    div {
+                        height: 13vh;
+                        color: $Primary;
+
+                        h3 {
+                            font-size: $FontSize * 1.2;
+                            margin: 1.5vh 0 2vh 0;
+                        }
+
+                        p {
+                            margin: 0.5vh 0;
+                            color: $Secondary;
+                        }
                     }
                 }
 
                 #ViewBasket {
-                    position:absolute;
-                    bottom:7vh;
-                    left:166px;
+                    position: absolute;
+                    bottom: 7vh;
+                    left: 166px;
                     display: inline-block;
                     padding: 0.5em 3em;
                     border: 0.16em solid $Primary;
@@ -198,8 +228,8 @@ main {
                     text-align: center;
 
                     &:hover {
-                        color:$Quaduary;
-                        border-color:$Quaduary;
+                        color: $Quaduary;
+                        border-color: $Quaduary;
                     }
                 }
             }
