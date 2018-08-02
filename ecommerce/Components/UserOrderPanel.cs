@@ -27,7 +27,7 @@ namespace ecommerce.Components
             var user = await _userManager.FindByEmailAsync(User.Identity.Name);
             var pastOrders = (from x in _context.OrderTable select x)
                 .OrderBy(x => x.OrderDate);
-            var userOrders = await pastOrders.Where(x => x.UserID == user.Id).ToListAsync();
+            var userOrders = await pastOrders.Where(x => x.UserID == user.Id).Take(5).ToListAsync();
 
 
             foreach (Order k in userOrders)

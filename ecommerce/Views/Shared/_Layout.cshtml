@@ -47,6 +47,11 @@
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <a class="nav-link" asp-page="/Profile">Profile</a>
+                    var user = await UserManager.FindByEmailAsync(User.Identity.Name);
+                    @if (UserManager.IsInRoleAsync(user, "Admin").Result)
+                    {
+                        <a class="nav-link" asp-controller="Admin" asp-action="Index">Change View</a>
+                    }
                     <a class="nav-link" asp-controller="Account" asp-action="Logout">Log Out</a>
                 }
                 else
