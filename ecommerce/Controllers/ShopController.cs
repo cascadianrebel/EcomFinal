@@ -26,12 +26,22 @@ namespace ecommerce.Controllers
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// User facing side of all the products user can buy
+        /// </summary>
+        /// <returns>view</returns>
         [AllowAnonymous]
         public IActionResult Inventory()
         {
             var products = _context.GetProduct();
             return View(products);
         }
+
+        /// <summary>
+        /// A detail of the single product
+        /// </summary>
+        /// <param name="id">id of teh product</param>
+        /// <returns>detial view or not found</returns>
         [AllowAnonymous]
         public IActionResult Detail(int? id)
         {

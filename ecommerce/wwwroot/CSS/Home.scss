@@ -7,16 +7,17 @@
     h3 {
         font-size: $FontSize * 2;
         color: $Primary;
-        text-align:center;
-        padding:5vh;
+        text-align: center;
+        padding: 5vh;
     }
 
     p {
         font-size: $FontSize * 1.5;
         color: $Quaduary;
-        text-align:center;
+        text-align: center;
     }
-    #AnonymousUser{
-        padding-top:10vh;
+
+    #AnonymousUser {
+        padding-top: 10vh;
     }
 }

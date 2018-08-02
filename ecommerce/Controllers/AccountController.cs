@@ -36,7 +36,7 @@ namespace ecommerce.Controllers
         
 
         /// <summary>
-        /// receives the information from the Register View
+        /// Show the Register View
         /// </summary>
         /// <returns>The Register view </returns>
         [AllowAnonymous]
@@ -117,6 +117,10 @@ namespace ecommerce.Controllers
             return View(rvm);
         }
 
+        /// <summary>
+        /// Shows the login page
+        /// </summary>
+        /// <returns>the login view</returns>
         [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
@@ -125,6 +129,11 @@ namespace ecommerce.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Takes the information from the login view forum and checks the DB. If it exists logs in the user
+        /// </summary>
+        /// <param name="lvm">LoginViewModel</param>
+        /// <returns>The same login view or home index or admin index</returns>
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvm)
@@ -152,6 +161,10 @@ namespace ecommerce.Controllers
             return View(lvm);
         }
 
+        /// <summary>
+        /// Logs the user out
+        /// </summary>
+        /// <returns>Home index</returns>
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
@@ -160,6 +173,11 @@ namespace ecommerce.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /// <summary>
+        /// Starts the external login/resgiter process
+        /// </summary>
+        /// <param name="provider"> a string of the provider</param>
+        /// <returns> a challenge </returns>
         [AllowAnonymous]
         public IActionResult ExternalLogin(string provider)
         {
