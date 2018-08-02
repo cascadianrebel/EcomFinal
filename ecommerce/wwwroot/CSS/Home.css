@@ -1,0 +1,16 @@
+﻿/*Make it responsive*/
+#HomeContent {
+  height: 60vh;
+  background-color: #7da87b; }
+  #HomeContent h3 {
+    font-size: 42px;
+    color: #f5f5c6;
+    text-align: center;
+    padding: 5vh; }
+  #HomeContent p {
+    font-size: 31.5px;
+    color: #27253d;
+    text-align: center; }
+  #HomeContent #AnonymousUser {
+    padding-top: 10vh; }
+

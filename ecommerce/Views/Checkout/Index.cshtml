@@ -1,10 +1,21 @@
 ﻿@using ecommerce.Models.ViewModels
 @model ecommerce.Models.ViewModels.CheckoutViewModel
 
-@{ 
+@{
     decimal total = 0;
     decimal subTotal = 0;
 }
+
+@{
+    Layout = "_Layout";
+}
+
+<head>
+    <link href="~/CSS/Form.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+          crossorigin="anonymous">
+</head>
 
 <h2>Checkout</h2>
 

@@ -1,33 +1,25 @@
-﻿@model ecommerce.Models.Order
+﻿@model List<ecommerce.Models.Order>
+@using ecommerce.Models
 
 
 @{
     Layout = "_AdminLayout";
 }
 
-
-
-<h2>ID: @Model.ID User: @Model.LastName, @Model.FirstName </h2>
-<p>DATE: @Model.OrderDate.DayOfYear</p>
-<p>@Model.Address1 @Model.Address2 @Model.City, @Model.State @Model.ZipCode </p>
-
-@{var orderItems = Model.BasketItems;}
-        
-
-
-<table>
-    <thead>Product</thead>
-    <thead>Price</thead>
-    <thead>Quantity</thead>
-    @*<tr>
-        @foreach (var x in orderItems.FirstOrDefault(i => i.BasketID == Model.ID )
-        {
-        <td>@x.Product.Name</td>
-        <td>@x.Product.Price</td>
-        <td>@x.Quantity</td>
-        }
-</tr>*@
-</table>
-
-<h2>Order Total @Model.Total</h2>
-
+@foreach (var item in Model)
+{
+    <p>Order ID: @item.ID</p>
+    <h3>@item.LastName, @item.FirstName</h3>
+    <p>DATE: @item.OrderDate.Date</p>
+    <p>@item.Address1 @item.Address2 </p>
+    <p>@item.City, @item.State @item.ZipCode</p>
+    foreach (var x in item.BasketItems)
+    {
+        <div>
+            <p>Product: @x.Product.Name</p>
+            <p>Price: @x.Product.Price</p>
+            <p>Quantity: @x.Quantity</p>
+        </div>
+    }
+    <h3>Order Total: @item.Total</h3>
+}

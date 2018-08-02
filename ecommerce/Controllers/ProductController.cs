@@ -25,12 +25,21 @@ namespace ecommerce.Controllers
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// All of the products the site sells
+        /// </summary>
+        /// <returns>Inventory View</returns>
         public IActionResult Inventory()
         {
             var products = _context.GetProduct();
             return View(products);
         }
 
+        /// <summary>
+        /// The detail page of one specific product
+        /// </summary>
+        /// <param name="id">the id of the product </param>
+        /// <returns> detail view or not found</returns>
         public IActionResult Detail(int? id)
         {
             if (id.HasValue)
@@ -49,6 +58,11 @@ namespace ecommerce.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Sends the forum of the product to update the information of the product
+        /// </summary>
+        /// <param name="id">the id</param>
+        /// <returns>not found or update view</returns>
         [HttpGet]
         public IActionResult Update(int? id)
         {
@@ -60,6 +74,11 @@ namespace ecommerce.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// grabs the information entered by admin and saves the new product information to the DB
+        /// </summary>
+        /// <param name="product">product</param>
+        /// <returns>Inventory of AdminController</returns>
         [HttpPost]
         public IActionResult Update(Product product)
         {
@@ -68,6 +87,11 @@ namespace ecommerce.Controllers
             return RedirectToAction("Inventory", "Admin");
         }
 
+        /// <summary>
+        /// Deletes a specific product from the DB
+        /// </summary>
+        /// <param name="id">the id of the product</param>
+        /// <returns> Inventory Action of Admin Controller or Not found</returns>
         public IActionResult Delete(int? id)
         {
             if (id.HasValue && id != 0)
@@ -78,12 +102,21 @@ namespace ecommerce.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Add Product forum
+        /// </summary>
+        /// <returns>add product view</returns>
         [HttpGet]
         public IActionResult AddProduct()
         {
             return View();
         }
 
+        /// <summary>
+        /// takes the information inputted by admin and saves it in the DB
+        /// </summary>
+        /// <param name="product">the bew product </param>
+        /// <returns>Inventory action of admin controller</returns>
         [HttpPost]
         public IActionResult AddProduct(Product product)
         {

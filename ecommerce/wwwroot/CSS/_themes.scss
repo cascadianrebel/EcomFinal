@@ -1,6 +1,26 @@
-﻿$Primary: orange;
-$Secondary: blue;
+﻿$Primary: #f5f5c6;
+$Secondary: #7da87b;
+$Tertiary: #326765;
+$Quaduary: #27253d;
+
+/*Make it responsive*/
+$BannerHeight: 400px;
+$SideIconHeight: 100px;
+$SideIconWidth:60px;
+$SideBarMenuWidth: 400px;
+$SideBarBasketWidth: 600px;
+
+
+$BigGutter: 40px;
+$SmallGutter: $BigGutter / 2;
+
 $BaseHeight: 100vh * .2;
 $White: white;
 
+$TransitionTime: 0.3s;
+$SidePullTime: 0.5s;
+
+$BannerFont: 'Pacifico', cursive;
+$NavFont:'Roboto',sans-serif;
+$FontSize: 21px;
 

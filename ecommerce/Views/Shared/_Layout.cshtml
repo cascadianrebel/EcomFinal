@@ -14,14 +14,15 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/normalize.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/CSS/StyleSheet.css" />
-    
+    <link rel="stylesheet" href="~/CSS/Layout.css" />
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <title>@ViewBag.Title</title>
 </head>
 <body>
     <header class="jumbotron" id="Header">
-        <h2>Squirrels With Ties</h2>
+        <h1><a asp-controller="Home" asp-action="Index">Squirrels With Ties</a></h1>
         <div>
             @if (SignInManager.IsSignedIn(User))
             {
@@ -37,39 +38,53 @@
         </div>
     </header>
     <main>
-        <nav class="navbar" id="Navigation">
-            <ul class="navbar-nav">SHOP                
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Shop" asp-action="Inventory">View Products</a>
-                </li>
-            </ul>
-        </nav>
+        <div id="Menu">
+            <i class="fas fa-chevron-right"></i>
+            <aside>
+                <div></div>
+                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="nav-link" asp-controller="Shop" asp-action="Inventory">Products</a>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <a class="nav-link" asp-page="/Profile">Profile</a>
+                    var user = await UserManager.FindByEmailAsync(User.Identity.Name);
+                    @if (UserManager.IsInRoleAsync(user, "Admin").Result)
+                    {
+                        <a class="nav-link" asp-controller="Admin" asp-action="Index">Change View</a>
+                    }
+                    <a class="nav-link" asp-controller="Account" asp-action="Logout">Log Out</a>
+                }
+                else
+                {
+                    <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                    <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+                }
+            </aside>
+        </div>
+
+        <div id="Basket">
+            <i id="cart" class="fas fa-shopping-cart"></i>
+            <div id="BasketPanel">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <div id="BasketContent">
+                        @await Component.InvokeAsync("BasketPanel")
+                    </div>
+                }
+                else
+                {
+                    <div id="NoBasket">
+                        <h3 id="EmptyBasket"><a class="nav-link" asp-controller="Account" asp-action="Login">Login</a> <br> to view your basket</h3>
+                    </div>
+                }
+            </div>
+        </div>
 
         <div class="center-block text-center" id="MainBody">
             @RenderBody()
         </div>
-        
-        <div id="BasketPanel">
-             @if (SignInManager.IsSignedIn(User))
-            {
-                @await Component.InvokeAsync("BasketPanel")
-            }
-            else
-            {
-                <h2 id="BasketTab">BASKET</h2>
-                <div>
-                    <hr/>
-                    <h3 id="EmptyBasket">Please Sign in to view your basket</h3>
-                </div>
-            }
-        </div>
 
     </main>
-    <footer>
-        <div>
-            <p>Site Created By Anthony Green and Mario Nishio</p>            
-        </div>
-    </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>

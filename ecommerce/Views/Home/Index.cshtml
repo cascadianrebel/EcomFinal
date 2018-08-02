@@ -9,17 +9,18 @@
     Layout = "_Layout";
 }
 
+<head>
+    <link href="~/CSS/Home.css" rel="stylesheet" />
+</head>
 
-
-@if (SignInManager.IsSignedIn(User))
-{
-    <h3>Hello, @User.Claims.First(c => c.Type == "FullName").Value</h3>
-    <p>Welcome to Squirrels with Ties, the premier marketplace for squirrel inspired merchandise</p>
-
-}
-else
-{
-    <h3>Hello, Anonymous Squirrel</h3>
-    <p>Welcome to Squirrels with Ties, the premier marketplace for squirrel inspired merchandise</p>
-
-}
+<div id="HomeContent">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <h3>Hello, @User.Claims.First(c => c.Type == "FullName").Value</h3>
+        <p>Welcome to Squirrels with Ties, <br /> the premier marketplace for squirrel inspired merchandise</p>
+    }
+    else
+    {
+        <p id="AnonymousUser">Welcome to Squirrels with Ties, <br /> the premier marketplace for squirrel inspired merchandise</p>
+    }
+</div>

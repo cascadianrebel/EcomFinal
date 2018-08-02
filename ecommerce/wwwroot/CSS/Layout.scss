@@ -1,0 +1,306 @@
+﻿@import '_themes';
+
+body{
+    font-family:sans-serif;
+    background-color:$Primary;
+    position:relative;
+}
+
+header {
+    position: relative;
+    height: 40vh;
+    min-height: $BannerHeight;
+    background-color:$Secondary;
+    background-image: url(../Assets/squirrel_banner.jpg);
+    background-position: center;
+    background-size: cover;
+
+    h1 {
+        font-family:$BannerFont;
+        font-size: 100px;
+        width: 20vw;
+        position: absolute;
+        top: 50px;
+        left: 10vw;
+        text-align: right;
+
+        a {
+            text-decoration: none;
+            color: $Primary;
+            transition: all $TransitionTime;
+        }
+
+        a:hover {
+            color: $Secondary;
+        }
+    }
+
+    div {
+        position: absolute;
+        bottom: 100px;
+        right: 10vw;
+
+        p{
+            color:$Primary;
+            font-size:$FontSize;
+            text-transform:uppercase;
+            font:$NavFont;
+            margin-bottom:$SmallGutter;
+        }
+
+        a {
+            display: inline-block;
+            padding: 0.5em 3em;
+            border: 0.16em solid $Primary;
+            margin: 0 0.3em 0.3em 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: $NavFont;
+            font-weight: 400;
+            color: $Primary;
+            text-align: center;
+            transition: all $TransitionTime;
+        }
+
+        a:hover {
+            color: $Secondary;
+            border-color: $Secondary;
+        }
+    }
+}
+
+main {
+    width: 100%;
+    height: 100%;
+
+    #Menu {
+        position: fixed;
+        top: $BannerHeight + $BigGutter;
+        width: $SideIconWidth;
+        height: $SideIconHeight;
+        background-color: $Tertiary;
+        transition: all $SidePullTime;
+        cursor: pointer;
+        border-radius: 0 3px 3px 0;
+
+        &:hover {
+            width: $SideBarMenuWidth + $SideIconWidth;
+        }
+
+        &:hover > aside {
+            width: $SideBarMenuWidth;
+            font-size: $FontSize * 2;
+            z-index: 1;
+        }
+
+        &:hover > i {
+            left: (0.25 * $SideIconWidth) + $SideBarMenuWidth;
+            transform: scaleX(-1);
+        }
+
+        &:hover + #Basket {
+            width: 0;
+        }
+
+        &:hover + #Basket #cart {
+            font-size: 0;
+        }
+    }
+
+    aside {
+        background-color: $Tertiary;
+        position: absolute;
+        top: -$BannerHeight - $BigGutter;
+        height: 100vh;
+        width: 0;
+        transition: all $SidePullTime;
+        border-radius: 0 3px 3px 0;
+        font-size: 0;
+
+        div {
+            height: $BannerHeight - $BigGutter;
+        }
+
+        a {
+            margin-bottom: $BigGutter;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: $Primary;
+            font-family: $BannerFont;
+
+            &:hover {
+                color: $Secondary;
+            }
+        }
+    }
+
+    #Basket {
+        position: fixed;
+        top: $BannerHeight + ($BigGutter * 2) + $SideIconHeight;
+        width: $SideIconWidth;
+        height: $SideIconHeight;
+        background-color: $Tertiary;
+        transition: all $SidePullTime;
+        cursor: pointer;
+        border-radius: 0 3px 3px 0;
+
+        &:hover {
+            width: $SideBarBasketWidth + $SideIconWidth;
+        }
+
+        &:hover > #BasketPanel {
+            width: $SideBarBasketWidth;
+            font-size: $FontSize;
+
+            #BasketContent {
+                text-decoration: none;
+                height: 100%;
+                position: relative;
+
+                .BasketHR {
+                    width: 200px;
+                    margin: 0 auto 2vh;
+                    border-color: $Primary;
+                }
+
+                #BasketTitle {
+                    font-style: $BannerFont;
+                    font-size: $FontSize *2;
+                    text-align: center;
+                    margin: 3vh 0;
+
+                    a {
+                        font-family: $BannerFont;
+                        text-decoration: none;
+                        color: $Primary;
+
+                        &:hover {
+                            color: $Quaduary;
+                        }
+                    }
+                }
+
+                div {
+
+                    img {
+                        margin: 0 1em 0 5%;
+                        width: 13vh;
+                        float: left;
+                        border-radius:0.3em;
+
+                        &:hover{
+                            transform:scale(0.95);
+                        }
+                    }
+
+                    div {
+                        height: 13vh;
+                        color: $Primary;
+
+                        h3 {
+                            font-size: $FontSize * 1.2;
+                            margin: 1.5vh 0 2vh 0;
+                        }
+
+                        p {
+                            margin: 0.5vh 0;
+                            color: $Secondary;
+                        }
+                    }
+                }
+
+                #ViewBasket {
+                    position: absolute;
+                    bottom: 7vh;
+                    left: 166px;
+                    display: inline-block;
+                    padding: 0.5em 3em;
+                    border: 0.16em solid $Primary;
+                    margin: 0 0.3em 0.3em 0;
+                    box-sizing: border-box;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    font-family: $NavFont;
+                    font-weight: 400;
+                    color: $Primary;
+                    text-align: center;
+
+                    &:hover {
+                        color: $Quaduary;
+                        border-color: $Quaduary;
+                    }
+                }
+            }
+        }
+
+        &:hover > #cart {
+            left: $SideBarBasketWidth;
+            transform: scaleX(-1);
+        }
+    }
+
+    #BasketPanel {
+        background-color: $Tertiary;
+        position: absolute;
+        top: -$BannerHeight - ($BigGutter * 2) - $SideIconHeight;
+        height: 100vh;
+        width: 0;
+        transition: all $SidePullTime;
+        border-radius: 0 3px 3px 0;
+        font-size: 0;
+
+        #NoBasket {
+            color: $Primary;
+            text-align: center;
+            margin-top: 50%;
+
+            a {
+                display: inline-block;
+                padding: 0.5em 3em;
+                border: 0.16em solid $Primary;
+                margin: 0 0.3em 0.3em 0;
+                box-sizing: border-box;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-family: $NavFont;
+                font-weight: 400;
+                color: $Primary;
+                text-align: center;
+            }
+
+            a:hover {
+                color: $Secondary;
+                border-color: $Secondary;
+            }
+        }
+
+        #BasketContent {
+
+            img {
+                width: 0;
+            }
+        }
+    }
+
+    #MainBody {
+        width: 75%;
+        height: 100%;
+        margin: 0 auto;
+        background-color: $Secondary;
+    }
+
+    i {
+        position: absolute;
+        top: (0.5 * $SideIconHeight) - $FontSize;
+        Left: (0.25 * $SideIconWidth);
+        font-size: $FontSize*2;
+        color: $Primary;
+        transition: all $SidePullTime;
+    }
+
+    #cart {
+        left: 0;
+    }
+}

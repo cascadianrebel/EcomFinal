@@ -7,22 +7,26 @@
 
 <head>
     <link href="~/CSS/BasketPanel.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 </head>
 
-<h2><a asp-controller="Basket" asp-action="Index">Basket</a></h2>
+<h2 id="BasketTitle"><a asp-controller="Basket" asp-action="Index">Basket</a></h2>
 
-<hr />
+<hr class="BasketHR" />
 
 @foreach (var item in Model)
 {
     <div>
-        <img src="@item.Product.Image" alt="@item.Product.Name" />
-        <h3>@item.Product.Name</h3>
-        <p>Price: @item.Product.Price</p>
-        <p>qty:  @item.Quantity</p>
-        <hr />
+        <a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.ID">
+            <img src="@item.Product.Image" alt="@item.Product.Name" />
+        </a>
+        <div>
+            <h3>@item.Product.Name</h3>
+            <p>Price: @item.Product.Price</p>
+            <p>Qty:  @item.Quantity</p>
+        </div>
     </div>
 }
 
-
+<a id="ViewBasket" asp-controller="Basket" asp-action="Index">View Basket</a>
 
