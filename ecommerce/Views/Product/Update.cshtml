@@ -4,29 +4,37 @@
     Layout = "_AdminLayout";
 }
 
-<h1>Edit product</h1>
+<head>
+    <link href="~/CSS/Form.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+          crossorigin="anonymous">
+</head>
 
-<form method="post" asp-controller="Product" form-action="Update">
-    <div>
-        <label asp-for="Name">Product Name</label>
-        <input asp-for="Name" />
-    </div>
-    <div>
-        <label asp-for="Sku">SKU</label>
-        <input asp-for="Sku" />
-    </div>
-    <div>
-        <label asp-for="Price">Price</label>
-        <input asp-for="Price" />
-    </div>
-    <div>
-        <label asp-for="Description">Description</label>
-        <input asp-for="Description" />
-    </div>
-    <div>
-        <label asp-for="Image">Image</label>
-        <input asp-for="Image" />
-    </div>
+<section>
+    <form method="post" asp-controller="Product" form-action="Update">
+        <h2>Edit Product</h2>
+        <div>
+            <label asp-for="Name">Product Name</label>
+            <input asp-for="Name" />
+        </div>
+        <div>
+            <label asp-for="Sku">SKU</label>
+            <input asp-for="Sku" />
+        </div>
+        <div>
+            <label asp-for="Price">Price</label>
+            <input asp-for="Price" />
+        </div>
+        <div>
+            <label asp-for="Description">Description</label>
+            <input asp-for="Description" />
+        </div>
+        <div>
+            <label asp-for="Image">Image</label>
+            <input asp-for="Image" />
+        </div>
 
-    <button type="submit">Edit Product</button>
-</form>
+        <button type="submit">Edit Product</button>
+    </form>
+</section>
