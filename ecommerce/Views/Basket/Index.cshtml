@@ -9,7 +9,7 @@
     Layout = "_Layout";
 }
 <head>
-    <link href="~/CSS/Basket.css" rel="stylesheet" />
+    <link href="~/CSS/Basket.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
 </head>
 
 <section class="inventory">

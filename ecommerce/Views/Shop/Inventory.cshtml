@@ -8,7 +8,7 @@
     Layout = "_Layout";
 }
 <head>
-    <link href="~/CSS/Inventory.css" rel="stylesheet" />
+    <link href="~/CSS/Inventory.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
 </head>
 <section class="Inventory">
     @foreach (var item in Model)

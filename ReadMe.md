@@ -1,5 +1,5 @@
 # Squrriels with Ties
-ecomagmn.azurewebsites.net
+https://ecomagmn.azurewebsites.net/
 
 Create a E-Commerce Website built using sprints and agile programming. ASP.NET core was used as a framework for building out the application
 

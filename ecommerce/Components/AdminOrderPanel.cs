@@ -1,5 +1,6 @@
 ﻿using ecommerce.Data;
 using ecommerce.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace ecommerce.Components
 {
+    [Authorize(Policy = "AdminOnly")]
     public class AdminOrderPanel : ViewComponent
     {
         private EcomDbContext _context;
