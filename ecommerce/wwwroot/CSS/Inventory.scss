@@ -1,12 +1,55 @@
 ﻿@import '_themes';
 
-#ProductCard{
-    display:inline-block;
-    outline:1px solid red;
-    width: 30%;
-    background-color:$Secondary; 
+.Inventory{
+    text-align: center;
+}
 
-    img{
-        width:100%;
+#ProductCard {
+    background-color: $Secondary;
+    border: 5px solid black;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-sizing: border-box;
+    display: inline-block;
+    min-height: 100%;
+    margin: .5em;
+    max-width: 20vw;
+    min-width: 150px;
+    overflow: hidden;
+    padding: 1em;
+    position: relative;
+    text-align: center;
+
+    img {
+        border-radius: 20%;
+        box-shadow: 0 0 8px navy;
+        display: inline-block;
+        margin-bottom: .5em;
+        width: 100%;
+    }
+
+    h2 , p {
+        display: inline-block;
+        font-size: 2em;
+        font-weight: bold;
+        padding: .25em;
+
+    }
+
+    a {
+        display: inline-block;
+        background-color: orange;
+        border: 1px solid black;
+        border-radius: 25px;
+        box-shadow: 3px 3px 5px lightblue;
+        padding: .25em;
+        transition: .3s all;
+
+        &:hover {
+            background-color: lightblue;
+            box-shadow: 3px 3px 5px orange;
+            cursor: pointer;
+        }
+
     }
 }
