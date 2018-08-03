@@ -12,7 +12,7 @@ namespace ecommerce.Models.Interface
         void SaveOrder(Order order);
         Task<Basket> GetCurrentBasket(string id);
         void UpdateBasket(Basket basket);
-        void AddBasket(Basket basket);
+        Task AddBasket(Basket basket);
         Task<Product> GetProduct(int id);
     }
 }

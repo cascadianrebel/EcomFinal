@@ -13,10 +13,10 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/normalize.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/CSS/Layout.css" />
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="~/normalize.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
+    <link rel="stylesheet" href="~/CSS/Layout.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" />
+    <link href="https://fonts.googleapis.com/css?family=Pacifico?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <title>@ViewBag.Title</title>
 </head>

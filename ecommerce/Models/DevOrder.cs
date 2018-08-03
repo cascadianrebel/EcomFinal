@@ -46,13 +46,12 @@ namespace ecommerce.Models
             return basket;
         }
 
-        public async void UpdateBasket(Basket basket)
+        public void UpdateBasket(Basket basket)
         {
             _context.BasketTable.Update(basket);
-            await _context.SaveChangesAsync();
         }
 
-        public async void AddBasket(Basket basket)
+        public async Task AddBasket(Basket basket)
         {
             await _context.BasketTable.AddAsync(basket);
             await _context.SaveChangesAsync();
