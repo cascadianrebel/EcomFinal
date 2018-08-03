@@ -1,0 +1,100 @@
+﻿@import '_themes';
+
+* {
+    box-sizing: border-box;
+}
+
+#DetailImg {
+    margin: 4vh 5%;
+    width: 30%;
+    border-radius: 0.3em;
+    float: left;
+}
+
+#DetailContainer {
+    height: 60vh;
+    color: $Primary;
+    margin-right: 5%;
+
+    h2 {
+        display: inline-block;
+        font-size: $DetailFontSize * 2;
+        padding-top: 4vh;
+        font-weight:500;
+    }
+
+    p {
+        margin: 1vh 0;
+        font-size: $DetailFontSize * 1.5;
+    }
+
+    #DetailDetail {
+        margin-bottom: 5vh;
+        font-size: $DetailFontSize;
+    }
+
+    a {
+        color: $Primary;
+        display: inline-block;
+        padding: 0.5em 3em;
+        border: 0.16em solid $Primary;
+        margin: 3vh 0.3em 0.3em 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: $NavFont;
+        text-align: center;
+        transition: all $TransitionTime;
+
+        &:hover {
+            color: $Quaduary;
+            border-color: $Quaduary;
+        }
+    }
+
+    #DeleteLink {
+        border: 0.16em solid red;
+        color: red;
+
+        &:hover {
+            background-color: red;
+            color: $Quaduary;
+        }
+    }
+
+    form {
+        div {
+            width: 40%;
+            font-size: $DetailFontSize;
+            margin: 0 auto;
+
+            label {
+                margin: 1.5vh 0;
+                display: block;
+                text-align: left;
+                color: $Primary;
+            }
+
+            input {
+                height: 3vh;
+                margin-bottom: 1vh;
+                border-radius: 0.3em;
+            }
+        }
+
+        button {
+            color: $Primary;
+            background: $Secondary;
+            padding: 0.5em 3em;
+            font-size: $FontSize * 1.5;
+            border: 0.16em solid $Primary;
+            margin-bottom: 1vh;
+            transition: all $TransitionTime;
+
+            &:hover {
+                color: $Quaduary;
+                border: 0.16em solid $Quaduary;
+            }
+        }
+    }
+}
