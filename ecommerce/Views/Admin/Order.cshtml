@@ -5,21 +5,26 @@
 @{
     Layout = "_AdminLayout";
 }
-<h2>Orders</h2>
 
+<head>
+    <link href="~/CSS/Order.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
+</head>
+
+<h2 class="OrderTitle">Orders</h2>
 
 @foreach (var item in Model)
 {
-    <div>
+    <div class="OrderCard">
         <p>Order ID: @item.ID</p>
         <h3>@item.LastName, @item.FirstName</h3>
         <p>DATE: @item.OrderDate.Date</p>
         <p>@item.Address1 @item.Address2 </p>
         <p>@item.City, @item.State @item.ZipCode</p>
+        <h3>Product</h3>
         @foreach (var x in item.BasketItems)
         {
         <div>
-            <p>Product: @x.Product.Name</p>
+            <p>@x.Product.Name</p>
             <p>Price: @x.Product.Price</p>
             <p>Quantity: @x.Quantity</p>
         </div>

@@ -1,0 +1,26 @@
+﻿/*Make it responsive*/
+.OrderTitle {
+  text-align: center;
+  margin-bottom: 3.5vh;
+  padding-top: 3vh;
+  color: #f5f5c6;
+  font-size: 75px;
+  font-family: "Pacifico", cursive; }
+
+hr {
+  width: 60%;
+  color: #326765; }
+
+.OrderCard {
+  width: 70%;
+  padding: 1vh 1rem;
+  border-bottom: 0.16em solid #f5f5c6;
+  margin: 0.5vh auto;
+  font-size: 21px;
+  color: #f5f5c6; }
+  .OrderCard h3 {
+    font-size: 25.2px;
+    color: #326765; }
+  .OrderCard div {
+    margin-left: 2rem; }
+

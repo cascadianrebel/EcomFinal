@@ -14,7 +14,6 @@
     <link href="~/CSS/Detail.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
 </head>
 
-
 <img id="DetailImg" src="@Model.Product.Image" />
 <div id="DetailContainer">
     <h2>@Model.Product.Name</h2>
@@ -24,7 +23,7 @@
     <form method="post" asp-controller="Basket" asp-action="AddBasketItem">
         <div>
             <label asp-for="@Model.Quantity">Qty:</label>
-            <input asp-for="@Model.Quantity" min="1" value="1"/>
+            <input asp-for="@Model.Quantity" min="1" value="1" />
         </div>
         <input asp-for="@Model.ProductID" type="hidden" />
         <button type="submit">Add to Basket</button>
