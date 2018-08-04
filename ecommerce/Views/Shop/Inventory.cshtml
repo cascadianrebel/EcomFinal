@@ -15,10 +15,11 @@
     {
         <div id="ProductCard">
             <h2>@item.Name</h2>
-             <img src="@item.Image" />
-
-            <p>$@item.Price</p>
-            <p><a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.ID">View Details</a></p>
+            <div>
+                <img src="@item.Image" />
+                <p>$@item.Price</p>
+            </div>
+            <a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.ID">View Details</a>
         </div>
     }
 </section>
