@@ -5,48 +5,50 @@
 @{
     decimal total = 0;
 }
-@{ 
+@{
     Layout = "_Layout";
 }
 
+<head>
+    <link href="~/CSS/Detail.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
+</head>
 
 <section class="inventory">
-    <h2><span>My Basket</span></h2>
+    <h2 id="CartTitle">My Basket</h2>
 
     <div>
         @if (Model.basketItems.Count == 0)
         {
-            <h3>Your cart is empty</h3>
+            <h3 id="EmptyCart">Your cart is empty</h3>
         }
         else
         {
             @foreach (var item in Model.basketItems)
             {
-            <div class="card">
-                <hr />
-                <div id="BasketItem">
-                    <img src="@item.Product.Image" />
-                    <p><strong>@item.Product.Name</strong> </p>
+                <a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.ProductID">
+                    <img id="DetailImg" src="@item.Product.Image" alt="@item.Product.Name" />
+                </a>
+                <div id="DetailContainer">
+                    <h2>@item.Product.Name</h2>
                     <p>$@item.Product.Price</p>
+                    <form method="post" asp-controller="Basket" asp-action="UpdateQuantity">
+                        <input asp-for="ID" type="hidden" value="@item.ID">
+                        <input asp-for="ProductID" type="hidden" value="@item.ProductID">
+                        <div>
+                            <label asp-for="@Model.Quantity">Qty:</label>
+                            <input asp-for="Quantity" value="@item.Quantity">
+                        </div>
+                        <input asp-for="BasketID" type="hidden" value="@item.BasketID">
+                        <button type="submit">Update Quantity</button>
+                        <a id="DeleteLink" asp-controller="Basket" asp-action="Delete" asp-route-id="@item.ID">Remove From Basket</a>
+                    </form>
+                    @{
+                        total += (item.Product.Price * item.Quantity);
+                    }
                 </div>
-                <div class="crud">
-                <form method="post" asp-controller="Basket" asp-action="UpdateQuantity">
-                    <input asp-for="ID" type="hidden" value="@item.ID">
-                    <input asp-for="ProductID" type="hidden" value="@item.ProductID">
-                    <input asp-for="Quantity" value="@item.Quantity">
-                    <input asp-for="BasketID" type="hidden" value="@item.BasketID">
-                    <button type="submit">Update Quantity</button>
-                </form>
-                <p><a asp-controller="Basket" asp-action="Delete" asp-route-id="@item.ID">Remove From Basket</a></p>
-                @{
-                    total += (item.Product.Price * item.Quantity);
-                }
-                    </div>
-            </div>
-            <hr/>
-             }
-            <p><strong>Total:</strong> $@total</p>
-            <a asp-controller="Checkout" asp-action="Index">Checkout</a>
+            }
+            <p id="CartTotal">Total: $@total</p>
+            <p id="CartTotal"><a id="CheckoutButton" asp-controller="Checkout" asp-action="Index">Checkout</a></p>
         }
     </div>
 </section>
