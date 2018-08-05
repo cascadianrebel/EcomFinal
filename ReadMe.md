@@ -1,5 +1,5 @@
 # Squrriels with Ties
-https://ecomagmn.azurewebsites.net/
+[Squirrels with Ties](https://squirrelwithties.azurewebsites.net/)
 
 Create a E-Commerce Website built using sprints and agile programming. ASP.NET core was used as a framework for building out the application
 
@@ -14,10 +14,8 @@ the next animal merchnendise we are going to sell. (The Page is under constructi
 its use in the future to verify purchases(Perhaps).
 
 ## Policy we are enforcing
-We are enforcing two policies at the monment. AdminOnly and HasFavAnimal. AdminOnly policy allows access to the admin controller only if your role
-is admin. There, admins are currently able to create, update, get, delete any of the products in the inventory. The HasFavAnimal checks for the claim
-FavoriteAnimal for the user. If there the user has a favorite animal they have access to the feedback controller where we hope to include a feedback
-form in the future where user can vote/comment on future profucts.
+We are enforcing one policy at the monment, AdminOnly. AdminOnly policy allows access to the admin controller only if your role
+is admin. There, admins are currently able to create, update, get, delete any of the products in the inventory.
 
 ## Database Schema
 ![DB_Schema](ecommerce/wwwroot/Assets/DB_Schema.PNG)
@@ -33,7 +31,7 @@ a Order is created with their shipping address, UserID to know which user checke
 was checked out.
 
 ## Getting Started
-Go to the Website
+Follow the link to the website and explore the wide variety of squirrel products.
 
 # Authors
 Anthony Green
