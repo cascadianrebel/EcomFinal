@@ -1,0 +1,100 @@
+﻿@import '_themes';
+
+#MainBody{
+    text-align: center;
+}
+h2 {
+    font-size: 2.5em;
+    padding-top: .25em;
+}
+
+
+#Return {
+    color: $Primary;
+    display: inline-block;
+    background: $Secondary;
+    text-align: right;
+    padding: 0.5em 3em;
+    font-size: 1em;
+    border: 0.16em solid $Primary;
+    margin: 1vh;
+    transition: all $TransitionTime;
+
+    &:hover {
+        color: $Quaduary;
+        border: 0.16em solid $Quaduary;
+    }
+}
+h3{
+    display: inline-block;
+    font-size: 1.5em;
+    font-weight: bolder;
+    text-align: left;
+}
+p{
+    display: inline-block;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: .25em;
+}
+form {
+        font-size: $FontSize;
+        margin: 0 auto;
+        padding-bottom: 2em;
+
+        label {
+            width: 100%;
+            display: block;
+            text-align: left;
+            color: $Primary;
+        }
+
+        input, select {
+            width: 100%;
+            height: 3vh;
+            margin-bottom: 1vh;
+            border-radius: 0.3em;
+        }
+    }
+button {
+    color: $Primary;
+    background: $Secondary;
+    padding: 0.5em 3em;
+    font-size: 2em;
+    border: 0.16em solid $Primary;
+    margin-bottom: 1vh;
+    transition: all $TransitionTime;
+
+    &:hover {
+        color: $Quaduary;
+        border: 0.16em solid $Quaduary;
+    }
+}
+a{
+    color: black;
+    &:hover{
+        color: $Primary;
+        cursor:pointer;
+    }
+    &:visited{
+        color: black;
+    }
+}
+.review {
+    color: $Primary;
+    background: $Secondary;
+    display: inline-block;
+    padding: 0.5em 2em;
+    font-size: 1.75em;
+    border: 0.16em solid $Primary;
+    margin-bottom: 1vh;
+    transition: all $TransitionTime;
+
+    &:hover {
+        color: $Quaduary;
+        border: 0.16em solid $Quaduary;
+    }
+}
+#PaymentForm{
+    width: 40%;
+}

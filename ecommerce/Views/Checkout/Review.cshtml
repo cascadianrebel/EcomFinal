@@ -9,9 +9,19 @@
     Layout = "_Layout";
 }
 
-<h2>Checkout</h2>
+<head>
+    <link href="~/CSS/Checkout.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+          crossorigin="anonymous">
+</head>
 
-<a asp-controller="Basket" asp-action="Index">Return To Basket</a>
+<div>
+    <h2>Checkout</h2>
+
+    <a id="Return" asp-controller="Basket" asp-action="Index">Return To Basket</a>
+</div>
+<hr />
 
 @foreach (var item in Model.BasketItems)
 {
@@ -20,10 +30,13 @@
     total += subTotal;
     <h3><a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.Product.ID">@item.Product.Name</a></h3>
     <p>$@item.Product.Price</p>
+    <br />
     <p>Qty: @item.Quantity</p>
-    <p>$@subTotal</p>
+    <p>SubTotal: $@subTotal</p>
+    <hr />
 }
 
+    <br />
 <p>Total: $@total</p>
 
 <hr />
@@ -34,10 +47,11 @@
 <p>@Model.Address2</p>
 <p>@Model.City, @Model.State @Model.ZipCode</p>
 
+<br />
 <h3>Payment</h3>
 <p>Insert here later</p>
-
-<form method="post" asp-controller="Checkout" asp-action="Summary">
+<hr />
+<form  method="post" asp-controller="Checkout" asp-action="Summary">
     <input asp-for="@Model.FirstName" type="hidden" />
 
     <input asp-for="@Model.LastName" type="hidden" />
@@ -54,10 +68,10 @@
 
     <input asp-for="@Model.CreditCard" type="hidden" />
 
-    <button type="submit">Confirm</button>
+    <button class="review" type="submit">Confirm</button>
 </form>
 
-<form method="post" asp-controller="Checkout" asp-action="Update">
+<form  method="post" asp-controller="Checkout" asp-action="Update">
     <input asp-for="@Model.FirstName" type="hidden" />
 
     <input asp-for="@Model.LastName" type="hidden" />
@@ -74,5 +88,5 @@
 
     <input asp-for="@Model.CreditCard" type="hidden" />
 
-    <button type="submit">Go Back</button>
+    <button class="review" type="submit">Go Back</button>
 </form>

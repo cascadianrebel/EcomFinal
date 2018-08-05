@@ -1,10 +1,35 @@
 ﻿@import '_themes';
 
-.Inventory{
+.Inventory {
     text-align: center;
 }
 *{
     box-sizing:border-box;
+}
+#MainBody {
+    text-align: center;
+}
+#AddProduct {
+    background-color: $Tertiary;
+    border: 5px solid black;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: $Primary;
+    display: inline-block;
+    font-size: 2em;
+    margin-top: .5em;
+    padding: .3em;
+    text-align: center;
+    transition: .3s all;
+    width: 80%;
+
+    &:Hover {
+        background-color: $Primary;
+        color: $Tertiary;
+    &:Visited {
+        color: $Tertiary;
+    }
+    }
 }
 
 #ProductCard {
@@ -47,31 +72,31 @@
         display: block;
         font-size: 1.5em;
         max-width: 100%;
-        padding:.25em;
+        padding: .25em;
     }
 
     a {
-        display: none;
-        transition: .3s all;
+        background-color: $Quaduary;
+        border-radius: 20px;
+        border: 1px solid black;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        color: $Primary;
+        display: block;
+        padding: .2em;
+        text-decoration: none;
+        transition: .25s all;
         width: 100%;
-        &:visited{
+
+        &:visited {
             color: $Primary;
         }
     }
-    &:hover{
-        a{
-            background-color: $Quaduary;
-            box-shadow: 3px 3px 5px orange;
+
+    &:hover {
+        a {
             color: $Primary;
             cursor: pointer;
-            display:block;
-            font-family: $BannerFont;
             font-size: 2em;
-            height: 4em;
-            padding-top: 1.5em;
-        }
-        p{
-            display:none;
         }
     }
 }

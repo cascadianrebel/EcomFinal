@@ -1,22 +1,42 @@
-[
+﻿[
   {
     "outputFile": "wwwroot/CSS/Layout.css",
-    "inputFile": "wwwroot/CSS/Layout.scss",
-    "sourceMap": false
+    "inputFile": "wwwroot/CSS/Layout.scss"
   },
   {
     "outputFile": "wwwroot/CSS/Inventory.css",
-    "inputFile": "wwwroot/CSS/Inventory.scss",
-    "sourceMap": false
+    "inputFile": "wwwroot/CSS/Inventory.scss"
   },
   {
     "outputFile": "wwwroot/CSS/Form.css",
-    "inputFile": "wwwroot/CSS/Form.scss",
-    "sourceMap": false
+    "inputFile": "wwwroot/CSS/Form.scss"
   },
   {
     "outputFile": "wwwroot/CSS/Home.css",
-    "inputFile": "wwwroot/CSS/Home.scss",
-    "sourceMap": false
+    "inputFile": "wwwroot/CSS/Home.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/OrderSummary.css",
+    "inputFile": "wwwroot/CSS/OrderSummary.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/Detail.css",
+    "inputFile": "wwwroot/CSS/Detail.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/RecentOrders.css",
+    "inputFile": "wwwroot/CSS/RecentOrders.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/AdminInventory.css",
+    "inputFile": "wwwroot/CSS/AdminInventory.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/Basket.css",
+    "inputFile": "wwwroot/CSS/Basket.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/Checkout.css",
+    "inputFile": "wwwroot/CSS/Checkout.scss"
   }
 ]

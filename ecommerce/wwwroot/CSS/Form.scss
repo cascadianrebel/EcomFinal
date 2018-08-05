@@ -4,8 +4,8 @@ section {
     text-align: center;
     color: $Quaduary;
     font-family: sans-serif;
-    background-color:$Secondary;
-    padding-bottom:2vh;
+    background-color: $Secondary;
+    padding-bottom: 2vh;
 
     p {
         margin-top: 1.5vh;
@@ -24,11 +24,11 @@ section {
             font-weight: 400;
             text-align: center;
             transition: all $TransitionTime;
-        }
 
-        a:hover {
-            color: $Quaduary;
-            border-color: $Quaduary;
+            &:hover {
+                color: $Quaduary;
+                border-color: $Quaduary;
+            }
         }
     }
 

@@ -5,6 +5,28 @@
 * {
   box-sizing: border-box; }
 
+#MainBody {
+  text-align: center; }
+
+#AddProduct {
+  background-color: #326765;
+  border: 5px solid black;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #f5f5c6;
+  display: inline-block;
+  font-size: 2em;
+  margin-top: .5em;
+  padding: .3em;
+  text-align: center;
+  transition: .3s all;
+  width: 80%; }
+  #AddProduct:Hover {
+    background-color: #f5f5c6;
+    color: #326765; }
+    #AddProduct:Hover:Visited {
+      color: #326765; }
+
 #ProductCard {
   background-color: #326765;
   border: 5px solid black;
@@ -41,21 +63,20 @@
     max-width: 100%;
     padding: .25em; }
   #ProductCard a {
-    display: none;
-    transition: .3s all;
+    background-color: #27253d;
+    border-radius: 20px;
+    border: 1px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #f5f5c6;
+    display: block;
+    padding: .2em;
+    text-decoration: none;
+    transition: .25s all;
     width: 100%; }
     #ProductCard a:visited {
       color: #f5f5c6; }
   #ProductCard:hover a {
-    background-color: #27253d;
-    box-shadow: 3px 3px 5px orange;
     color: #f5f5c6;
     cursor: pointer;
-    display: block;
-    font-family: "Pacifico", cursive;
-    font-size: 2em;
-    height: 4em;
-    padding-top: 1.5em; }
-  #ProductCard:hover p {
-    display: none; }
+    font-size: 2em; }
 
