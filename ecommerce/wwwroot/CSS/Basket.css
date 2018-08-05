@@ -48,27 +48,26 @@
     padding: 1em;
     text-align: right; }
 
-.crud {
-  display: inline-block; }
-  .crud form {
-    display: block;
-    float: right; }
-  .crud input {
-    font-size: 1.5em;
-    line-height: 1.7em;
-    width: 4em; }
-  .crud button {
-    color: #f5f5c6;
-    display: inline-block;
-    background: #7da87b;
-    font-size: 1.5em;
-    padding: 0.25em 1em;
-    border: 0.16em solid #f5f5c6;
-    transition: all 0.3s; }
-    .crud button:hover {
-      color: #27253d;
-      border: 0.16em solid #27253d;
-      cursor: pointer; }
+.crud form {
+  display: block; }
+
+.crud input {
+  font-size: 1.5em;
+  line-height: 1.7em;
+  width: 4em; }
+
+.crud button {
+  color: #f5f5c6;
+  display: inline-block;
+  background: #7da87b;
+  font-size: 1.5em;
+  padding: 0.25em 1em;
+  border: 0.16em solid #f5f5c6;
+  transition: all 0.3s; }
+  .crud button:hover {
+    color: #27253d;
+    border: 0.16em solid #27253d;
+    cursor: pointer; }
 
 hr {
   background-color: #f5f5c6;
