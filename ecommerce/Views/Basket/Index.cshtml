@@ -9,6 +9,9 @@
     Layout = "_Layout";
 }
 
+<head>
+    <link href="~/CSS/Basket.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
+</head>
 
 <section class="inventory">
     <h2><span>My Basket</span></h2>
@@ -37,7 +40,7 @@
                     <input asp-for="BasketID" type="hidden" value="@item.BasketID">
                     <button type="submit">Update Quantity</button>
                 </form>
-                <p><a asp-controller="Basket" asp-action="Delete" asp-route-id="@item.ID">Remove From Basket</a></p>
+                <a asp-controller="Basket" asp-action="Delete" asp-route-id="@item.ID">Remove From Basket</a>
                 @{
                     total += (item.Product.Price * item.Quantity);
                 }
@@ -46,7 +49,7 @@
             <hr/>
              }
             <p><strong>Total:</strong> $@total</p>
-            <a asp-controller="Checkout" asp-action="Index">Checkout</a>
+            <a id="checkout" asp-controller="Checkout" asp-action="Index">Checkout</a>
         }
     </div>
 </section>

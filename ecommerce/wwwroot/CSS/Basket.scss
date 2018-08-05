@@ -1,0 +1,60 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+.inventory {
+    text-align: center;
+    padding-bottom: 2em;
+
+    h2 {
+        font-size: 2.5em;
+        padding-top: .25em;
+    }
+
+    a {
+        border: 1px solid black;
+        margin: 2em;
+        padding: 1em;
+    }
+}
+
+.card {
+    display: block;
+}
+
+#BasketItem {
+    display: inline;
+    padding: 1em;
+    width: 100%;
+
+    img {
+        display: inline-block;
+        max-width: 15%;
+        margin: 1em;
+        vertical-align: middle;
+    }
+
+    p {
+        display: inline-block;
+        padding: 2em;
+        text-align: center;
+    }
+}
+
+.crud {
+    display: inline-block;
+
+    form {
+        float: left;
+    }
+}
+
+hr {
+    background-color: red;
+    margin-top: 2em;
+    width: 100%;
+}
+
+#checkout {
+    display: block;
+}

@@ -30,5 +30,9 @@
   {
     "outputFile": "wwwroot/CSS/AdminInventory.css",
     "inputFile": "wwwroot/CSS/AdminInventory.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/Basket.css",
+    "inputFile": "wwwroot/CSS/Basket.scss"
   }
 ]
