@@ -1,43 +1,64 @@
-﻿* {
+﻿@import '_themes';
+
+* {
     box-sizing: border-box;
 }
 
 .inventory {
-    text-align: center;
-    padding-bottom: 2em;
-
-    h2 {
-        font-size: 2.5em;
-        padding-top: .25em;
-    }
-
-    a {
-        border: 1px solid black;
-        margin: 2em;
-        padding: 1em;
-    }
+  text-align: center;
+  padding-bottom: 2em;
+  h2{
+    font-size: 2.5em;
+    padding-top: .25em;
+  }
 }
+
 
 .card {
     display: block;
+    text-align: center;
+    a {
+        border: 1px solid black;
+        color: $Primary;
+        display: inline-block;
+        padding: 0.25em 1em;
+        border: 0.16em solid $Primary;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: $NavFont;
+        font-size: 1.5em;
+        margin-top: 1em;
+        text-align: center;
+        transition: all $TransitionTime;
+        width: 40%;
+
+        &:hover {
+            color: $Quaduary;
+            border-color: $Quaduary;
+        }
+    }
 }
 
 #BasketItem {
     display: inline;
     padding: 1em;
     width: 100%;
+    text-align: left;
 
     img {
+        border-radius: 0.3em;
         display: inline-block;
+        min-width: 50px;
         max-width: 15%;
         margin: 1em;
-        vertical-align: middle;
+        vertical-align: middle;        
     }
 
     p {
         display: inline-block;
-        padding: 2em;
-        text-align: center;
+        font-size: 1.75em;
+        padding: 1em;
+        text-align: right;
     }
 }
 
@@ -45,16 +66,52 @@
     display: inline-block;
 
     form {
-        float: left;
+        display: block;
+        float: right;
+    }
+    input{
+        font-size:1.5em;
+        line-height: 1.7em;
+        width: 4em;
+    }
+    button {
+        color: $Primary;
+        display: inline-block;
+        background: $Secondary;
+        font-size: 1.5em;
+        padding: 0.25em 1em;
+        border: 0.16em solid $Primary;
+        transition: all $TransitionTime;
+
+        &:hover {
+            color: $Quaduary;
+            border: 0.16em solid $Quaduary;
+            cursor:pointer;
+        }
     }
 }
 
 hr {
-    background-color: red;
+    background-color: $Primary;
     margin-top: 2em;
     width: 100%;
 }
 
 #checkout {
     display: block;
+    color: $Primary;
+    background: $Secondary;
+    padding: 0.5em 3em;
+    font-size: $FontSize * 1.5;
+    border: 0.16em solid $Primary;
+    margin:1vh;
+    transition: all $TransitionTime;
+        &:hover {
+            color: $Quaduary;
+            border: 0.16em solid $Quaduary;
+        }
+    }
+p {
+    font-size: 2.5em;
+    padding-top: .25em;
 }

@@ -15,7 +15,7 @@
 
 <section class="inventory">
     <h2><span>My Basket</span></h2>
-
+    <hr />
     <div>
         @if (Model.basketItems.Count == 0)
         {
@@ -26,7 +26,6 @@
             @foreach (var item in Model.basketItems)
             {
             <div class="card">
-                <hr />
                 <div id="BasketItem">
                     <img src="@item.Product.Image" />
                     <p><strong>@item.Product.Name</strong> </p>
@@ -40,11 +39,12 @@
                     <input asp-for="BasketID" type="hidden" value="@item.BasketID">
                     <button type="submit">Update Quantity</button>
                 </form>
+                    </div>
+                <br />
                 <a asp-controller="Basket" asp-action="Delete" asp-route-id="@item.ID">Remove From Basket</a>
                 @{
                     total += (item.Product.Price * item.Quantity);
                 }
-                    </div>
             </div>
             <hr/>
              }
