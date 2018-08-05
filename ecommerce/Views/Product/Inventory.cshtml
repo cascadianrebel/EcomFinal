@@ -4,10 +4,10 @@
     Layout = "_AdminLayout";
 }
 <head>
-    <link href="~/CSS/Inventory.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
+    <link href="~/CSS/AdminInventory.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
 </head>
 
-<a id="AddProduct" asp-controller="Product" asp-action="AddProduct">Add Product</a>
+<a id="AddProduct" asp-controller="Product" asp-action="AddProduct">Add New Product</a>
 
 <section class="Inventory">
     @foreach (var item in Model)

@@ -26,5 +26,9 @@
   {
     "outputFile": "wwwroot/CSS/RecentOrders.css",
     "inputFile": "wwwroot/CSS/RecentOrders.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/AdminInventory.css",
+    "inputFile": "wwwroot/CSS/AdminInventory.scss"
   }
 ]
