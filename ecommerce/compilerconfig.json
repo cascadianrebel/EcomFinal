@@ -26,5 +26,13 @@
   {
     "outputFile": "wwwroot/CSS/Order.css",
     "inputFile": "wwwroot/CSS/Order.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/Admin.css",
+    "inputFile": "wwwroot/CSS/Admin.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/Checkout.css",
+    "inputFile": "wwwroot/CSS/Checkout.scss"
   }
 ]
