@@ -17,25 +17,26 @@
           crossorigin="anonymous">
 </head>
 
-<h2>Checkout</h2>
+<h2 class="CheckoutTitle">Checkout</h2>
 
-<a asp-controller="Basket" asp-action="Index">Return To Basket</a>
+<a id="ReturnBasket" asp-controller="Basket" asp-action="Index">Return To Basket</a>
 
 @foreach (var item in Model.BasketItems)
 {
     subTotal = 0;
     subTotal = item.Quantity * item.Product.Price;
     total += subTotal;
-<hr />
-    <h3><a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.Product.ID">@item.Product.Name</a></h3>
+
+    <h3><a class="ProductInfo" asp-controller="Shop" asp-action="Detail" asp-route-id="@item.Product.ID">@item.Product.Name</a></h3>
     <p>$@item.Product.Price</p>
     <p>Qty: @item.Quantity</p>
     <br />
     <p>SubTotal: $@subTotal</p>
 }
-<hr />
+
 <h3>Total: $@total</h3>
-<hr />
+
+<h2 class="CheckoutTitle">Enter Your Information</h2>
 
 <form method="post" asp-controller="Checkout" asp-action="Review">
     <label asp-for="@Model.FirstName">First Name</label>

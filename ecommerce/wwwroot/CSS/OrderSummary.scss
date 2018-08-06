@@ -1,16 +1,37 @@
 ﻿@import '_themes';
 
-*{
-    box-sizing: border-box;
+body {
+    background-color: $Primary;
+    color: $Quaduary;
+}
+
+main {
     text-align: center;
-}
 
-h2 {
-    font-family: $BannerFont;
-    font-size: 1.5em;
-    font-weight: bolder;
-}
+    h2 {
+        color: $Secondary;
+    }
 
-p{
-    display:inline;
+    hr {
+        width: 60%;
+        color: $Secondary
+    }
+
+    a {
+        display: inline-block;
+        padding: 0.5em 3em;
+        border: 0.16em solid $Tertiary;
+        box-sizing: border-box;
+        text-decoration: none;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: $NavFont;
+        font-weight: 400;
+        color: $Tertiary;
+
+        &:hover {
+            color: $Quaduary;
+            border-color: $Quaduary;
+        }
+    }
 }
