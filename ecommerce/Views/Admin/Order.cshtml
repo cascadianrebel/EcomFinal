@@ -1,36 +1,25 @@
 ﻿@model List<ecommerce.Models.Order>
 @using ecommerce.Models
-@using Microsoft.AspNetCore.Identity
-@using System.Security.Claims;
 
 
 @{
     Layout = "_AdminLayout";
 }
-<head>
-    <link href="~/CSS/RecentOrders.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
-</head>
-
-<h2>Orders</h2>
-<hr />
 
 @foreach (var item in Model)
 {
-    <div>
-        <p>Order ID: @item.ID</p>
-        <h3>@item.LastName, @item.FirstName</h3>
-        <p>DATE: @item.OrderDate.Date</p>
-        <p>@item.Address1 @item.Address2 </p>
-        <p>@item.City, @item.State @item.ZipCode</p>
-        @foreach (var x in item.BasketItems)
-        {
-            <div id="BasketItem">
-                <p>Product: @x.Product.Name</p>
-                <p>Price: @x.Product.Price</p>
-                <p>Quantity: @x.Quantity</p>
-            </div>
-        }
-        <h3>Order Total: @item.Total</h3>
-        <hr />
-    </div>
+    <p>Order ID: @item.ID</p>
+    <h3>@item.LastName, @item.FirstName</h3>
+    <p>DATE: @item.OrderDate.Date</p>
+    <p>@item.Address1 @item.Address2 </p>
+    <p>@item.City, @item.State @item.ZipCode</p>
+    foreach (var x in item.BasketItems)
+    {
+        <div>
+            <p>Product: @x.Product.Name</p>
+            <p>Price: @x.Product.Price</p>
+            <p>Quantity: @x.Quantity</p>
+        </div>
+    }
+    <h3>Order Total: @item.Total</h3>
 }

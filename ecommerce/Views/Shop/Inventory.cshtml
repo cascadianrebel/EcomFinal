@@ -8,18 +8,17 @@
     Layout = "_Layout";
 }
 <head>
-    <link href="~/CSS/Inventory.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
+    <link href="~/CSS/Inventory.css" rel="stylesheet" />
 </head>
 <section class="Inventory">
     @foreach (var item in Model)
     {
         <div id="ProductCard">
             <h2>@item.Name</h2>
-            <div>
-                <img src="@item.Image" />
-                <p>$@item.Price</p>
-            </div>
-            <a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.ID">View Details</a>
+             <img src="@item.Image" />
+
+            <p>$@item.Price</p>
+            <p><a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.ID">View Details</a></p>
         </div>
     }
 </section>

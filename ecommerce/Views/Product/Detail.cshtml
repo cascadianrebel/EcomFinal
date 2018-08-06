@@ -4,17 +4,12 @@
     Layout = "_AdminLayout";
 }
 
-<head>
-    <link href="~/CSS/Detail.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
-</head>
 
-<img id="DetailImg" src="@Model.Image" />
-<div id="DetailContainer">
-    <h2>@Model.Name</h2>
-    <p>SKU: @Model.Sku</p>
-    <p id="DetailDetail">@Model.Description</p>
-    <p>$@Model.Price</p>
+<h2>@Model.Name</h2>
+<img src="@Model.Image" />
+<p>@Model.Description</p>
+<p>$@Model.Price</p>
+<p>SKU: @Model.Sku</p>
+<p><a asp-controller="Product" asp-action="Update" asp-route-id="@Model.ID">Update</a></p>
+<p><a asp-controller="Product" asp-action="Delete" asp-route-id="@Model.ID">Delete</a></p>
 
-    <a asp-controller="Product" asp-action="Update" asp-route-id="@Model.ID">Update</a>
-    <a id="DeleteLink" asp-controller="Product" asp-action="Delete" asp-route-id="@Model.ID">Delete</a>
-</div>
