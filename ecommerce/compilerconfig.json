@@ -24,19 +24,7 @@
     "inputFile": "wwwroot/CSS/Detail.scss"
   },
   {
-    "outputFile": "wwwroot/CSS/RecentOrders.css",
-    "inputFile": "wwwroot/CSS/RecentOrders.scss"
-  },
-  {
-    "outputFile": "wwwroot/CSS/AdminInventory.css",
-    "inputFile": "wwwroot/CSS/AdminInventory.scss"
-  },
-  {
-    "outputFile": "wwwroot/CSS/Basket.css",
-    "inputFile": "wwwroot/CSS/Basket.scss"
-  },
-  {
-    "outputFile": "wwwroot/CSS/Checkout.css",
-    "inputFile": "wwwroot/CSS/Checkout.scss"
+    "outputFile": "wwwroot/CSS/Order.css",
+    "inputFile": "wwwroot/CSS/Order.scss"
   }
 ]

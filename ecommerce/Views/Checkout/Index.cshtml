@@ -11,17 +11,15 @@
 }
 
 <head>
-    <link href="~/CSS/Checkout.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css?query=@System.Net.WebUtility.UrlEncode(Context.Request.Query["query"])"
+    <link href="~/CSS/Form.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
           integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
           crossorigin="anonymous">
 </head>
-<div>
-    <h2>Checkout</h2>
 
-    <a id="Return" asp-controller="Basket" asp-action="Index">Return To Basket</a>
-</div>
-<hr/>
+<h2>Checkout</h2>
+
+<a asp-controller="Basket" asp-action="Index">Return To Basket</a>
 
 @foreach (var item in Model.BasketItems)
 {
@@ -30,17 +28,15 @@
     total += subTotal;
     <h3><a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.Product.ID">@item.Product.Name</a></h3>
     <p>$@item.Product.Price</p>
-    <br />
     <p>Qty: @item.Quantity</p>
-    <p>SubTotal: $@subTotal</p>
-    <hr />
+    <p>$@subTotal</p>
 }
 
 <p>Total: $@total</p>
 
 <hr />
 
-<form  id="PaymentForm" method="post" asp-controller="Checkout" asp-action="Review">
+<form method="post" asp-controller="Checkout" asp-action="Review">
     <label asp-for="@Model.FirstName">First Name</label>
     <input asp-for="@Model.FirstName" />
 

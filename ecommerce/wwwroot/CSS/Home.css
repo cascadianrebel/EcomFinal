@@ -1,8 +1,7 @@
 ﻿/*Make it responsive*/
 #HomeContent {
   height: 60vh;
-  background-color: #7da87b;
-  text-align: center; }
+  background-color: #7da87b; }
   #HomeContent h3 {
     font-size: 42px;
     color: #f5f5c6;
@@ -14,18 +13,4 @@
     text-align: center; }
   #HomeContent #AnonymousUser {
     padding-top: 10vh; }
-  #HomeContent .AdminLink {
-    display: inline-block;
-    padding: 0.5em 3em;
-    border: 0.16em solid #f5f5c6;
-    box-sizing: border-box;
-    text-decoration: none;
-    text-align: center;
-    text-transform: uppercase;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    color: #f5f5c6; }
-    #HomeContent .AdminLink:hover {
-      color: #27253d;
-      border-color: #27253d; }
 
