@@ -9,6 +9,13 @@
     Layout = "_Layout";
 }
 
+<head>
+    <link href="~/CSS/Checkout.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+          crossorigin="anonymous">
+</head>
+
 <h2>Checkout</h2>
 
 <a asp-controller="Basket" asp-action="Index">Return To Basket</a>
@@ -18,23 +25,26 @@
     subTotal = 0;
     subTotal = item.Quantity * item.Product.Price;
     total += subTotal;
+    <hr />
     <h3><a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.Product.ID">@item.Product.Name</a></h3>
     <p>$@item.Product.Price</p>
     <p>Qty: @item.Quantity</p>
-    <p>$@subTotal</p>
+    <br />
+    <p>SubTotal: $@subTotal</p>
 }
-
-<p>Total: $@total</p>
+<hr />
+<h3>Total: $@total</h3>
 
 <hr />
 
-<h3>Shipping To</h3>
+<h3>Shipping To:</h3>
 <p>@Model.FirstName @Model.LastName</p>
 <p>@Model.Address1</p>
 <p>@Model.Address2</p>
+<br />
 <p>@Model.City, @Model.State @Model.ZipCode</p>
-
-<h3>Payment</h3>
+<br />
+<h3>Payment: </h3>
 <p>Insert here later</p>
 
 <form method="post" asp-controller="Checkout" asp-action="Summary">
