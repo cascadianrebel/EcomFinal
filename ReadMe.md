@@ -1,5 +1,5 @@
 # Squrriels with Ties
-[Squirrels with Ties](https://squirrelwithties.azurewebsites.net/)
+[Squirrels with Ties](http://squirrelswithties.azurewebsites.net/)
 ![Squirrels with Ties product page](https://github.com/cascadianrebel/EcomFinal/blob/master/ecommerce/wwwroot/Assets/ProductPage.PNG)
 
 Create a E-Commerce Website built using sprints and agile programming. ASP.NET core was used as a framework for building out the application
