@@ -21,9 +21,9 @@ section {
       font-weight: 400;
       text-align: center;
       transition: all 0.3s; }
-      section p a:hover {
-        color: #27253d;
-        border-color: #27253d; }
+    section p a:hover {
+      color: #27253d;
+      border-color: #27253d; }
   section form h2 {
     margin-bottom: 3.5vh;
     padding-top: 3vh;

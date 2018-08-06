@@ -1,0 +1,33 @@
+﻿@import '_themes';
+
+.OrderTitle {
+    text-align: center;
+    margin-bottom: 3.5vh;
+    padding-top: 3vh;
+    color: $Primary;
+    font-size: 75px;
+    font-family: $BannerFont
+}
+
+hr{
+    width:60%;
+    color:$Tertiary;
+}
+
+.OrderCard {
+    width: 70%;
+    padding: 1vh 1rem;
+    border-bottom: 0.16em solid $Primary;
+    margin: 0.5vh auto;
+    font-size: $FontSize;
+    color: $Primary;
+
+    h3 {
+        font-size: $FontSize * 1.2;
+        color: $Tertiary;
+    }
+
+    div {
+        margin-left: 2rem;
+    }
+}

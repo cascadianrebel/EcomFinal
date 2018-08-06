@@ -22,5 +22,9 @@
   {
     "outputFile": "wwwroot/CSS/Detail.css",
     "inputFile": "wwwroot/CSS/Detail.scss"
+  },
+  {
+    "outputFile": "wwwroot/CSS/Order.css",
+    "inputFile": "wwwroot/CSS/Order.scss"
   }
 ]
