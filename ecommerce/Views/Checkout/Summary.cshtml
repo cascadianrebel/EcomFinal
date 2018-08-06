@@ -5,6 +5,15 @@
     decimal subTotal = 0;
 }
 
+@{ Layout = "_Layout";}
+
+<head>
+    <link href="~/CSS/OrderSummary.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+          crossorigin="anonymous">
+</head>
+
 <h2>Order Summary</h2>
 
 @foreach (var item in Model.BasketItems)
@@ -12,12 +21,15 @@
     subTotal = 0;
     subTotal = item.Quantity * item.Product.Price;
     total += subTotal;
+<hr />
     <h3>@item.Product.Name</h3>
     <p>$@item.Product.Price</p>
     <p>Qty: @item.Quantity</p>
-    <p>$@subTotal</p>
+    <br />
+    <p>SubTotal: $@subTotal</p>
 }
 
+    <hr />
 <p>Total: $@total</p>
 
 <hr />
@@ -30,5 +42,5 @@
 
 <h3>Payment</h3>
 <p>Insert here later</p>
-
+<br />
 <a asp-controller="Home" asp-action="Index">Return Home</a>
