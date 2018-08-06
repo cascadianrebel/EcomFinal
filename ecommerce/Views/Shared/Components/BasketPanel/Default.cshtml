@@ -17,7 +17,7 @@
 @foreach (var item in Model)
 {
     <div>
-        <a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.ProductID">
+        <a asp-controller="Shop" asp-action="Detail" asp-route-id="@item.ID">
             <img src="@item.Product.Image" alt="@item.Product.Name" />
         </a>
         <div>

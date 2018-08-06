@@ -40,7 +40,7 @@ namespace ecommerce.Controllers
         /// <summary>
         /// A detail of the single product
         /// </summary>
-        /// <param name="id">id of the product</param>
+        /// <param name="id">id of teh product</param>
         /// <returns>detial view or not found</returns>
         [AllowAnonymous]
         public IActionResult Detail(int? id)

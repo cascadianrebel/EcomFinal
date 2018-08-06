@@ -9,12 +9,16 @@
     width: 30%;
     border-radius: 0.3em;
     float: left;
+
+    &:hover {
+        transform: scale(0.95);
+    }
 }
 
 #DetailContainer {
     height: 60vh;
     color: $Primary;
-    margin-right: 5%;
+    margin-right: 2%;
 
     h2 {
         display: inline-block;
@@ -55,6 +59,7 @@
     #DeleteLink {
         border: 0.16em solid red;
         color: red;
+        margin-left:2rem;
 
         &:hover {
             background-color: red;
@@ -96,5 +101,52 @@
                 border: 0.16em solid $Quaduary;
             }
         }
+    }
+}
+
+#CartContainer {
+    height:100%;
+}
+
+#CartTitle {
+    margin-bottom: 3.5vh;
+    padding-top: 3vh;
+    color: $Primary;
+    font-size: 75px;
+    font-family: $BannerFont;
+    text-align:center;
+}
+
+#EmptyCart{
+    margin-top: 2vh;
+    text-align:center;
+    font-size:$FontSize * 2;
+    color:$Quaduary;
+}
+
+#CartTotal {
+    margin-top: 2vh;
+    text-align: center;
+    font-size: $FontSize * 2;
+    color: $Quaduary;
+}
+
+#CheckoutButton {
+    color: $Primary;
+    display: inline-block;
+    padding: 0.5em 3em;
+    border: 0.16em solid $Primary;
+    margin: 3vh auto;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: $NavFont;
+    font-weight: 400;
+    text-align: center;
+    transition: all $TransitionTime;
+
+    &:hover {
+        color: $Quaduary;
+        border-color: $Quaduary;
     }
 }
